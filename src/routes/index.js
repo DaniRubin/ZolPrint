@@ -29,6 +29,7 @@ import ClearingUnknownOrder from './ClearingUnknownOrder'
 import ProductDetails from './ProductDetails'
 import Policy from './Policy'
 import Privacy from './Privacy'
+import Contact from './Contact'
 
 export default {
   Home,
@@ -62,4 +63,5 @@ export default {
   ProductDetails,
   Policy,
   Privacy,
+  Contact
 }
