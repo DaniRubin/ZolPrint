@@ -8,6 +8,7 @@ import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
+import PromotionMain from '../components/PromotionMain'
 import { Router } from '$routes'
 import Gallery from '$core-components/Gallery'
 import CategoryItem from '../components/CategoryItem'
@@ -36,9 +37,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    if ($(window).width() < 561) {
-      $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
-    }
+    // if ($(window).width() < 561) {
+    //   $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
+    // }
     window.addEventListener('resize', this.onResize.bind(this));
     throttle(250, this.onResize);					// Call this function once in 250ms only
 
@@ -109,62 +110,12 @@ class Home extends Component {
         <div className="promotion-wrapper">
           <div className="wrapper">
             <Slider>
-              <PromotionItem
-                imageUrl={promotionItemImageUrl}
-                title={promotionItemTitle}
-                subTitle={promotionItemSubtitle}
-                buttonText={promotionItemButtonText}
-                url={this.state.promotionItemButtonUrl}
-              />
+              <PromotionMain />
             </Slider>
           </div>
         </div>
-        <div className="how-works">
-          <div className="wrapper">
-            <div className="how-works-title">
-              אז איך זה עובד?
-            </div>
-            <div className="how-works-items">
-              <div className="how-works-item">
-                <div className="how-works-item-img">
-                  {upload_icon && <img src={upload_icon} alt="Upload" />}
-                </div>
-                <span>מעלים קובץ</span>
-                <p>
-                  מעלים PDF/JPG בגודל 50X70
-                </p>
-              </div>
-            </div>
-            <div className="next-step-img">
-              {step_icon && <img src={step_icon} className="next-step" alt="Next step" />}
-            </div>
-            <div className="how-works-items">
-              <div className="how-works-item">
-                <div className="how-works-item-img">
-                  {amount_icon && <img src={amount_icon} alt="Amount" />}
-                </div>
-                <span>בוחרים כמות</span>
-                <p>
-                  בוחרים כמה פוסטרים רוצים
-                </p>
-              </div>
-            </div>
-            <div className="next-step-img">
-              {step_icon && <img src={step_icon} className="next-step" alt="Next step" />}
-            </div>
-            <div className="how-works-items">
-              <div className="how-works-item">
-                <div className="how-works-item-img">
-                  {delivery_icon && <img src={delivery_icon} style={{ marginTop: "37px" }} alt="Delivery" />}
-                </div>
-                <span>בדרך אליכם</span>
-                <p>
-                  איסוף מהמפעל תוך 24 שעות בלבד*<br></br>
-                  אפשרות למשלוח לכל רחבי הארץ
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="Gallery">
+          <Gallery />
         </div>
       </Layout>
     )

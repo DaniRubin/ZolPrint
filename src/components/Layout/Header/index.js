@@ -154,7 +154,7 @@ class Header extends Component {
     }
 
     const variableForLogoImg = isServer() ? '--logo-image' : window.matchMedia(`(min-width: ${theme.lg})`).matches ? '--logo-image' : '--logo-image-mobile'
-    const currentLogo = getVariableValue(variableForLogoImg, require(`$assets/images/logo.png`), true)
+    const currentLogo = require(`$assets/images/logo.png`)
     const sep = require(`$assets/images/top_sep.png`)
 
     return (
