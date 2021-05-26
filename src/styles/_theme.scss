@@ -1,14 +1,18 @@
 
 $xs: 319px;
+$mxs: 370px;
 $sm: 575px;
 $md: 767px;
+$mlg: 1017px;
 $lg: 1199px;
 $xl: 1919px;
 
 :export {
   xs: $xs;
+  mxs: $mxs;
   sm: $sm;
   md: $md;
+  mlg: $mlg;
   lg: $lg;
   xl: $xl;
 }
