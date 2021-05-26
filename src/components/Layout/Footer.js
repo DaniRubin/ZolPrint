@@ -11,7 +11,7 @@ const waze = require(`$assets/images/waze.png`)
 const Footer = () => {
   return (
     <div className="footer">
-      <span id="left-payments-mobile"></span>
+      <span id="left-payments-mobile">* בשעות הפעילות</span>
       <div id="bubble">
         <span>₪1</span><br />
         <strong>כולל מע"מ</strong><br />
@@ -46,7 +46,7 @@ const Footer = () => {
             </p>
         </div>
         <div id="left-payments">
-          <span></span><br></br>
+          <span>* בשעות הפעילות</span><br></br>
           {payments && <img src={payments} alt="payments" />}
         </div>
       </div>

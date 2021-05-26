@@ -11,14 +11,25 @@
  * @param {string} url - the url to redirect to when clicking the button
  * @param {string} className - the css class to add to main div
  */
-import {Router} from '$routes'
+import { Router } from '$routes'
 import './PromotionItem.scss'
-import React, {Component} from "react"
+import React, { Component } from "react"
 import theme from '$styles/_theme.scss'
-import {throttle} from 'throttle-debounce'
+import { throttle } from 'throttle-debounce'
 
-class PromotionItem extends Component
-{
+const handleBuy = () => {
+  console.log("Dani was here!")
+  import('react-facebook-pixel')
+    .then(module => module.default)
+    .then(ReactPixel => {
+      ReactPixel.init('497457848043067')
+      // ReactPixel.track('ViewContent');
+      ReactPixel.trackCustom('ViewContent')
+    })
+  console.log("1. Event ViewContent fired!");
+}
+
+class PromotionItem extends Component {
   constructor() {
     super();
     this.promotionItem = React.createRef();
@@ -35,8 +46,8 @@ class PromotionItem extends Component
     window.removeEventListener('resize', this.onResize)
   }
 
-  goTo(url){
-    if(!url){
+  goTo(url) {
+    if (!url) {
       return
     }
     if (url.startsWith('http')) {
@@ -51,8 +62,8 @@ class PromotionItem extends Component
     this.setButtonSize()
   }
 
-  setButtonSize(){
-    if(!this.promotionItem) {
+  setButtonSize() {
+    if (!this.promotionItem) {
       return
     }
 
@@ -62,24 +73,44 @@ class PromotionItem extends Component
     if (window.matchMedia(`(max-width: ${theme.md})`).matches) {
       button.style['max-width'] = `${width - (2 * 20)}px`
     }
-    else{
+    else {
       button.style['max-width'] = ''
     }
   }
 
   render() {
-    const {imageUrl, title, subTitle, buttonText, url, className} = this.props;
+    const { imageUrl, title, subTitle, buttonText, url, className } = this.props;
+    const button_icon = require(`$assets/images/left_arr.png`)
+    const left_banner_img = require(`$assets/images/banner_img.png`)
+    const modelid = "704"
+    const modelname = "הזמנת פוסטרים"
 
     return (
-      <div className={`promotion-item ${ className || ''}`} ref={(ref) =>this.promotionItem = ref}>
-        {
-          imageUrl && <img className="promotion-image" src={`${imageUrl}`} alt=""/>
-        }
+      <div className={`promotion-item ${className || ''}`} ref={(ref) => this.promotionItem = ref}>
+        {/* {
+          imageUrl && <img className="promotion-image" src={`${imageUrl}`} alt="" />
+        } */}
         <div className="main">
           <div className="title-area">
-            <div className="title text">{title}</div>
-            <div className="subtitle text">{subTitle}</div>
-            <div className="button button-primary truncate" onClick={() => this.goTo(url) }>{buttonText}</div>
+            <div className="banner_title">
+              פוסטר 50X70 רק ב..
+              <span>₪1<br /><strong>כולל מע"מ</strong></span>
+            </div>
+            <div className="title text">{/*title*/}</div>
+            <div className="subtitle text">
+              חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה<br></br>
+              התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.
+            </div>
+            <div className="button button-primary truncate" onClick={() => {
+              handleBuy()
+              this.goTo(url)
+            }
+            }>
+              {buttonText}
+            </div>
+          </div>
+          <div className="left_banner_img">
+            {left_banner_img && <img src={left_banner_img} alt="Left Banner Image" />}
           </div>
         </div>
       </div>

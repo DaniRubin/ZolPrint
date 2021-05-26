@@ -21,6 +21,7 @@ import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
 import { getIsNGProduct } from '../services/utils'
 import { decodeStringForURL } from '$ustoreinternal/services/utils'
+import $ from 'jquery';
 
 class Home extends Component {
 
@@ -35,6 +36,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    // $("#left-payments span").html("* בשעות הפעילות");
+    // $("#left-payments-mobile").html("* בשעות הפעילות");
+
+    if ($(window).width() < 561) {
+      $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
+    }
     window.addEventListener('resize', this.onResize.bind(this));
     throttle(250, this.onResize);					// Call this function once in 250ms only
 
