@@ -86,6 +86,13 @@ class Home extends Component {
 
     const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
 
+    const amount_icon = require(`$assets/images/amount.png`)
+    const upload_icon = require(`$assets/images/upload.png`)
+    const delivery_icon = require(`$assets/images/delivery.png`)
+    const step_icon = require(`$assets/images/item_arr.png`)
+
+    const left_banner_img = require(`$assets/images/banner_img.png`)
+
 
     const promotionItemImageUrl = getVariableValue('--homepage-carousel-slide-1-image', require(`$assets/images/banner_image.png`), true)
     const promotionItemTitle = getVariableValue('--homepage-carousel-slide-1-main-text', t('PromotionItem.Title'))
@@ -94,63 +101,66 @@ class Home extends Component {
 
     return (
       <Layout {...this.props} className="home">
+        <div id="header_bottom"></div>
         <div className="promotion-wrapper">
-          <Slider>
-            <PromotionItem
-              imageUrl={promotionItemImageUrl}
-              title={promotionItemTitle}
-              subTitle={promotionItemSubtitle}
-              buttonText={promotionItemButtonText}
-              url={this.state.promotionItemButtonUrl}
-            />
-          </Slider>
+          <div className="wrapper">
+            <Slider>
+              <PromotionItem
+                imageUrl={promotionItemImageUrl}
+                title={promotionItemTitle}
+                subTitle={promotionItemSubtitle}
+                buttonText={promotionItemButtonText}
+                url={this.state.promotionItemButtonUrl}
+              />
+            </Slider>
+          </div>
         </div>
-
-        <div className="middle-section">
-          {categories && categories.length > 0 &&
-            <div className="categories-wrapper">
-              <Slider multi>
-                {
-                  categories.map((model) => {
-                    return <CategoryItem key={model.ID} model={model}
-                      url={urlGenerator.get({ page: 'category', id: model.FriendlyID, name: decodeStringForURL(model.Name) })} />
-                  }
-                  )
-                }
-              </Slider>
+        <div className="how-works">
+          <div className="wrapper">
+            <div className="how-works-title">
+              אז איך זה עובד?
             </div>
-          }
-
-          <div className="divider" />
-          {homeFeaturedCategory && homeFeaturedProducts &&
-            <div className="featured-products-wrapper">
-              <Gallery title={homeFeaturedCategory.Name}
-                seeAllUrl={urlGenerator.get({ page: 'category', id: homeFeaturedCategory.FriendlyID, name: decodeStringForURL(homeFeaturedCategory.Name) })}
-                gridRows="2">
-                {
-                  homeFeaturedProducts.map((model) => {
-                    const hideProduct =
-                      this.state.isMobile &&
-                      model.Attributes &&
-                      model.Attributes.find(attr => attr.Name === 'UEditEnabled' && attr.Value === 'true') !== undefined
-
-                    return !hideProduct &&
-                      <ProductItem
-                        key={model.ID}
-                        model={model}
-                        productNameLines="2"
-                        descriptionLines="4"
-                        url={getIsNGProduct(model.Type, currentStore) ?
-                          urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                          :
-                          urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                        }
-                      />
-                  })
-                }
-              </Gallery>
+            <div className="how-works-items">
+              <div className="how-works-item">
+                <div className="how-works-item-img">
+                  {upload_icon && <img src={upload_icon} alt="Upload" />}
+                </div>
+                <span>מעלים קובץ</span>
+                <p>
+                  מעלים PDF/JPG בגודל 50X70
+                </p>
+              </div>
             </div>
-          }
+            <div className="next-step-img">
+              {step_icon && <img src={step_icon} className="next-step" alt="Next step" />}
+            </div>
+            <div className="how-works-items">
+              <div className="how-works-item">
+                <div className="how-works-item-img">
+                  {amount_icon && <img src={amount_icon} alt="Amount" />}
+                </div>
+                <span>בוחרים כמות</span>
+                <p>
+                  בוחרים כמה פוסטרים רוצים
+                </p>
+              </div>
+            </div>
+            <div className="next-step-img">
+              {step_icon && <img src={step_icon} className="next-step" alt="Next step" />}
+            </div>
+            <div className="how-works-items">
+              <div className="how-works-item">
+                <div className="how-works-item-img">
+                  {delivery_icon && <img src={delivery_icon} style={{ marginTop: "37px" }} alt="Delivery" />}
+                </div>
+                <span>בדרך אליכם</span>
+                <p>
+                  איסוף מהמפעל תוך 24 שעות בלבד*<br></br>
+                  אפשרות למשלוח לכל רחבי הארץ
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Layout>
     )

@@ -26,24 +26,15 @@
 import React, { Component } from 'react'
 import { throttle } from 'throttle-debounce'
 import { UStoreProvider } from '@ustore/core'
-// import Search from './Search'
-// import CategoriesNavbar from './CategoriesNavbar'
-// import CategoriesSidebar from './CategoriesSidebar'
 import Profile from './Profile'
-// import SignOut from './SignOut'
-// import SignIn from './SignIn'
-// import Overlay from '$core-components/Overlay'
-// import Switcher from '$core-components/Switcher'
 import Cart from "./Cart"
 import './Header.scss'
 import { Router, Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import legacyIframeHandler from '$ustoreinternal/services/legacyIframeHandler'
-// import { t } from '$themelocalization'
 import { setCookie, isServer } from "$ustoreinternal/services/utils";
 import { getVariableValue } from "$ustoreinternal/services/cssVariables";
 import theme from '$styles/_theme.scss'
-// import Icon from '$core-components/Icon'
 import themeContext from '$ustoreinternal/services/themeContext'
 
 class Header extends Component {
@@ -164,73 +155,36 @@ class Header extends Component {
 
     const variableForLogoImg = isServer() ? '--logo-image' : window.matchMedia(`(min-width: ${theme.lg})`).matches ? '--logo-image' : '--logo-image-mobile'
     const currentLogo = getVariableValue(variableForLogoImg, require(`$assets/images/logo.png`), true)
+    const sep = require(`$assets/images/top_sep.png`)
 
     return (
       <div className='header' >
         <div className='header-stripe' ref={(ref) => this.header = ref} draweropen={`${this.state.drawerOpen}`}>
-          <div className="logo-wrapper">
-            {/* <div className="menu-icon-container" onClick={this.burgerClicked.bind(this)}>
-              <Icon name="menu.svg" width="23px" height="20px" className="menu-icon" />
-            </div> */}
-            <Link to={urlGenerator.get({ page: 'home' })}>
-              <a>
-                <div className="logo-container">
-                  {currentLogo && <img className="logo" src={currentLogo} alt="logo" />}
-                </div>
-              </a>
-            </Link>
+          <div className='wrapper'>
+            <div className="logo-wrapper">
+              <Link to={urlGenerator.get({ page: 'home' })}>
+                <a>
+                  <div className="logo-container">
+                    {currentLogo && <img className="logo" src={currentLogo} alt="logo" />}
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div className="right-icons">
+              <Link to={urlGenerator.get({ page: 'Contact' })}>
+                <a id="contact_btn">
+                  צרו קשר</a>
+              </Link>
+              {sep && <img src={sep} className="top_sep" id="middle_sep" alt="Separator" />}
+              {currentUser && <Profile currentUser={currentUser} userOrdersSummary={userOrdersSummary} />}
+
+              {sep && <img src={sep} className="top_sep" id="middle_sep" alt="Separator" />}
+              <Cart />
+
+            </div>
           </div>
-          {/* {
-            categoriesTree && categoriesTree.length > 0 &&
-            <CategoriesNavbar categoriesTree={categoriesTree} />
-          }
-          <Search /> */}
-          <div className="right-icons">
-            {/* {culturesViewModel && culturesViewModel.length > 0 &&
-              <Switcher
-                className="culture"
-                items={culturesViewModel}
-                selected={currentCulture && culturesViewModel.find((element) => { return currentCulture.ID === element.ID })}
-                label={t('Header.Language')}
-                onSelected={cultureSelected} />
-            } */}
-            {/* {currenciesViewModel && currenciesViewModel.length > 0 &&
-              <Switcher
-                className="currency"
-                items={currenciesViewModel}
-                selected={currentCurrency && currenciesViewModel.find((element) => { return currentCurrency.ID === element.ID })}
-                label={t('Header.Currency')}
-                onSelected={currencySelected} />
-            } */}
-            {currentUser && <Profile currentUser={currentUser} userOrdersSummary={userOrdersSummary} />}
-            <Cart connectCartUrl={this.state.connectCartUrl} />
-          </div>
-          {/* <div className="drawer-wrapper">
-            {currenciesViewModel && currenciesViewModel.length > 0 &&
-              <Switcher
-                className="currency"
-                items={currenciesViewModel}
-                selected={currentCurrency && currenciesViewModel.find((element) => { return currentCurrency.ID === element.ID })}
-                label={t('Header.Currency')}
-                onSelected={currencySelected} />
-            }
-            {culturesViewModel && culturesViewModel.length > 0 &&
-              <Switcher
-                className="culture"
-                items={culturesViewModel}
-                selected={currentCulture && culturesViewModel.find((element) => { return currentCulture.ID === element.ID })}
-                label={t('Header.Language')}
-                onSelected={cultureSelected} />
-            }
-            {
-              categoriesTree && categoriesTree.length > 0 &&
-              <CategoriesSidebar categoriesTree={categoriesTree} onRedirect={sidebarRedirect} />
-            }
-            {currentUser && currentUser.IsAnonymous ? <SignIn showTitle={false} /> : <SignOut currentUser={currentUser} />}
-          </div>
-          <Overlay isActive={this.state.overlayActive} overlayClicked={this.overlayClicked.bind(this)} /> */}
         </div>
-      </div>
+      </div >
 
     )
   }
