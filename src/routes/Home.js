@@ -36,9 +36,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // $("#left-payments span").html("* בשעות הפעילות");
-    // $("#left-payments-mobile").html("* בשעות הפעילות");
-
     if ($(window).width() < 561) {
       $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
     }

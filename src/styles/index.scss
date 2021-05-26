@@ -45,7 +45,7 @@
 @import "truncate";
 
 html {
-  //overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -57,4 +57,15 @@ body {
   -webkit-text-size-adjust: 100%; //fix for iOS
 }
 
+// setting StoryBook container to float so wont show as full width.
+.sb-show-main {
+  display: inline-grid;
+  min-width: 100%;
+  #root {
+    float: left;
 
+    div {
+      float: left;
+    }
+  }
+}
