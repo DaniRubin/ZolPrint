@@ -27,6 +27,8 @@ import OrderApprovalList from './OrderApprovalList'
 import CustomMain from './CustomMain'
 import ClearingUnknownOrder from './ClearingUnknownOrder'
 import ProductDetails from './ProductDetails'
+import Policy from './Policy'
+import Privacy from './Privacy'
 
 export default {
   Home,
@@ -57,5 +59,7 @@ export default {
   OrderApprovalList,
   CustomMain,
   ClearingUnknownOrder,
-  ProductDetails
+  ProductDetails,
+  Policy,
+  Privacy,
 }
