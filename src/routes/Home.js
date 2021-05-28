@@ -108,11 +108,11 @@ class Home extends Component {
       <Layout {...this.props} className="home">
         <div id="header_bottom"></div>
         <div className="promotion-wrapper">
-          <div className="wrapper">
-            <Slider>
-              <PromotionMain />
-            </Slider>
-          </div>
+          {/* <div className="wrapper"> */}
+          <Slider>
+            <PromotionMain />
+          </Slider>
+          {/* </div> */}
         </div>
         <div className="Gallery">
           <Gallery />

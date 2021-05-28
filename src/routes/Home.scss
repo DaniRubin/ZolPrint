@@ -63,8 +63,10 @@
     height: 367px;
     width: 100%;
     background-repeat: no-repeat;
+      background-repeat: no-repeat;
     background-image: url('../assets/images/hero-background.png');     
-    background-size: cover;
+    background-size: 100% 100%;
+
   }
   
   @media (max-width: $mlg) {

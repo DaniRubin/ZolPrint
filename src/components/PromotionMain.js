@@ -19,6 +19,8 @@ class PromotionMain extends Component {
 
   render() {
     const coin_img = require(`$assets/images/coin.png`)
+    const main_page_image = require(`$assets/images/main-page-image.png`)
+
     const modelid = "704"
 
     return (
@@ -45,6 +47,9 @@ class PromotionMain extends Component {
           <center>
             <div className="coin_img">
               {coin_img && <img src={coin_img} alt="Coin Image" />}
+            </div>
+            <div className="main_page_image">
+              {main_page_image && <img src={main_page_image} alt="Flayer image" />}
             </div>
           </center>
         </div>

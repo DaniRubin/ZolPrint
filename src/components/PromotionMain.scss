@@ -2,10 +2,12 @@
 
 .main-text {
   font-size: 33.5px;
+  width:999px;
+  margin: auto;
   line-height: 1;
   letter-spacing: -1.5px;
-  margin-top: 50px;
-  margin-right: 50px;
+  // margin-top: 50px;
+  // margin-right: 50px;
   color: #ffffff;
 }
 .genral-explanation {
@@ -23,11 +25,18 @@
   display: inline-block;
   border-radius: 50%;
 }
-
+.main {
+  padding-top: 50px;
+}
 
 .coin_img {
   margin-top: 30px;
   z-index: 1;
+}
+.main_page_image {
+  position: absolute;
+  top: 70px;
+  left: 50px
 }
 
 .promotion-item {
