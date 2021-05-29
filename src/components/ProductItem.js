@@ -150,8 +150,8 @@ class ProductItem extends Component {
         <div className="image-wrapper" onClick={() => onClick(url)}>
           <ImageLoader className="image" src={imageUrl} />
           <div className="price-circle">
+            <span className="totalPrice">{priceAmount[0]}</span>&nbsp;
             <span className="priceType">{priceAmount[1]}</span>
-            <span className="totalPrice">{priceAmount[0]}</span>
             <br />
             <span className="maam">כולל מע"מ</span>
           </div>

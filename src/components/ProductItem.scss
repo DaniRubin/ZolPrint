@@ -5,7 +5,10 @@
   color: var(--text-color-ultra-dark);
   display: flex;
   flex-direction: column;
-  margin: auto;
+  display: inline-block;
+  margin-right:33px;
+  margin-left:33px;
+  
 
   .product-name {
     margin: 10px 0 2px 0;
