@@ -123,7 +123,6 @@ class ProductItem extends Component {
       default:
         return ["0", '₪']
     }
-
   }
 
   render() {
@@ -139,11 +138,7 @@ class ProductItem extends Component {
     const imageUrl = (model && model.ImageUrl) ? model.ImageUrl : require(`$assets/images/default.png`)
     const productNameAndCatalog = model.CatalogNumber && model.CatalogNumber.trim().length > 0 ? `${model.Name} / ${model.CatalogNumber}` : model.Name
     const showQuickAddToCart = model.Configuration && model.Configuration.AllowQuickAddToCart
-    const priceModelToDisplay = this.state.calculatedPriceModel ? this.state.calculatedPriceModel : model.MinimumPrice
     const priceAmount = this.getPriceOfProduct(model.Name)
-    console.log(priceAmount)
-    const isMinimumPrice = !this.state.calculatedPriceModel && !showQuickAddToCart
-    const quantity = this.state.quantity ? this.state.quantity : model.MinimumQuantity
 
     return (
       <div className={`product-item ${className ? className : ''}`} data-qaautomationinfo={model.FriendlyID}>
@@ -161,51 +156,6 @@ class ProductItem extends Component {
           onClick={() => onClick(url)}>
           {productNameAndCatalog}
         </div>
-
-
-        {/* {detailed && <div className="product-description" style={{ maxHeight: `${descriptionLines * 1.5}em` }}>
-          <ResponsiveHTMLEllipsis unsafeHTML={model.ShortDescription} maxLine={descriptionLines} basedOn='words' />
-        </div>} */}
-        {/* <Inventory model={model.Inventory} minQuantity={model.MinimumQuantity} />
-        {model.HasPricing && priceModelToDisplay && <div> */}
-        {/* <div className="product-units">
-            <UnitsOfMeasure minQuantity={model.MinimumQuantity} model={model.Unit} isMinimumPrice={isMinimumPrice} />
-          </div> */}
-        {/* <div className="product-price">
-            {this.state.isPriceCalculating ?
-              <LoadingDots /> : <Price model={priceModelToDisplay} isMinimumPrice={isMinimumPrice} />
-            }
-          </div>
-        </div>} */}
-        {/* <div className="anchor-flex-end"></div>
-        {showQuickAddToCart && <div className='add-to-cart'>
-          {!this.state.addToCartShowSuccess && <div className='add-to-cart-controls'>
-            <div className='add-to-cart-product-quantity'>
-              <ProductItemQuantity
-                supportsInventory={true}
-                onQuantityChange={this.onQuantityChange}
-                productModel={model}
-                orderModel={{ Quantity: quantity }}
-              />
-            </div>
-            <div className='add-to-cart-button-wrapper'>
-              <Button className='button-secondary add-to-cart-button' text={t('ProductItem.Add_to_cart_button_text')} onClick={() => this.onAddToCartClick()} />
-              <Button className='button-secondary add-button' text={t('ProductItem.Add_button_text')} onClick={() => this.onAddToCartClick()} />
-            </div>
-          </div>
-          }
-          {this.state.addToCartShowSuccess &&
-            <div className='add-to-cart-success'>
-              <div>{t('ProductItem.Added_successfully_message')}
-                <span className='success-checkmark-icon-wrapper'>
-                  <Icon name="checkmark.svg" width="20px" height="20px" className="success-checkmark-icon" />
-                </span>
-              </div>
-
-            </div>
-          }
-        </div>
-        } */}
       </div>
     )
   }
