@@ -9,9 +9,15 @@
     justify-content: space-between;
 
     .main-title {
-      font-size: var(--text-size-h2);
-      color: var(--text-color-heading);
-
+      background-image: linear-gradient(to bottom, #00133a, #00133a), linear-gradient(to top, #000000, #ffffff), linear-gradient(to bottom, #ffffff, #ffffff);
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 0.67;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: auto;
+      margin-top:60px;
       &.scrollable-title {
         font-size: calc(var(--text-size-h4)*1.2);
       }

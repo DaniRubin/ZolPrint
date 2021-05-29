@@ -117,6 +117,7 @@ class ProductItem extends Component {
 
   render() {
     let { descriptionLines, productNameLines, model, url, detailed, className } = this.props
+    console.log(model)
 
     if (!model) {
       return null
@@ -137,12 +138,17 @@ class ProductItem extends Component {
         <div className="image-wrapper" onClick={() => onClick(url)}>
           <ImageLoader className="image" src={imageUrl} />
         </div>
-        <div className="product-name" style={{ maxHeight: `${productNameLines * 1.5}em` }} onClick={() => onClick(url)}>
-          <ResponsiveHTMLEllipsis style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
+
+        <div className="product-name" style={{ maxHeight: `${productNameLines * 1.5}em` }}
+          onClick={() => onClick(url)}>
+          {/* <ResponsiveHTMLEllipsis style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
             unsafeHTML={productNameAndCatalog}
             maxLine={productNameLines}
-            basedOn='letters' />
+            basedOn='letters' /> */}
+          {productNameAndCatalog}
         </div>
+
+
         {detailed && <div className="product-description" style={{ maxHeight: `${descriptionLines * 1.5}em` }}>
           <ResponsiveHTMLEllipsis unsafeHTML={model.ShortDescription} maxLine={descriptionLines} basedOn='words' />
         </div>}

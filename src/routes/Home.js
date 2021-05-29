@@ -114,9 +114,40 @@ class Home extends Component {
           </Slider>
           {/* </div> */}
         </div>
-        <div className="Gallery">
-          <Gallery />
-        </div>
+
+        <div className="divider" />
+
+        {homeFeaturedCategory && homeFeaturedProducts &&
+          <div className="featured-products-wrapper">
+            <center>
+              <Gallery title='המוצרים שלנו'
+                seeAllUrl={urlGenerator.get({ page: 'category', id: homeFeaturedCategory.FriendlyID, name: decodeStringForURL(homeFeaturedCategory.Name) })}
+                gridRows="2">
+                {
+                  homeFeaturedProducts.map((model) => {
+                    const hideProduct =
+                      this.state.isMobile &&
+                      model.Attributes &&
+                      model.Attributes.find(attr => attr.Name === 'UEditEnabled' && attr.Value === 'true') !== undefined
+
+                    return !hideProduct &&
+                      <ProductItem
+                        key={model.ID}
+                        model={model}
+                        productNameLines="2"
+                        descriptionLines="4"
+                        url={getIsNGProduct(model.Type, currentStore) ?
+                          urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
+                          :
+                          urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
+                        }
+                      />
+                  })
+                }
+              </Gallery>
+            </center>
+          </div>
+        }
       </Layout>
     )
   }

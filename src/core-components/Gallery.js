@@ -9,21 +9,21 @@
 
 import React, { Component } from 'react'
 import './Gallery.scss'
-import {Link} from '$routes'
-import {t} from '$themelocalization'
-import {isServer} from '$ustoreinternal/services/utils'
+import { Link } from '$routes'
+import { t } from '$themelocalization'
+import { isServer } from '$ustoreinternal/services/utils'
 import memoize from "memoize-one"
 
 class Gallery extends Component {
-	constructor(props){
+  constructor(props) {
     super(props)
     this.defaultGridRows = 2
     this.forceRender = false
     this.isUnmounted = false
   }
 
-  updateRenderedChildren(){
-	  if(!this.isUnmounted){
+  updateRenderedChildren() {
+    if (!this.isUnmounted) {
       this.forceRender = true
       this.forceUpdate()
     }
@@ -43,11 +43,11 @@ class Gallery extends Component {
     if (!this.gallery || isServer()) {
       return 0
     }
-    const basis = window.getComputedStyle(this.gallery).getPropertyValue('--flex-basis').replace('%','')
-    return Math.floor(100/parseInt(basis))
+    const basis = window.getComputedStyle(this.gallery).getPropertyValue('--flex-basis').replace('%', '')
+    return Math.floor(100 / parseInt(basis))
   }
 
-  filterChildren(children){
+  filterChildren(children) {
     const itemsInRow = this.getItemsInRow()
     const gridRows = this.props.gridRows || this.defaultGridRows
     const itemsToShow = parseInt(itemsInRow) * parseInt(gridRows)
@@ -61,26 +61,26 @@ class Gallery extends Component {
   filter = memoize((children) => this.filterChildren(children))
 
   render() {
-    const {title, seeAllUrl, children} = this.props
+    const { title, seeAllUrl, children } = this.props
 
-    if (!children){
+    if (!children) {
       return null
     }
 
     let filteredChildren = null
 
-    if(this.forceRender){
+    if (this.forceRender) {
       this.forceRender = false
       filteredChildren = this.filterChildren(children)
     }
-    else{
+    else {
       filteredChildren = this.filter(children)
     }
 
-    const showSeeAll = seeAllUrl && React.Children.count(filteredChildren) <   React.Children.count(children)
+    const showSeeAll = seeAllUrl && React.Children.count(filteredChildren) < React.Children.count(children)
 
     return (
-      <div className="gallery" ref={(ref)=>{this.gallery = ref}}>
+      <div className="gallery" ref={(ref) => { this.gallery = ref }}>
         <div className="top">
           {
             title && <div className='main-title'>{title}</div>
@@ -91,7 +91,7 @@ class Gallery extends Component {
           }
         </div>
         <div className="main">
-          { filteredChildren }
+          {filteredChildren}
         </div>
         {
           showSeeAll &&
