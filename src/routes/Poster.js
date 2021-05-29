@@ -16,7 +16,6 @@ import { getVariableValue } from '$ustoreinternal/services/cssVariables'
 import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
 import { decodeStringForURL } from '$ustoreinternal/services/utils'
-import $ from 'jquery';
 
 class Poster extends Component {
 
@@ -31,9 +30,6 @@ class Poster extends Component {
     }
 
     componentDidMount() {
-        if ($(window).width() < 561) {
-            $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
-        }
         window.addEventListener('resize', this.onResize.bind(this));
         throttle(250, this.onResize);					// Call this function once in 250ms only
 
@@ -99,7 +95,7 @@ class Poster extends Component {
         const promotionItemButtonText = getVariableValue('--homepage-carousel-slide-1-button-text', t('PromotionItem.Button_Text'))
 
         return (
-            <Layout {...this.props} className="home">
+            <Layout {...this.props} className="Poster">
                 <div id="header_bottom"></div>
                 <div className="promotion-wrapper">
                     <div className="wrapper">
@@ -166,23 +162,5 @@ class Poster extends Component {
     }
 }
 
-Home.getInitialProps = async function (ctx) {
-    const maxInPage = 200
-    const { Count } = await UStoreProvider.api.categories.getTopCategories(1, maxInPage)
-    if (Count === 0) {
-        return { homeFeaturedProducts: null, homeFeaturedCategory: null }
-    }
-
-    const page = Math.ceil(Count / maxInPage)
-    const { Categories } = await UStoreProvider.api.categories.getTopCategories(page, maxInPage)
-
-    if (Categories.length === 0) {
-        return { homeFeaturedProducts: null, homeFeaturedCategory: null }
-    }
-
-    const homeFeaturedCategory = Categories[Count - 1]
-    const { Products: homeFeaturedProducts } = await UStoreProvider.api.products.getProducts(homeFeaturedCategory.ID, 1)
-    return { homeFeaturedProducts, homeFeaturedCategory }
-}
 
 export default Poster

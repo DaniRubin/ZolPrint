@@ -82,6 +82,17 @@ class Home extends Component {
     return null
   }
 
+  getNextPage(name) {
+    switch (name) {
+      case "פוסטר 50X70":
+        return 'Poster'
+      case "פלייר A5":
+        return 'Flyer'
+      default:
+        return 'home'
+    }
+  }
+
 
 
   render() {
@@ -108,11 +119,9 @@ class Home extends Component {
       <Layout {...this.props} className="home">
         <div id="header_bottom"></div>
         <div className="promotion-wrapper">
-          {/* <div className="wrapper"> */}
           <Slider>
             <PromotionMain />
           </Slider>
-          {/* </div> */}
         </div>
 
         <div className="divider" />
@@ -136,11 +145,12 @@ class Home extends Component {
                         model={model}
                         productNameLines="2"
                         descriptionLines="4"
-                        url={getIsNGProduct(model.Type, currentStore) ?
-                          urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                          :
-                          urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                        }
+                        // url={getIsNGProduct(model.Type, currentStore) ?
+                        //   urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
+                        //   :
+                        //   urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
+                        // }
+                        url={urlGenerator.get({ page: this.getNextPage(model.Name) })}
                       />
                   })
                 }

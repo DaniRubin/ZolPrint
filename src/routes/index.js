@@ -30,6 +30,8 @@ import ProductDetails from './ProductDetails'
 import Policy from './Policy'
 import Privacy from './Privacy'
 import Contact from './Contact'
+import Poster from './Poster'
+import Flyer from './Flyer'
 
 export default {
   Home,
@@ -63,5 +65,7 @@ export default {
   ProductDetails,
   Policy,
   Privacy,
-  Contact
+  Contact,
+  Poster,
+  Flyer
 }

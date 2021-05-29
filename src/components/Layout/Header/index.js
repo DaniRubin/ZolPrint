@@ -161,6 +161,7 @@ class Header extends Component {
       <div className='header' >
         <div className='header-stripe' ref={(ref) => this.header = ref} draweropen={`${this.state.drawerOpen}`}>
           <div className='wrapper'>
+
             <div className="logo-wrapper">
               <Link to={urlGenerator.get({ page: 'home' })}>
                 <a>
@@ -170,15 +171,19 @@ class Header extends Component {
                 </a>
               </Link>
             </div>
+
             <div className="right-icons">
               <Link to={urlGenerator.get({ page: 'Contact' })}>
                 <a id="contact_btn">
                   צרו קשר</a>
               </Link>
+
               {sep && <img src={sep} className="top_sep" id="middle_sep" alt="Separator" />}
+
               {currentUser && <Profile currentUser={currentUser} userOrdersSummary={userOrdersSummary} />}
 
               {sep && <img src={sep} className="top_sep" id="middle_sep" alt="Separator" />}
+
               <Cart />
 
             </div>

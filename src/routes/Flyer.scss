@@ -1,6 +1,6 @@
 @import '_theme.scss';
 
-.home{
+.Flyer {
   .middle-section {
     margin: 0 auto;
 
@@ -195,14 +195,14 @@
 }
 
 @media (max-width: $md) {
-.home .how-works-title {
+.Flyer .how-works-title {
 
   font-size: 45px;
 }
 }
 
 @media (max-width: $mxs) {
-  .home .how-works-title {
+  .Flyer .how-works-title {
   
     font-size: 41px;
   }
