@@ -113,7 +113,8 @@ class Poster extends Component {
                 <div className="how-works">
                     <div className="wrapper">
                         <div className="how-works-title">
-                            אז איך זה עובד?
+                            {/* אז איך זה עובד? */}
+             פוסטר
              </div>
                         <div className="how-works-items">
                             <div className="how-works-item">
