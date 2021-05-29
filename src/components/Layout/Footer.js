@@ -12,11 +12,11 @@ const Footer = () => {
   return (
     <div className="footer">
       <span id="left-payments-mobile">* בשעות הפעילות</span>
-      <div id="bubble">
+      {/* <div id="bubble">
         <span>₪1</span><br />
         <strong>כולל מע"מ</strong><br />
           לפוסטר
-        </div>
+        </div> */}
       <div className="wrapper">
         <div className="nav-right">
           <span>מידע כללי</span>

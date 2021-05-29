@@ -114,10 +114,20 @@ class ProductItem extends Component {
       }, 3000)
     }
   }
+  getPriceOfProduct = (name) => {
+    switch (name) {
+      case "פוסטר 50X70":
+        return ['1', '₪']
+      case "פלייר A5":
+        return ["10", "אג'"]
+      default:
+        return ["0", '₪']
+    }
+
+  }
 
   render() {
     let { descriptionLines, productNameLines, model, url, detailed, className } = this.props
-    console.log(model)
 
     if (!model) {
       return null
@@ -130,6 +140,8 @@ class ProductItem extends Component {
     const productNameAndCatalog = model.CatalogNumber && model.CatalogNumber.trim().length > 0 ? `${model.Name} / ${model.CatalogNumber}` : model.Name
     const showQuickAddToCart = model.Configuration && model.Configuration.AllowQuickAddToCart
     const priceModelToDisplay = this.state.calculatedPriceModel ? this.state.calculatedPriceModel : model.MinimumPrice
+    const priceAmount = this.getPriceOfProduct(model.Name)
+    console.log(priceAmount)
     const isMinimumPrice = !this.state.calculatedPriceModel && !showQuickAddToCart
     const quantity = this.state.quantity ? this.state.quantity : model.MinimumQuantity
 
@@ -137,33 +149,35 @@ class ProductItem extends Component {
       <div className={`product-item ${className ? className : ''}`} data-qaautomationinfo={model.FriendlyID}>
         <div className="image-wrapper" onClick={() => onClick(url)}>
           <ImageLoader className="image" src={imageUrl} />
+          <div className="price-circle">
+            <span className="priceType">{priceAmount[1]}</span>
+            <span className="totalPrice">{priceAmount[0]}</span>
+            <br />
+            <span className="maam">כולל מע"מ</span>
+          </div>
         </div>
 
         <div className="product-name" style={{ maxHeight: `${productNameLines * 1.5}em` }}
           onClick={() => onClick(url)}>
-          {/* <ResponsiveHTMLEllipsis style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
-            unsafeHTML={productNameAndCatalog}
-            maxLine={productNameLines}
-            basedOn='letters' /> */}
           {productNameAndCatalog}
         </div>
 
 
-        {detailed && <div className="product-description" style={{ maxHeight: `${descriptionLines * 1.5}em` }}>
+        {/* {detailed && <div className="product-description" style={{ maxHeight: `${descriptionLines * 1.5}em` }}>
           <ResponsiveHTMLEllipsis unsafeHTML={model.ShortDescription} maxLine={descriptionLines} basedOn='words' />
-        </div>}
-        <Inventory model={model.Inventory} minQuantity={model.MinimumQuantity} />
-        {model.HasPricing && priceModelToDisplay && <div>
-          <div className="product-units">
+        </div>} */}
+        {/* <Inventory model={model.Inventory} minQuantity={model.MinimumQuantity} />
+        {model.HasPricing && priceModelToDisplay && <div> */}
+        {/* <div className="product-units">
             <UnitsOfMeasure minQuantity={model.MinimumQuantity} model={model.Unit} isMinimumPrice={isMinimumPrice} />
-          </div>
-          <div className="product-price">
+          </div> */}
+        {/* <div className="product-price">
             {this.state.isPriceCalculating ?
               <LoadingDots /> : <Price model={priceModelToDisplay} isMinimumPrice={isMinimumPrice} />
             }
           </div>
-        </div>}
-        <div className="anchor-flex-end"></div>
+        </div>} */}
+        {/* <div className="anchor-flex-end"></div>
         {showQuickAddToCart && <div className='add-to-cart'>
           {!this.state.addToCartShowSuccess && <div className='add-to-cart-controls'>
             <div className='add-to-cart-product-quantity'>
@@ -191,7 +205,7 @@ class ProductItem extends Component {
             </div>
           }
         </div>
-        }
+        } */}
       </div>
     )
   }

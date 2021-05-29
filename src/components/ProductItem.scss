@@ -21,7 +21,31 @@
   &:hover {
     text-decoration: none;
   }
-  
+  .price-circle {
+    background-color: #00a8ee;
+    padding: 13px;
+    border-radius: 50%;
+    color: white;
+    display: inline-block;
+    float: right;
+    margin-top: -250px;
+    margin-right:8px;
+
+    .totalPrice {
+      line-height: 1;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .priceType {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .maam {
+      font-weight: bold;
+      font-size: 13px;
+    }
+  }
+
   .price {
     color: var(--color-highlight);
     margin-right: 20px;
@@ -159,6 +183,7 @@
     border: var(--image-box-border-width) solid var(--image-box-border-color);
     background: #c4edfd;
     border-radius: 10px;
+    overflow: hidden !important;
     object-fit: contain;
     box-shadow: 1.5px 2.6px 9px 0 rgba(0, 0, 0, 0.38);
     position: relative;
@@ -168,7 +193,6 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding-top: 0px !important;
     }
   }
   .product-description {
@@ -180,6 +204,8 @@
     .image-wrapper {
       padding: 0px 1.5% 1.5% 1.67%;
       height: var(--image-box-height);
+      width: 400px;
+      margin:auto;
     }
   }
 
@@ -187,12 +213,14 @@
     .image-wrapper {
       padding: 0px 1.5% 1.5% 1.67%;
       height: calc(var(--image-box-height) * 0.833);
+      margin:auto;
     }
   }
 
   @media (min-width: $sm) and (max-width: $md) {
     .image-wrapper {
       padding: 0px 1.5% 1.5% 1.67%;
+      margin:auto;
       height: calc(var(--image-box-height) * 0.931);
     }
   }
@@ -200,6 +228,7 @@
   @media (min-width: $xs) and (max-width: $sm) {
     .image-wrapper {
       padding: 0px 0.75% 0.75% 0.87%;
+      margin:auto;
       height: calc(var(--image-box-height) * 0.527);
     }
   }
