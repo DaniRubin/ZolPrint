@@ -12,8 +12,7 @@ const Cart = ({ connectCartUrl = '' }) => {
 
   const cartComponent = () => {
     return <div className="cart-icon-container">
-      {cartIcon && <img className="cart-icon" src={cartIcon} alt="logo" />}
-      {/* <Icon name="cart.svg" width="23px" height="21px" className="cart-icon" /> */}
+      {cartIcon && <img className="cart-icon" src={cartIcon} alt="cart-icon" />}
     </div>
   }
 

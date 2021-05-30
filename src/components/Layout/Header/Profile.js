@@ -69,6 +69,8 @@ class Profile extends Component {
     const loginPage = `/logout.aspx?tempUserId=${tempUserId}&SecurityToken=${securityToken}&StoreGuid=${storeID}&storeid=${storeFriendlyID}&NgLanguageCode=${languageCode}&forceLogin=true&ShowRibbon=false&SignIn=true`
     const IsAnonymous = currentUser.IsAnonymous
 
+    const userIcon = require(`$assets/images/user-icon.png`)
+
     return (
       <Dropdown
         isOpen={this.state.isDropdownOpen}
@@ -79,15 +81,8 @@ class Profile extends Component {
           tag='div'
           data-toggle='dropdown'
         >
-          {/*<i className="fas fa-user fa-lg"></i>*/}
           <div className="profile-icon-container">
-            <Icon name="user.svg" width="20px" height="20px" className="profile-icon" />
-            {
-              pendingApprovalOrderCount > 0 &&
-              <div className="notification-icon">
-                <Icon name="profile-notification.svg" width="20px" height="20px" className="profile-icon" />
-              </div>
-            }
+            {userIcon && <img className="user-icon" src={userIcon} alt="user-icon" />}
           </div>
         </DropdownToggle>
         <DropdownMenu right>
