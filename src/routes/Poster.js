@@ -16,6 +16,7 @@ import { getVariableValue } from '$ustoreinternal/services/cssVariables'
 import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
 import { decodeStringForURL } from '$ustoreinternal/services/utils'
+import $ from 'jquery';
 
 class Poster extends Component {
 
@@ -30,6 +31,8 @@ class Poster extends Component {
     }
 
     componentDidMount() {
+        $("#left-payments span").html("* בשעות הפעילות");
+        $("#left-payments-mobile").html("* בשעות הפעילות");
         window.addEventListener('resize', this.onResize.bind(this));
         throttle(250, this.onResize);					// Call this function once in 250ms only
 
