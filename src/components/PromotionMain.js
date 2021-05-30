@@ -25,9 +25,6 @@ class PromotionMain extends Component {
 
     return (
       <div className={'promotion-main'}>
-        {/* {
-          imageUrl && <img className="promotion-image" src={`${imageUrl}`} alt="" />
-        } */}
         <div className="main">
           <div className="title-area">
             <div className="main-text">

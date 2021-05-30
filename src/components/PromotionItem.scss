@@ -1,56 +1,40 @@
 @import '_theme.scss';
 
-.slider-wrapper-single .slider>* {
-  overflow: unset;
-}
+
 .promotion-item {
   height: var(--carousel-height-desktop);
-  overflow: auto;
+  overflow: visible !important;
 
-  .promotion-image{
-    height: var(--carousel-height-desktop);
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .main{
+  .main-promotion-item{
     height: var(--carousel-height-desktop);
     display: flex;
     position: relative;
   }
 
-  & * {
-    align-self: center;
+
+  .slider-wrapper-single {
+    overflow: visible !important;
   }
 
   .text{
     color: var(--text-color-carousel);
   }
-  .slider-wrapper-single {
-    overflow: scroll !important;
-  }
   .button {
     margin: 20px;
-    width: 185px;
-    height: 55px;
-    background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/btn.png);
+    width: 250px;
+    height: 50px;
     max-width: 600px;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    font-size: 22px;
+    background-color: #eac84c;
+    font-size: 24px;
     letter-spacing: 1px;
     vertical-align: middle;
     font-weight: bold;
     padding-top: 8px;
+    border-radius: 10px;
     border: 0;
-    min-width: 185px;
-    border-radius: 0;
-
   }
   .left_banner_img {
-    position: absolute;
-    left:0;
-    top: 30px;
+    // margin-top: -20px;
     z-index: 1;
   }
   .button img {
@@ -66,33 +50,40 @@
   }
   
 
-  .title-area{
-    margin-top: 50px;
+  .title-area-item{
+    margin-top: 35px;
+    margin-right: 45px;
     display: flex;
     flex-direction: column;
+    align-self: auto;
+  }
+
+  .banner_title_item {
+    width: 529px;  
+    font-size: 55px;
+    height: 75px;
+    letter-spacing: -2.2px;
     text-align: center;
-    align-self: auto;
+    color: #ffffff !important;
+    background-image: linear-gradient(to top, #46c0f1, #00c9f5);
+    // border: 1px solid white;
   }
 
-  .banner_title {
-    height: 76px;
-    font-size: 49px;
-    color: #fff;
-    align-self: auto;
-    width: 529px;
-    background-repeat: repeat-x;
-    background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/banner_title.png);     
-  }
-
-  .banner_title span {
+  .banner_title_item span {
+    background-image: linear-gradient(to top, #85b33d, #a5dd50);
+    object-fit: contain;
+    letter-spacing: 1px;
     font-weight: bold;
     padding-top: 25px;
     float: left;
     line-height: 15px;
     padding-left: 13px;
+    padding-right: 13px;
+    height: 73px !important;
+    
   }
 
-  .banner_title span strong {
+  .banner_title_item span strong {
     font-size: 12px;
   }
 
@@ -103,8 +94,9 @@
   }
 
   .subtitle{
-    font-size: var(--text-size-h3);
-    font-family: arial;
+    font-size: 23px !important;
+    font-weight: 500;
+    color: white !important;
   }
 
   @media (max-width: $lg) {
@@ -122,7 +114,7 @@
       height: var(--carousel-height-mobile);
     }
 
-    .main {
+    .main-poster {
       height: var(--carousel-height-mobile);
     }
   }
@@ -140,18 +132,17 @@
   .wrapper {
     width: 100% !important;
   }
-  .promotion-item .title-area {
-
+  .promotion-item .title-area-item {
     width: 100%;
   }
-   .banner_title {
+   .banner_title_item {
     align-self: center !important;
     width: 82% !important;
     background: linear-gradient(45deg, #00b6ec, #107ea9) !important;
     border-radius: 8px !important;
    }
 
-   .banner_title span {
+   .banner_title_item span {
     background: linear-gradient(45deg, #96ca46, #558a24) !important;
     border-radius: 8px 15px 15px 8px !important;
     height: 100% !important;
@@ -159,7 +150,7 @@
    }
 } 
 @media (max-width: $md) {
-.banner_title {
+.banner_title_item {
   width: 90% !important;
   font-size: 43px !important;
 }
@@ -172,17 +163,17 @@
 }
 
 @media (max-width: $sm) {
-  .promotion-item .banner_title {
+  .promotion-item .banner_title_item {
     height: 68px !important;
     line-height: 65px !important;
     font-size: 34px!important;
   }
-  .promotion-item .banner_title span {
+  .promotion-item .banner_title_item span {
     line-height: 11px !important;
     padding-left: 13px !important;
     font-size: 32px !important;
   }
-  .promotion-item .banner_title span strong {
+  .promotion-item .banner_title_item span strong {
     font-size: 9px !important;
   }
   .promotion-item .subtitle {
@@ -191,17 +182,17 @@
 }
 
 @media (max-width: $mxs) {
-  .promotion-item .banner_title {
+  .promotion-item .banner_title_item {
     height: 68px !important;
     line-height: 65px !important;
     font-size: 27px!important;
   }
-  .promotion-item .banner_title span {
+  .promotion-item .banner_title_item span {
     line-height: 11px !important;
     padding-left: 13px !important;
     font-size: 27px !important;
   }
-  .promotion-item .banner_title span strong {
+  .promotion-item .banner_title_item span strong {
     font-size: 9px !important;
   }
   .promotion-item .subtitle {

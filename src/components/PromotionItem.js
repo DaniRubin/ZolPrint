@@ -79,34 +79,33 @@ class PromotionItem extends Component {
   }
 
   render() {
-    const { imageUrl, title, subTitle, buttonText, url, className } = this.props;
+    const { image, title, subTitle, url, className } = this.props;
     const button_icon = require(`$assets/images/left_arr.png`)
-    const left_banner_img = require(`$assets/images/banner_img.png`)
+    const left_banner_img = image
     const modelid = "704"
     const modelname = "הזמנת פוסטרים"
 
     return (
       <div className={`promotion-item ${className || ''}`} ref={(ref) => this.promotionItem = ref}>
-        {/* {
-          imageUrl && <img className="promotion-image" src={`${imageUrl}`} alt="" />
-        } */}
-        <div className="main">
-          <div className="title-area">
-            <div className="banner_title">
-              פוסטר 50X70 רק ב..
+        <div className="main-promotion-item">
+          <div className="title-area-item">
+            <div className="banner_title_item">
+              פוסטר 50X70
               <span>₪1<br /><strong>כולל מע"מ</strong></span>
             </div>
-            <div className="title text">{/*title*/}</div>
             <div className="subtitle text">
-              חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה<br></br>
-              התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.
+              <ul>
+                <li>הדפסה על נייר כרומו מט 130 גרם</li>
+                <li>הדפסה צבעונית חד צדדית</li>
+                <li>ללא מינימום לפריט</li>
+              </ul>
             </div>
             <div className="button button-primary truncate" onClick={() => {
               handleBuy()
               this.goTo(url)
             }
             }>
-              {buttonText}
+              {'הזמינו עכשיו >'}
             </div>
           </div>
           <div className="left_banner_img">
