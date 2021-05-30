@@ -6,8 +6,6 @@
   margin: auto;
   line-height: 1;
   letter-spacing: -1.5px;
-  // margin-top: 50px;
-  // margin-right: 50px;
   color: #ffffff;
 }
 .genral-explanation {
@@ -102,7 +100,20 @@
   }
 }
 
+@media (max-width: 1260px) {
+  .main_page_image {
+    display: none;
+  }
+}
+
 @media (max-width: $lg) {
+  .main-text {
+    font-size: 30px;
+    width:900px;
+  }
+  .main_page_image {
+    display: none;
+  }
   .left_banner_img {
     display: none !important;
   }
@@ -132,20 +143,62 @@
     padding-right: 11px !important;
    }
 } 
+@media (max-width: $mlg) {
+  .main-text {
+    font-size: 25px;
+    width:650px;
+  }
+    .genral-explanation {
+      font-size: 18px !important;
+  }
+  .coin_src {
+    width: 250px;
+  }
+}
+
 @media (max-width: $md) {
+  .main_page_image {
+    display: none;
+  }
+  .main-text {
+    font-size: 22px;
+    width:500px;
+  }
+  .genral-explanation {
+    font-size: 18px !important;
+    width:400px;
+  }
 .banner_title {
   width: 90% !important;
   font-size: 43px !important;
-}
-.left_banner_img {
-  display: none !important;
-}
-.promotion-item .subtitle {
-  font-size: 20px !important;
-}
+  }
+  .left_banner_img {
+    display: none !important;
+  }
+  .promotion-item .subtitle {
+    font-size: 20px !important;
+  }
 }
 
 @media (max-width: $sm) {
+  .main_page_image {
+    display: none;
+  }
+  .main-text {
+    font-size: 20px;
+    width:350px;
+  }
+  .genral-explanation {
+    font-size: 16px !important;
+    width:300px;
+  }
+  .coin_src {
+    width: 170px;
+  }
+  .promotion-wrapper {
+    height: 320px !important;
+  }
+
   .promotion-item .banner_title {
     height: 68px !important;
     line-height: 65px !important;
@@ -165,6 +218,24 @@
 }
 
 @media (max-width: $mxs) {
+  .main_page_image {
+    display: none;
+  }
+  .main-text {
+    font-size: 20px;
+    width:250px;
+  }
+  .genral-explanation {
+    font-size: 14px !important;
+    width:200px;
+  }
+  .coin_src {
+    width: 150px;
+  }
+  .promotion-wrapper {
+    height: 320px !important;
+  }
+
   .promotion-item .banner_title {
     height: 68px !important;
     line-height: 65px !important;

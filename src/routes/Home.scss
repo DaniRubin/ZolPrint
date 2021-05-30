@@ -68,7 +68,12 @@
     background-size: 100% 100%;
 
   }
-  
+  @media (max-width: $sm) {
+    .promotion-wrapper {
+      background-color: #0c2b49 !important;
+      background-image: none;
+    }
+  }
   @media (max-width: $mlg) {
     .next-step-img {
       text-align: center;
@@ -92,7 +97,6 @@
 
 @media (max-width: $md) {
 .home .how-works-title {
-
   font-size: 45px;
 }
 }

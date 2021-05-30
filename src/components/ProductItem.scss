@@ -24,6 +24,7 @@
   &:hover {
     text-decoration: none;
   }
+
   .price-circle {
     background-color: #00a8ee;
     padding: 13px;
@@ -242,5 +243,61 @@
         opacity: 0;
       }
     }
+  }
+}
+
+@media (max-width: $lg) {
+  .price-circle {
+    margin-top: -220px !important;
+  }
+}
+
+@media (max-width: $mlg) {
+  .price-circle {
+    margin-top: -220px !important;
+    padding: 11px !important;
+  }
+    .totalPrice {
+      font-size: 26px !important;
+      font-weight: bold;
+    }
+    .priceType {
+      font-size: 21px !important;
+      font-weight: bold;
+    }
+    .maam {
+      font-weight: bold;
+      font-size: 13px;
+    }
+}
+@media (max-width: $sm) {
+  .price-circle {
+    margin-top: -135px !important;
+    padding: 8px !important;
+  }    
+    .totalPrice {
+      font-size: 20px !important;
+    }
+    .priceType {
+      font-size: 16px !important;
+    }
+    .maam {
+      font-size: 9px !important;
+    }
+}
+@media (max-width: $xs) {
+  .price-circle {
+    margin-top: -95px !important;
+    padding: 8px !important;
+
+  }
+  .totalPrice {
+    font-size: 16px !important;
+  }
+  .priceType {
+    font-size: 12px !important;
+  }
+  .maam {
+    font-size: 8px !important;
   }
 }

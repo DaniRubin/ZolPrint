@@ -46,7 +46,7 @@ class PromotionMain extends Component {
           </div>
           <center>
             <div className="coin_img">
-              {coin_img && <img src={coin_img} alt="Coin Image" />}
+              {coin_img && <img src={coin_img} className="coin_src" alt="Coin Image" />}
             </div>
             <div className="main_page_image">
               {main_page_image && <img src={main_page_image} alt="Flayer image" />}

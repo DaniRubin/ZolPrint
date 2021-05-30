@@ -144,6 +144,7 @@ class ProductItem extends Component {
       <div className={`product-item ${className ? className : ''}`} data-qaautomationinfo={model.FriendlyID}>
         <div className="image-wrapper" onClick={() => onClick(url)}>
           <ImageLoader className="image" src={imageUrl} />
+
           <div className="price-circle">
             <span className="totalPrice">{priceAmount[0]}</span>&nbsp;
             <span className="priceType">{priceAmount[1]}</span>
