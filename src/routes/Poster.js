@@ -8,6 +8,7 @@ import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
+import HowTo from '../components/HowTo'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import { t } from '$themelocalization'
 import './Poster.scss'
@@ -19,7 +20,6 @@ import { decodeStringForURL } from '$ustoreinternal/services/utils'
 import $ from 'jquery';
 
 class Poster extends Component {
-
   constructor(props) {
     super(props)
 
@@ -83,19 +83,7 @@ class Poster extends Component {
     }
 
     const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
-
-    const amount_icon = require(`$assets/images/amount.png`)
-    const upload_icon = require(`$assets/images/upload.png`)
-    const delivery_icon = require(`$assets/images/delivery.png`)
-    const step_icon = require(`$assets/images/item_arr.png`)
-
     const left_banner_img = require(`$assets/images/banner_img.png`)
-
-
-    const promotionItemImageUrl = getVariableValue('--homepage-carousel-slide-1-image', require(`$assets/images/banner_image.png`), true)
-    const promotionItemTitle = getVariableValue('--homepage-carousel-slide-1-main-text', t('PromotionItem.Title'))
-    const promotionItemSubtitle = getVariableValue('--homepage-carousel-slide-1-sub-text', t('PromotionItem.Subtitle'))
-    const promotionItemButtonText = getVariableValue('--homepage-carousel-slide-1-button-text', t('PromotionItem.Button_Text'))
 
     return (
       <Layout {...this.props} className="Poster">
@@ -105,53 +93,22 @@ class Poster extends Component {
             <Slider>
               <PromotionItem
                 image={require(`$assets/images/poster-main.png`)}
-                title={promotionItemTitle}
-                subTitle={promotionItemSubtitle}
+                title={"פוסטר 50X70"}
+                subTitle={
+                  <ul>
+                    <li>הדפסה על נייר כרומו מט 130 גרם</li>
+                    <li>הדפסה צבעונית חד צדדית</li>
+                    <li>ללא מינימום לפריט</li>
+                  </ul>
+                }
                 url={this.state.promotionItemButtonUrl}
               />
             </Slider>
           </div>
         </div>
-        <div className="how-works-poster">
-          <div className="wrapper">
-            <div className="how-works-title">
-              אז איך זה עובד?
-             </div>
-            <center>
-              <div className="how-works-items">
-                <div className="how-works-item">
-                  <div className="how-works-item-img">
-                    {upload_icon && <img src={upload_icon} alt="Upload" />}
-                  </div>
-                  <span>מעלים קובץ</span>
-                  <p>
-                    מעלים PDF/JPG בגודל 50X70
-                 </p>
-                </div>
-                <div className="how-works-item">
-                  <div className="how-works-item-img">
-                    {amount_icon && <img src={amount_icon} alt="Amount" />}
-                  </div>
-                  <span>בוחרים כמות</span>
-                  <p>
-                    בוחרים כמה פוסטרים רוצים
-                 </p>
-                </div>
-                <div className="how-works-item">
-                  <div className="how-works-item-img">
-                    {delivery_icon && <img src={delivery_icon} style={{ marginTop: "37px" }} alt="Delivery" />}
-                  </div>
-                  <span>בדרך אליכם</span>
-                  <p>
-                    איסוף מהמפעל תוך 24 שעות בלבד*<br></br>
-                   אפשרות למשלוח לכל רחבי הארץ
-                 </p>
-                </div>
-              </div>
-
-            </center>
-          </div>
-        </div>
+        <HowTo
+          keyWord={'פוסטרים'}
+        />
       </Layout>
     )
   }

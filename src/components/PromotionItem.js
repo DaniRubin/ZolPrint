@@ -80,25 +80,18 @@ class PromotionItem extends Component {
 
   render() {
     const { image, title, subTitle, url, className } = this.props;
-    const button_icon = require(`$assets/images/left_arr.png`)
     const left_banner_img = image
-    const modelid = "704"
-    const modelname = "הזמנת פוסטרים"
 
     return (
       <div className={`promotion-item ${className || ''}`} ref={(ref) => this.promotionItem = ref}>
         <div className="main-promotion-item">
           <div className="title-area-item">
             <div className="banner_title_item">
-              פוסטר 50X70
+              {title}
               <span>₪1<br /><strong>כולל מע"מ</strong></span>
             </div>
             <div className="subtitle text">
-              <ul>
-                <li>הדפסה על נייר כרומו מט 130 גרם</li>
-                <li>הדפסה צבעונית חד צדדית</li>
-                <li>ללא מינימום לפריט</li>
-              </ul>
+              {subTitle}
             </div>
             <div className="button button-primary truncate" onClick={() => {
               handleBuy()

@@ -21,8 +21,6 @@ class PromotionMain extends Component {
     const coin_img = require(`$assets/images/coin.png`)
     const main_page_image = require(`$assets/images/main-page-image.png`)
 
-    const modelid = "704"
-
     return (
       <div className={'promotion-main'}>
         <div className="main">
