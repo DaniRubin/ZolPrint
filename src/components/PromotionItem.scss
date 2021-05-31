@@ -70,7 +70,9 @@
   }
 
   .banner_title_item span {
-    background-image: linear-gradient(to top, #85b33d, #a5dd50);
+    background-image: linear-gradient(to bottom, #2aa1d0, #2aa1d0), linear-gradient(to top, #85b33d, #a5dd50);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     object-fit: contain;
     letter-spacing: 1px;
     font-weight: bold;
