@@ -92,7 +92,7 @@ class Flyer extends Component {
           <div className="wrapper">
             <Slider>
               <PromotionItem
-                image={require(`$assets/images/poster-main.png`)}
+                image={require(`$assets/images/flyer-main.png`)}
                 title={"פלייר גודל A5"}
                 subTitle={
                   <ul>
