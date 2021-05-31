@@ -1,25 +1,14 @@
 @import '_theme.scss';
 
-.stickyHidden {
-  height: 0 !important;
-}
 
 .header {
   z-index: 2;
-  @media (max-width: $lg) {
-   // height: (var(--header-height-mobile));
-    .dropdown-menu-right {
-      transform: translate3d(-61px, 58px, 0px) !important;
-    }
-   
-  }
   @media (max-width: $sm) {
-    .header-stripe {padding: 2% !important;}
-    .dropdown-menu-right {
-      transform: translate3d(-61px, 48px, 0px) !important;
-    }    
+    .header-stripe {
+      padding: 2% !important;
+    }
     .top_sep {
-    margin-right: 15px !important;
+      margin-right: 15px !important;
     }
     #middle_sep {
       margin-left: 10px !important;
@@ -30,16 +19,10 @@
       width: 72%!important;
       padding: 0;
     }
-    .logo-slogan {
-      font-size: 13px !important;
-      width: auto !important;
-      padding: 5px 3% !important;
-      margin-top: 16px !important;
-    }
   }
 
   @media (max-width: $xs) {
-      .right-icons {
+      .right-icons, .left-icons {
         left: 57px !important;
       }
 
@@ -47,10 +30,6 @@
         width: 50% !important;
         padding: 0;
 
-      }
-
-      .logo-slogan {
-          display: none;
       }
     
   }
@@ -78,43 +57,51 @@
       flex-direction: row;
       float: right;
       align-items: flex-start;
-      .logo-slogan {
-        font-size: 17px;
-        width: 160px;
-        height: 30px; 
-        color: #85c537;
-        margin-top: 28px;
-        float: right;
-        text-align: center;
-        background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/slogan.png);
-         
-      }
-      .logo-slogan span {
-        font-weight: bold;
-        color: grey;
-      }
+      
       .logo {
         max-width: 146px;
         float: right;
         padding: 10px;
-       /* max-height: calc(var(--header-height-desktop) - 2 * var(--header-padding-desktop));
-*/
         max-height: fit-content;
 
         @media (max-width: $lg) {
           max-height: calc(var(--header-height-mobile) - 2 * var(--header-padding-mobile));
         }
       }
-
-      .menu-icon-container {
-        margin-right: 20px;
-        cursor: pointer;
-        align-self: center;
-
-        .menu-icon {
-          stroke: var(--text-color-header);
-        }
+    }
+    .left-icons {
+      margin-top: 35px;
+      margin-right: 20px;
+      display: flex;
+      float: right;
+      flex-direction: row;
+      align-items: center;
+      .top_sep {
+        margin-left: 10px;
+        margin-right: 15px;
       }
+      #middle_sep {
+        margin-left: 15px;
+      }
+      
+    }
+    .separator {
+      display: inline-block;
+      width: 1px;
+      background-color: #0c2b49;
+      height:22px;
+      margin:0px 10px;
+    }
+    .active_top {
+      border-bottom: #00a8ee 4px solid;
+    }
+    .link_top {
+      cursor: pointer;
+      color: #0c2b49;
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: bold;
+      padding: 6px 10px;
     }
 
     .right-icons {
@@ -145,47 +132,10 @@
 
         margin-left: 0;
       }
-      .search-btn {
-        display: none;
-        margin-right: 20px;
-        cursor: pointer;
-        stroke: var(--text-color-header);
-      }
-    }
-
-    .drawer-wrapper {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: center;
-      flex-wrap: nowrap;
-
-      .categories-navbar {
-        display: flex;
-      }
-
-      .categories-sidebar {
-        display: none;
-      }
-
-      .currency {
-        position: absolute;
-        right: 82px;
-      }
-
-      .culture {
-        position: absolute;
-        right: 130px;
-      }
-    }
-
-    @media (min-width: $xl) {
-      .menu-icon-container {
-        display: none;
-      }
     }
 
     @media (min-width: $lg) {
-      .right-icons {
+      .right-icons, .left-icons {
         .currency {
           margin-bottom: -5px;
         }
@@ -225,56 +175,10 @@
         position: absolute;
         right: 20px;
 
-        .search-btn {
-          display: inline;
-        }
       }
+      .left-icons {
+        margin-top: 19px;
 
-      .drawer-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-        flex-wrap: nowrap;
-        position: fixed;
-        top: 0px;
-        left: -330px;
-        background: #ffffff;
-        width: 300px;
-        height: 100%;
-        z-index: 3;
-        box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.5);
-        overflow-x: hidden;
-        color: var(--text-color-ultra-dark);
-
-        .categories-navbar {
-          display: none;
-        }
-
-        .categories-sidebar {
-          display: inline;
-          width: 100%;
-        }
-
-        .currency {
-          position: relative;
-          right: auto;
-        }
-
-        .culture {
-          position: relative;
-          right: auto;
-        }
-
-        .signout {
-          height: 60px;
-
-          .info > .title {
-            display: none !important;
-          }
-        }
-      }
-
-      .menu-icon-container {
-        display: block;
       }
 
       .list {
@@ -291,13 +195,6 @@
         content: var(--content-desktop)
       }
 
-      .drawer-wrapper {
-        display: none;
-      }
-
-      .menu-icon-container {
-        display: none;
-      }
 
       .search {
         width: 600px;
@@ -312,7 +209,7 @@
         content: var(--content-mobile)
       }
 
-      .right-icons {
+      .right-icons, .left-icons {
         .currency {
           display: none;
         }
@@ -329,35 +226,19 @@
   }
 }
 
-.header-stripe[draweropen="true"] {
-  .drawer-wrapper {
-    left: 0px;
-    transition: left 0.5s ease-in-out;
+
+
+@media (max-width: $lg) {
+
+}
+@media (max-width: $md) {
+
+}
+@media (max-width: 630px) {
+  .left-icons {
+    display: none !important;
   }
 }
+@media (max-width: $mxs) {
 
-.header-stripe[draweropen="false"] {
-  .drawer-wrapper {
-    left: -330px;
-    transition: left 0.5s ease-in-out;
-  }
-}
-
-.sticky-slidein {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 2;
-  animation-duration: .5s;
-  animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    top: -500px;
-  }
-
-  to {
-    top: 0;
-  }
 }

@@ -114,6 +114,16 @@ class ProductItem extends Component {
       }, 3000)
     }
   }
+  getPriceOfProduct = (name) => {
+    switch (name) {
+      case "פוסטר 50X70":
+        return ['1', '₪']
+      case "פלייר A5":
+        return ["10", "אג'"]
+      default:
+        return ["0", '₪']
+    }
+  }
 
   render() {
     let { descriptionLines, productNameLines, model, url, detailed, className } = this.props
@@ -128,64 +138,25 @@ class ProductItem extends Component {
     const imageUrl = (model && model.ImageUrl) ? model.ImageUrl : require(`$assets/images/default.png`)
     const productNameAndCatalog = model.CatalogNumber && model.CatalogNumber.trim().length > 0 ? `${model.Name} / ${model.CatalogNumber}` : model.Name
     const showQuickAddToCart = model.Configuration && model.Configuration.AllowQuickAddToCart
-    const priceModelToDisplay = this.state.calculatedPriceModel ? this.state.calculatedPriceModel : model.MinimumPrice
-    const isMinimumPrice = !this.state.calculatedPriceModel && !showQuickAddToCart
-    const quantity = this.state.quantity ? this.state.quantity : model.MinimumQuantity
+    const priceAmount = this.getPriceOfProduct(model.Name)
 
     return (
       <div className={`product-item ${className ? className : ''}`} data-qaautomationinfo={model.FriendlyID}>
         <div className="image-wrapper" onClick={() => onClick(url)}>
           <ImageLoader className="image" src={imageUrl} />
-        </div>
-        <div className="product-name" style={{ maxHeight: `${productNameLines * 1.5}em` }} onClick={() => onClick(url)}>
-          <ResponsiveHTMLEllipsis style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
-            unsafeHTML={productNameAndCatalog}
-            maxLine={productNameLines}
-            basedOn='letters' />
-        </div>
-        {detailed && <div className="product-description" style={{ maxHeight: `${descriptionLines * 1.5}em` }}>
-          <ResponsiveHTMLEllipsis unsafeHTML={model.ShortDescription} maxLine={descriptionLines} basedOn='words' />
-        </div>}
-        <Inventory model={model.Inventory} minQuantity={model.MinimumQuantity} />
-        {model.HasPricing && priceModelToDisplay && <div>
-          <div className="product-units">
-            <UnitsOfMeasure minQuantity={model.MinimumQuantity} model={model.Unit} isMinimumPrice={isMinimumPrice} />
-          </div>
-          <div className="product-price">
-            {this.state.isPriceCalculating ?
-              <LoadingDots /> : <Price model={priceModelToDisplay} isMinimumPrice={isMinimumPrice} />
-            }
-          </div>
-        </div>}
-        <div className="anchor-flex-end"></div>
-        {showQuickAddToCart && <div className='add-to-cart'>
-          {!this.state.addToCartShowSuccess && <div className='add-to-cart-controls'>
-            <div className='add-to-cart-product-quantity'>
-              <ProductItemQuantity
-                supportsInventory={true}
-                onQuantityChange={this.onQuantityChange}
-                productModel={model}
-                orderModel={{ Quantity: quantity }}
-              />
-            </div>
-            <div className='add-to-cart-button-wrapper'>
-              <Button className='button-secondary add-to-cart-button' text={t('ProductItem.Add_to_cart_button_text')} onClick={() => this.onAddToCartClick()} />
-              <Button className='button-secondary add-button' text={t('ProductItem.Add_button_text')} onClick={() => this.onAddToCartClick()} />
-            </div>
-          </div>
-          }
-          {this.state.addToCartShowSuccess &&
-            <div className='add-to-cart-success'>
-              <div>{t('ProductItem.Added_successfully_message')}
-                <span className='success-checkmark-icon-wrapper'>
-                  <Icon name="checkmark.svg" width="20px" height="20px" className="success-checkmark-icon" />
-                </span>
-              </div>
 
-            </div>
-          }
+          <div className="price-circle">
+            <span className="totalPrice">{priceAmount[0]}</span>&nbsp;
+            <span className="priceType">{priceAmount[1]}</span>
+            <br />
+            <span className="maam">כולל מע"מ</span>
+          </div>
         </div>
-        }
+
+        <div className="product-name" style={{ maxHeight: `${productNameLines * 1.5}em` }}
+          onClick={() => onClick(url)}>
+          {productNameAndCatalog}
+        </div>
       </div>
     )
   }

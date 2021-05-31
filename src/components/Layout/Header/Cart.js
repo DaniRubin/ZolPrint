@@ -8,10 +8,11 @@ import Icon from '$core-components/Icon'
  * When clicking on it - the store redirects to the 'Cart' page
  */
 const Cart = ({ connectCartUrl = '' }) => {
+  const cartIcon = require(`$assets/images/shop-icon.png`)
 
   const cartComponent = () => {
     return <div className="cart-icon-container">
-      <Icon name="cart.svg" width="23px" height="21px" className="cart-icon" />
+      {cartIcon && <img className="cart-icon" src={cartIcon} alt="cart-icon" />}
     </div>
   }
 
