@@ -38,67 +38,6 @@
   left: 50px
 }
 
-.promotion-item {
-  height: var(--carousel-height-desktop);
-  overflow: auto;
-
-  .main{
-    height: var(--carousel-height-desktop);
-    display: flex;
-    position: relative;
-  }
-
-  & * {
-    align-self: center;
-  }
-
-  .text{
-    color: var(--text-color-carousel);
-  }
-  .slider-wrapper-single {
-    overflow: scroll !important;
-  }
-  
-
-  .title-area{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-self: auto;
-  }
-
-  .title{
-    font-size: var(--text-size-h1);
-    padding-top: 15px;
-
-  }
-
-  .subtitle{
-    font-size: var(--text-size-h3);
-    font-family: arial;
-  }
-
-  @media (max-width: $lg) {
-    height: var(--carousel-height-mobile);
-
-    .title{
-      font-size: calc(0.5 * var(--text-size-h1));
-    }
-
-    .subtitle{
-      font-size: calc(0.7 * var(--text-size-h3));
-    }
-
-    .promotion-image {
-      height: var(--carousel-height-mobile);
-    }
-
-    .main {
-      height: var(--carousel-height-mobile);
-    }
-  }
-}
 
 @media (max-width: 1260px) {
   .main_page_image {
@@ -124,10 +63,6 @@
   
   .wrapper {
     width: 100% !important;
-  }
-  .promotion-item .title-area {
-
-    width: 100%;
   }
    .banner_title {
     align-self: center !important;
@@ -175,9 +110,6 @@
   .left_banner_img {
     display: none !important;
   }
-  .promotion-item .subtitle {
-    font-size: 20px !important;
-  }
 }
 
 @media (max-width: $sm) {
@@ -198,23 +130,6 @@
   .promotion-wrapper {
     height: 320px !important;
   }
-
-  .promotion-item .banner_title {
-    height: 68px !important;
-    line-height: 65px !important;
-    font-size: 34px!important;
-  }
-  .promotion-item .banner_title span {
-    line-height: 11px !important;
-    padding-left: 13px !important;
-    font-size: 32px !important;
-  }
-  .promotion-item .banner_title span strong {
-    font-size: 9px !important;
-  }
-  .promotion-item .subtitle {
-    font-size: 18px !important;
-  }
 }
 
 @media (max-width: $mxs) {
@@ -234,22 +149,5 @@
   }
   .promotion-wrapper {
     height: 320px !important;
-  }
-
-  .promotion-item .banner_title {
-    height: 68px !important;
-    line-height: 65px !important;
-    font-size: 27px!important;
-  }
-  .promotion-item .banner_title span {
-    line-height: 11px !important;
-    padding-left: 13px !important;
-    font-size: 27px !important;
-  }
-  .promotion-item .banner_title span strong {
-    font-size: 9px !important;
-  }
-  .promotion-item .subtitle {
-    font-size: 14px !important;
   }
 }

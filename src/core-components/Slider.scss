@@ -9,7 +9,7 @@
 }
 
 .slider-wrapper-single {
-  overflow: hidden;
+  overflow: visible !important;
 
   .slider {
     position: relative;
