@@ -101,6 +101,8 @@ class Poster extends Component {
                     <li>ללא מינימום לפריט</li>
                   </ul>
                 }
+                price="₪1"
+                priceType=""
                 url={this.state.promotionItemButtonUrl}
               />
             </Slider>

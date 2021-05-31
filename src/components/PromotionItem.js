@@ -79,7 +79,7 @@ class PromotionItem extends Component {
   }
 
   render() {
-    const { image, title, subTitle, url, className } = this.props;
+    const { image, title, subTitle, url, price, priceType, className } = this.props;
     const left_banner_img = image
 
     return (
@@ -88,7 +88,7 @@ class PromotionItem extends Component {
           <div className="title-area-item">
             <div className="banner_title_item">
               {title}
-              <span>₪1<br /><strong>כולל מע"מ</strong></span>
+              <span>{price}<b className="priceType">{priceType}</b><br /><strong>כולל מע"מ</strong></span>
             </div>
             <div className="subtitle text">
               {subTitle}
