@@ -67,20 +67,20 @@ class Home extends Component {
     this.setState({ isMobile: document.body.clientWidth < parseInt(theme.md.replace('px', '')) })
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (!(props.state && props.customState)) {
-      return null
-    }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (!(props.state && props.customState)) {
+  //     return null
+  //   }
 
-    const { categories } = props.customState
-    //NOTE: this is not supported in SSR
-    if (categories && categories.length && !state.promotionItemButtonUrl.length) {
-      const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'category', id: FriendlyID, name: decodeStringForURL(Name) })
-      return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
-    }
-    return null
-  }
+  //   const { categories } = props.customState
+  //   //NOTE: this is not supported in SSR
+  //   if (categories && categories.length && !state.promotionItemButtonUrl.length) {
+  //     const { FriendlyID, Name } = categories[0]
+  //     const defaultURL = urlGenerator.get({ page: 'product', id: FriendlyID, name: decodeStringForURL(Name) })
+  //     return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
+  //   }
+  //   return null
+  // }
 
   getNextPage(name) {
     switch (name) {

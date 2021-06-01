@@ -79,11 +79,16 @@ class PromotionItem extends Component {
   }
 
   render() {
-    const { image, title, subTitle, url, price, priceType, className } = this.props;
+    const { image, title, subTitle, price, priceType, url, newUrl } = this.props;
     const left_banner_img = image
+    const order_now_arrow = require(`$assets/images/order-now-arrow.png`)
+    console.log(url)
+    console.log(url)
+    console.log(newUrl)
+    console.log(newUrl)
 
     return (
-      <div className={`promotion-item ${className || ''}`} ref={(ref) => this.promotionItem = ref}>
+      <div className={'promotion-item '} ref={(ref) => this.promotionItem = ref}>
         <div className="main-promotion-item">
           <div className="title-area-item">
             <div className="banner_title_item">
@@ -98,7 +103,7 @@ class PromotionItem extends Component {
               this.goTo(url)
             }
             }>
-              {'הזמינו עכשיו >'}
+              {'הזמינו עכשיו '}<img id="arrowOrder" src={order_now_arrow} alt="Order now arrow" />
             </div>
           </div>
           <div className="left_banner_img">

@@ -68,7 +68,7 @@ class Poster extends Component {
     //NOTE: this is not supported in SSR
     if (categories && categories.length && !state.promotionItemButtonUrl.length) {
       const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'category', id: FriendlyID, name: decodeStringForURL(Name) })
+      const defaultURL = urlGenerator.get({ page: 'product', id: 1218, name: decodeStringForURL(Name) })
       return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
     }
     return null
@@ -82,7 +82,6 @@ class Poster extends Component {
     }
 
     const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
-    const left_banner_img = require(`$assets/images/banner_img.png`)
 
     return (
       <Layout {...this.props} className="Poster">

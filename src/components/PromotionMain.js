@@ -14,7 +14,7 @@ import { throttle } from 'throttle-debounce'
 class PromotionMain extends Component {
   constructor() {
     super();
-    this.PromotionMain = React.createRef();
+    // this.PromotionMain = React.createRef();
   }
 
   render() {

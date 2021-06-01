@@ -27,7 +27,6 @@ class Flyer extends Component {
       isMobile: false,
       promotionItemButtonUrl: ''
     }
-
   }
 
   componentDidMount() {
@@ -41,7 +40,6 @@ class Flyer extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize)
-
     this.clearCustomState()
   }
 
@@ -66,10 +64,9 @@ class Flyer extends Component {
     }
 
     const { categories } = props.customState
-    //NOTE: this is not supported in SSR
     if (categories && categories.length && !state.promotionItemButtonUrl.length) {
       const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'category', id: FriendlyID, name: decodeStringForURL(Name) })
+      const defaultURL = urlGenerator.get({ page: 'product', id: 1223, name: decodeStringForURL(Name) })
       return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
     }
     return null
