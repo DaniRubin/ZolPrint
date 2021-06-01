@@ -10,7 +10,7 @@ import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
 import HowTo from '../components/HowTo'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
-import { t } from '$themelocalization'
+import Bubble from '../components/Layout/Bubble'
 import './Flyer.scss'
 import { Component } from 'react'
 import { getVariableValue } from '$ustoreinternal/services/cssVariables'
@@ -84,6 +84,11 @@ class Flyer extends Component {
 
     return (
       <Layout {...this.props} className="Flyer">
+        <Bubble
+          price='10'
+          priceType="אג'"
+          product="לפלייר"
+        />
         <div id="header_bottom"></div>
         <div className="flyer-wrapper">
           <div className="wrapper">

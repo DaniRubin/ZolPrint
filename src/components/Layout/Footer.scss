@@ -7,54 +7,22 @@
   font-size: var(--text-size-regular);
   width: 100%;
   // background-size: cover;
-  // background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/footer.png);     
+  // background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/footer.png);
   color: var(--footer-text-color);
   padding: 15px 145px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-
-
   #left-payments-mobile {
     position: absolute;
     left: 2%;
-    color:black;
-    top: -12%;   
+    color: black;
+    top: -12%;
     font-size: 13px;
     line-height: 13px;
     display: none;
     font-family: arial;
-  }
-  #bubble {
-    background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/bubble.png);
-    position: absolute;
-    width: 144px;
-    font-size: 21px;
-    height: 136px;
-    font-weight: 900;
-    padding-top: 38px;
-    line-height: 18px;
-    letter-spacing: 1px;
-    z-index: 2;
-    top: -80px;
-    text-align: center;
-    color: #00c9f4;
-    right: 0;
-  }
-  #bubble span {
-    font-size: 63px;
-    color: #a2d82d;
-    line-height: 4px;
-    padding-left: 12px;
-  }
-  
-  #bubble strong {
-    font-size: 13px;
-    width: 100%;
-    float: right;
-    letter-spacing: 1.5px;
-    color: #81b119;
   }
 
   .footer-column {
@@ -78,24 +46,26 @@
     float: right;
   }
 
- .nav-right nav, .nav-right p {
+  .nav-right nav,
+  .nav-right p {
     font-family: arial;
     font-size: 13px;
     float: right;
     line-height: 23px;
- }
+  }
   .nav-right nav ul {
     list-style-type: none;
     float: right;
     padding: 0;
   }
 
-  .nav-right nav ul li a, .nav-right nav ul li a:visited {
+  .nav-right nav ul li a,
+  .nav-right nav ul li a:visited {
     color: #fff;
     text-decoration: none;
   }
 
-  .nav-right p img  {
+  .nav-right p img {
     margin-right: 5px;
   }
   #left-payments {
@@ -116,7 +86,6 @@
     justify-content: center;
   }
 }
-
 
 @media (max-width: $mlg) {
   #left-payments {
@@ -150,30 +119,27 @@
 }
 
 @media (max-width: $mxs) {
- .nav-right p {
+  .nav-right p {
     font-size: 11px !important;
   }
   .nav-right span {
     font-size: 20px !important;
   }
-  .nav-right nav ul li{
+  .nav-right nav ul li {
     font-size: 11px !important;
-
-   }
-   .footer {
+  }
+  .footer {
     padding: 30px 5% 0 5% !important;
   }
-
 }
 @media (max-width: $xs) {
   .nav-right p {
-     font-size: 10px !important;
-   }
-   .nav-right span {
-     font-size: 19px !important;
-   }
-   .nav-right nav ul li{
     font-size: 10px !important;
-
-   }
- }
+  }
+  .nav-right span {
+    font-size: 19px !important;
+  }
+  .nav-right nav ul li {
+    font-size: 10px !important;
+  }
+}

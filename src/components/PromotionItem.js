@@ -82,10 +82,6 @@ class PromotionItem extends Component {
     const { image, title, subTitle, price, priceType, url, newUrl } = this.props;
     const left_banner_img = image
     const order_now_arrow = require(`$assets/images/order-now-arrow.png`)
-    console.log(url)
-    console.log(url)
-    console.log(newUrl)
-    console.log(newUrl)
 
     return (
       <div className={'promotion-item '} ref={(ref) => this.promotionItem = ref}>

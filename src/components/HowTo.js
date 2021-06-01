@@ -1,4 +1,3 @@
-import { productTypes } from '../services/utils'
 import './HowTo.scss'
 
 const howTo = (props) => {

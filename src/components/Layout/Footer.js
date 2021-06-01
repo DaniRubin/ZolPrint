@@ -1,6 +1,7 @@
 import './Footer.scss'
 import { Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
+import Bubble from './Bubble'
 
 /**
  * This component represents the footer in the store
@@ -13,11 +14,7 @@ const Footer = () => {
     <div className="footer">
       {/* <span id="left-payments-mobile">* בשעות הפעילות</span> */}
       <span id="left-payments-mobile"></span>
-      {/* <div id="bubble">
-        <span>₪1</span><br />
-        <strong>כולל מע"מ</strong><br />
-          לפוסטר
-        </div> */}
+      {/* <Bubble /> */}
       <div className="wrapper">
         <div className="nav-right">
           <span>מידע כללי</span>
@@ -52,7 +49,7 @@ const Footer = () => {
           {payments && <img src={payments} alt="payments" />}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

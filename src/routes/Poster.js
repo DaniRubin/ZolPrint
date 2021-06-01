@@ -8,6 +8,7 @@ import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
+import Bubble from '../components/Layout/Bubble'
 import HowTo from '../components/HowTo'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import './Poster.scss'
@@ -85,6 +86,12 @@ class Poster extends Component {
 
     return (
       <Layout {...this.props} className="Poster">
+        <Bubble
+          price='₪1'
+          priceType=""
+          product="לפוסטר"
+        />
+
         <div id="header_bottom"></div>
         <div className="poster-wrapper">
           <div className="wrapper">
