@@ -89,7 +89,7 @@
 
 @media (max-width: $mlg) {
   #left-payments {
-    display: none !important;
+    display: none;
   }
   #left-payments-mobile {
     display: block !important;
@@ -141,5 +141,18 @@
   }
   .nav-right nav ul li {
     font-size: 10px !important;
+  }
+}
+
+@media (max-width: $mobile) {
+  #left-payments {
+    margin-top: -50px !important;
+    display: block !important;
+  }
+  .footer {
+    height: 250px !important;
+  }
+  .nav-right {
+    margin-bottom: 40px;
   }
 }

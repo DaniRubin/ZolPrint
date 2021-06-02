@@ -91,7 +91,7 @@ class PromotionItem extends Component {
         </div>
       </div>
     } else {
-      returnHTML = <div className={'promotion-item '}>
+      returnHTML = <div className={'promotion-item-mobile '}>
         <div className="mobile_banner">
           <div className="mobile_banner_img_item">
             {banner_img_item && <img className="mobile_img_item" src={banner_img_item} alt="Banner Image" />}

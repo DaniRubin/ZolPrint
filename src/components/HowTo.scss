@@ -1,5 +1,7 @@
 @import "_theme.scss";
-
+.next-step {
+  display: none !important;
+}
 .how-works .wrapper {
   padding-top: 50px;
   text-align: center;
@@ -69,7 +71,7 @@
   }
 
   .how-works-item {
-    width: 100%;
+    // width: 100%;
     align-self: center;
   }
 
@@ -92,5 +94,30 @@
 @media (max-width: $mxs) {
   .how-works-title {
     font-size: 41px;
+  }
+}
+
+// MOBILE
+@media (max-width: $mobile) {
+  .how-works {
+    margin-top: 70px;
+    border: none !important;
+  }
+  .how-works-title {
+    font-size: 27px;
+    margin: 15px auto;
+  }
+  .how-works-items {
+    background-color: rgba(196, 237, 253, 0.5);
+    // padding: 20px;
+    margin-bottom: 0px !important;
+    padding-top: 30px;
+  }
+  .how-works-item {
+    width: auto !important;
+  }
+  .next-step {
+    display: block !important;
+    margin: 10px 20px 16px 0px;
   }
 }

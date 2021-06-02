@@ -1,20 +1,13 @@
 import './Footer.scss'
 import { Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
-import Bubble from './Bubble'
 
-/**
- * This component represents the footer in the store
- */
 const payments = require(`$assets/images/payments.png`)
 const waze = require(`$assets/images/waze.png`)
 
 const Footer = () => {
   return (
     <div className="footer">
-      {/* <span id="left-payments-mobile">* בשעות הפעילות</span> */}
-      <span id="left-payments-mobile"></span>
-      {/* <Bubble /> */}
       <div className="wrapper">
         <div className="nav-right">
           <span>מידע כללי</span>
@@ -44,7 +37,7 @@ const Footer = () => {
             </p>
         </div>
         <div id="left-payments">
-          <span></span><br></br>
+          <span>* בשעות הפעילות</span><br></br>
           {/* <span>* בשעות הפעילות</span><br></br> */}
           {payments && <img src={payments} alt="payments" />}
         </div>

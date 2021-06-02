@@ -4,6 +4,7 @@ const howTo = (props) => {
   const upload_icon = require(`$assets/images/upload.png`)
   const amount_icon = require(`$assets/images/amount.png`)
   const delivery_icon = require(`$assets/images/delivery.png`)
+  const vector_icon = require(`$assets/images/Vector.png`)
 
   return (
     <div className="how-works">
@@ -22,6 +23,7 @@ const howTo = (props) => {
                 מעלים PDF/JPG בגודל 50X70
                  </p>
             </div>
+            {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}
             <div className="how-works-item">
               <div className="how-works-item-img">
                 {amount_icon && <img src={amount_icon} alt="Amount" />}
@@ -31,6 +33,7 @@ const howTo = (props) => {
                 בוחרים כמה {props.keyWord} רוצים
                  </p>
             </div>
+            {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}
             <div className="how-works-item">
               <div className="how-works-item-img">
                 {delivery_icon && <img src={delivery_icon} style={{ marginTop: "37px" }} alt="Delivery" />}
