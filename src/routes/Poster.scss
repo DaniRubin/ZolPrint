@@ -17,3 +17,9 @@
     background-size: 100% 100%;
   }
 }
+
+@media (max-width: $mobile) {
+  .poster-wrapper {
+    background-image: none !important;
+  }
+}

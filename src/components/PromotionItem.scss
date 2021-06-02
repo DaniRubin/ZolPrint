@@ -1,4 +1,4 @@
-@import '_theme.scss';
+@import "_theme.scss";
 
 .priceType {
   font-size: 25px;
@@ -7,18 +7,17 @@
   height: var(--carousel-height-desktop);
   overflow: visible !important;
 
-  .main-promotion-item{
+  .main-promotion-item {
     height: var(--carousel-height-desktop);
     display: flex;
     position: relative;
   }
 
-
   .slider-wrapper-single {
     overflow: visible !important;
   }
 
-  .text{
+  .text {
     color: var(--text-color-carousel);
   }
   .button {
@@ -35,24 +34,24 @@
     border-radius: 10px;
     border: 0;
   }
-  .left_banner_img {
-    // margin-top: -20px;
+  .left_banner_img_item {
     z-index: 1;
   }
   .button img {
     vertical-align: bottom;
   }
-  .button:hover, .button:active{
+  .button:hover,
+  .button:active {
     box-shadow: none;
   }
 
-  .button a, .button a:visited {
+  .button a,
+  .button a:visited {
     color: #fff;
     text-decoration: none;
   }
-  
 
-  .title-area-item{
+  .title-area-item {
     margin-top: 35px;
     margin-right: 45px;
     display: flex;
@@ -61,14 +60,13 @@
   }
 
   .banner_title_item {
-    width: 529px;  
+    width: 529px;
     font-size: 55px;
     height: 75px;
     letter-spacing: -2.2px;
     text-align: center;
     color: #ffffff !important;
     background-image: linear-gradient(to top, #46c0f1, #00c9f5);
-    // border: 1px solid white;
   }
 
   .banner_title_item span {
@@ -84,20 +82,18 @@
     padding-left: 13px;
     padding-right: 13px;
     height: 75px !important;
-    
   }
 
   .banner_title_item span strong {
     font-size: 12px;
   }
 
-  .title{
+  .title {
     font-size: var(--text-size-h1);
     padding-top: 15px;
-
   }
 
-  .subtitle{
+  .subtitle {
     font-size: 23px !important;
     font-weight: 500;
     color: white !important;
@@ -106,11 +102,11 @@
   @media (max-width: $lg) {
     height: var(--carousel-height-mobile);
 
-    .title{
+    .title {
       font-size: calc(0.5 * var(--text-size-h1));
     }
 
-    .subtitle{
+    .subtitle {
       font-size: calc(0.7 * var(--text-size-h3));
     }
 
@@ -124,85 +120,165 @@
   }
 }
 
-@media (max-width: $lg) {
-  .left_banner_img {
+@media (max-width: $mlg) {
+  .left_banner_img_item {
     display: none !important;
   }
 
   .subtitle {
     font-size: 24px !important;
   }
-  
+
   .wrapper {
     width: 100% !important;
   }
   .promotion-item .title-area-item {
     width: 100%;
   }
-   .banner_title_item {
+  .banner_title_item {
     align-self: center !important;
-    width: 82% !important;
-    background: linear-gradient(45deg, #00b6ec, #107ea9) !important;
+    width: 75% !important;
     border-radius: 8px !important;
-   }
+  }
 
-   .banner_title_item span {
-    background: linear-gradient(45deg, #96ca46, #558a24) !important;
-    border-radius: 8px 15px 15px 8px !important;
-    height: 100% !important;
+  .banner_title_item span {
+    // height: 100% !important;
     padding-right: 11px !important;
-   }
-} 
+  }
+}
 @media (max-width: $md) {
-.banner_title_item {
-  width: 90% !important;
-  font-size: 43px !important;
-}
-.left_banner_img {
-  display: none !important;
-}
-.promotion-item .subtitle {
-  font-size: 20px !important;
-}
+  .banner_title_item {
+    width: 90% !important;
+    font-size: 43px !important;
+  }
+  .left_banner_img_item {
+    display: none !important;
+  }
+  .promotion-item .subtitle {
+    font-size: 20px !important;
+  }
 }
 
 @media (max-width: $sm) {
-  .promotion-item .banner_title_item {
-    height: 68px !important;
+  .banner_title_item {
     line-height: 65px !important;
-    font-size: 34px!important;
+    font-size: 34px !important;
   }
-  .promotion-item .banner_title_item span {
+
+  .banner_title_item span {
     line-height: 11px !important;
     padding-left: 13px !important;
     font-size: 32px !important;
   }
-  .promotion-item .banner_title_item span strong {
+  .banner_title_item span strong {
     font-size: 9px !important;
   }
-  .promotion-item .subtitle {
+  .subtitle {
     font-size: 18px !important;
   }
 }
 
+// Mobile
 @media (max-width: $mxs) {
-  .promotion-item .banner_title_item {
-    height: 68px !important;
+  .banner_title_item {
     line-height: 65px !important;
-    font-size: 27px!important;
+    font-size: 27px !important;
   }
-  .promotion-item .banner_title_item span {
+  .banner_title_item span {
     line-height: 11px !important;
     padding-left: 13px !important;
     font-size: 27px !important;
   }
-  .promotion-item .banner_title_item span strong {
+  .banner_title_item span strong {
     font-size: 9px !important;
   }
-  .promotion-item .subtitle {
+  .subtitle {
     font-size: 14px !important;
   }
 }
 #arrowOrder {
   vertical-align: middle !important;
+}
+
+// MOBILE
+.mobile_banner_img_item {
+  width: 240px !important;
+  margin: auto;
+}
+.mobile_img_item {
+  width: 240px !important;
+}
+.mobile_banner {
+  background-color: #c4edfd;
+}
+.title-area-item-mobile {
+  display: flex;
+  flex-direction: column;
+  align-self: auto;
+}
+
+.banner_title_item_mobile {
+  align-self: center !important;
+  font-size: 30px !important;
+  color: #00133a;
+  text-align: center;
+  margin-left: 10px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.priceBubble {
+  background-color: #c5ecfb;
+  width: 70px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 12px;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 15px;
+  padding-top: 7px;
+}
+.priceType {
+  font-size: 15px;
+}
+.priceBubble strong {
+  font-size: 12px;
+}
+.button-mobile {
+  // margin: 20px;
+  width: 190px;
+  height: 40px;
+  max-width: 600px;
+  background-color: #eac84c;
+  font-size: 24px;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  font-weight: bold;
+  padding-top: 3px;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  padding-right: 12px;
+  margin-right: 40px;
+}
+
+.subtitle-mobile {
+  font-size: 16px !important;
+  font-weight: 500;
+  color: #00133a;
+
+  ul li::before {
+    content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #edce4f; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 20px; /* Also needed for space (tweak if needed) */
+    margin-left: 0px; /* Also needed for space (tweak if needed) */
+    vertical-align: text-bottom;
+    font-size: 40px;
+    line-height: 20px;
+  }
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
 }

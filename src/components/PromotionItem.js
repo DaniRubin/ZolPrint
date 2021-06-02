@@ -9,12 +9,10 @@
  * @param {string} subTitle - the sub-title
  * @param {string} buttonText - the button's text
  * @param {string} url - the url to redirect to when clicking the button
- * @param {string} className - the css class to add to main div
  */
 import { Router } from '$routes'
 import './PromotionItem.scss'
 import React, { Component } from "react"
-import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
 
 const handleBuy = () => {
@@ -23,7 +21,6 @@ const handleBuy = () => {
     .then(module => module.default)
     .then(ReactPixel => {
       ReactPixel.init('497457848043067')
-      // ReactPixel.track('ViewContent');
       ReactPixel.trackCustom('ViewContent')
     })
   console.log("1. Event ViewContent fired!");
@@ -32,20 +29,26 @@ const handleBuy = () => {
 class PromotionItem extends Component {
   constructor() {
     super();
-    this.promotionItem = React.createRef();
+    this.state = {
+      mobile: false
+    }
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.onResize);
-    throttle(250, this.onResize);
-
-    this.setButtonSize()
+    const mobileStatus = window.innerWidth < 440
+    console.log(mobileStatus)
+    if (mobileStatus != this.state.mobile) {
+      this.setState({ mobile: mobileStatus })
+    }
+    window.addEventListener('resize', () => this.handleResize(this.state.mobile));
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize)
+  handleResize() {
+    if (window.innerWidth >= 440 && this.state.mobile == true)
+      this.setState({ mobile: false })
+    if (window.innerWidth < 440 && this.state.mobile == false) {
+      this.setState({ mobile: true })
+    }
   }
-
   goTo(url) {
     if (!url) {
       return
@@ -58,33 +61,13 @@ class PromotionItem extends Component {
     }
   }
 
-  onResize = () => {
-    this.setButtonSize()
-  }
-
-  setButtonSize() {
-    if (!this.promotionItem) {
-      return
-    }
-
-    const button = this.promotionItem.querySelector('.button')
-    const width = document.body.clientWidth
-
-    if (window.matchMedia(`(max-width: ${theme.md})`).matches) {
-      button.style['max-width'] = `${width - (2 * 20)}px`
-    }
-    else {
-      button.style['max-width'] = ''
-    }
-  }
-
   render() {
-    const { image, title, subTitle, price, priceType, url, newUrl } = this.props;
-    const left_banner_img = image
+    const { image, title, subTitle, price, priceType, url } = this.props;
+    const banner_img_item = image
     const order_now_arrow = require(`$assets/images/order-now-arrow.png`)
-
-    return (
-      <div className={'promotion-item '} ref={(ref) => this.promotionItem = ref}>
+    let returnHTML = ''
+    if (!this.state.mobile) {
+      returnHTML = <div className={'promotion-item '}>
         <div className="main-promotion-item">
           <div className="title-area-item">
             <div className="banner_title_item">
@@ -102,12 +85,40 @@ class PromotionItem extends Component {
               {'הזמינו עכשיו '}<img id="arrowOrder" src={order_now_arrow} alt="Order now arrow" />
             </div>
           </div>
-          <div className="left_banner_img">
-            {left_banner_img && <img src={left_banner_img} alt="Left Banner Image" />}
+          <div className="left_banner_img_item">
+            {banner_img_item && <img src={banner_img_item} alt="Left Banner Image" />}
           </div>
         </div>
       </div>
-    )
+    } else {
+      returnHTML = <div className={'promotion-item '}>
+        <div className="mobile_banner">
+          <div className="mobile_banner_img_item">
+            {banner_img_item && <img className="mobile_img_item" src={banner_img_item} alt="Banner Image" />}
+          </div>
+        </div>
+
+        <div className="title-area-item-mobile">
+          <div className="banner_title_item_mobile">
+            {title}
+            <span className="priceBubble">{price}<b className="priceType">{priceType}</b><br /><strong>כולל מע"מ</strong></span>
+          </div>
+          <div className="subtitle-mobile">
+            {subTitle}
+          </div>
+        </div>
+
+        <div className="button-mobile" onClick={() => {
+          handleBuy()
+          this.goTo(url)
+        }
+        }>
+          {'הזמינו עכשיו '}<img id="arrowOrder" src={order_now_arrow} alt="Order now arrow" />
+        </div>
+      </div>
+    }
+    return returnHTML
   }
 }
+
 export default PromotionItem

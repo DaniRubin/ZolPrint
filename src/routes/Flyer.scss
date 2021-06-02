@@ -17,3 +17,10 @@
     background-size: 100% 100%;
   }
 }
+
+@media (max-width: $mobile) {
+  .flyer-wrapper {
+    background-image: none !important;
+    // background-color: #c4edfd !important;
+  }
+}
