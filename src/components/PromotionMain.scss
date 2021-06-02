@@ -1,8 +1,8 @@
-@import '_theme.scss';
+@import "_theme.scss";
 
 .main-text {
   font-size: 33.5px;
-  width:999px;
+  width: 999px;
   margin: auto;
   line-height: 1;
   letter-spacing: -1.5px;
@@ -19,7 +19,6 @@
   width: 8px;
   height: 8px;
   margin: 0px 7px 2px 7px;
-  // margin: 17px 1px 24px 5px;
   background-color: #edce4f;
   display: inline-block;
   border-radius: 50%;
@@ -35,9 +34,8 @@
 .main_page_image {
   position: absolute;
   top: 100px;
-  left: 50px
+  left: 50px;
 }
-
 
 @media (max-width: 1260px) {
   .main_page_image {
@@ -48,7 +46,7 @@
 @media (max-width: $lg) {
   .main-text {
     font-size: 30px;
-    width:900px;
+    width: 900px;
   }
   .main_page_image {
     display: none;
@@ -60,31 +58,31 @@
   .subtitle {
     font-size: 24px !important;
   }
-  
+
   .wrapper {
     width: 100% !important;
   }
-   .banner_title {
+  .banner_title {
     align-self: center !important;
     width: 82% !important;
     background: linear-gradient(45deg, #00b6ec, #107ea9) !important;
     border-radius: 8px !important;
-   }
+  }
 
-   .banner_title span {
+  .banner_title span {
     background: linear-gradient(45deg, #96ca46, #558a24) !important;
     border-radius: 8px 15px 15px 8px !important;
     height: 100% !important;
     padding-right: 11px !important;
-   }
-} 
+  }
+}
 @media (max-width: $mlg) {
   .main-text {
     font-size: 25px;
-    width:650px;
+    width: 650px;
   }
-    .genral-explanation {
-      font-size: 18px !important;
+  .genral-explanation {
+    font-size: 18px !important;
   }
   .coin_src {
     width: 250px;
@@ -97,15 +95,15 @@
   }
   .main-text {
     font-size: 22px;
-    width:500px;
+    width: 500px;
   }
   .genral-explanation {
     font-size: 18px !important;
-    width:400px;
+    width: 400px;
   }
-.banner_title {
-  width: 90% !important;
-  font-size: 43px !important;
+  .banner_title {
+    width: 90% !important;
+    font-size: 43px !important;
   }
   .left_banner_img {
     display: none !important;
@@ -118,17 +116,14 @@
   }
   .main-text {
     font-size: 20px;
-    width:350px;
+    width: 350px;
   }
   .genral-explanation {
     font-size: 16px !important;
-    width:300px;
+    width: 300px;
   }
   .coin_src {
     width: 170px;
-  }
-  .promotion-wrapper {
-    height: 320px !important;
   }
 }
 
@@ -138,16 +133,13 @@
   }
   .main-text {
     font-size: 20px;
-    width:250px;
+    width: 250px;
   }
   .genral-explanation {
     font-size: 14px !important;
-    width:200px;
+    width: 200px;
   }
   .coin_src {
     width: 150px;
-  }
-  .promotion-wrapper {
-    height: 320px !important;
   }
 }

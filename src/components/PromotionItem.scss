@@ -1,6 +1,8 @@
 @import '_theme.scss';
 
-
+.priceType {
+  font-size: 25px;
+}
 .promotion-item {
   height: var(--carousel-height-desktop);
   overflow: visible !important;
@@ -78,10 +80,10 @@
     font-weight: bold;
     padding-top: 25px;
     float: left;
-    line-height: 15px;
+    line-height: 10px;
     padding-left: 13px;
     padding-right: 13px;
-    height: 73px !important;
+    height: 75px !important;
     
   }
 
@@ -200,4 +202,7 @@
   .promotion-item .subtitle {
     font-size: 14px !important;
   }
+}
+#arrowOrder {
+  vertical-align: middle !important;
 }

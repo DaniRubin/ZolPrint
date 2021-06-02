@@ -8,11 +8,11 @@
  */
 
 import React, { Component } from 'react'
-import './Gallery.scss'
 import { Link } from '$routes'
 import { t } from '$themelocalization'
 import { isServer } from '$ustoreinternal/services/utils'
 import memoize from "memoize-one"
+import './Gallery.scss'
 
 class Gallery extends Component {
   constructor(props) {

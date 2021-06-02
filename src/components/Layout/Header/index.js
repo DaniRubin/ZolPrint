@@ -67,6 +67,7 @@ class Header extends Component {
     if (window.location.href.includes('home')) return 'home'
     if (window.location.href.includes('Poster')) return 'Poster'
     if (window.location.href.includes('Flyer')) return 'Flyer'
+    if (window.location.href.endsWith('he-IL/')) return 'home'
   }
 
   componentDidUpdate() {

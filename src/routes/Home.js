@@ -7,22 +7,15 @@
 import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
-import PromotionItem from '../components/PromotionItem'
 import PromotionMain from '../components/PromotionMain'
-import { Router } from '$routes'
 import Gallery from '$core-components/Gallery'
-import CategoryItem from '../components/CategoryItem'
 import ProductItem from '../components/ProductItem'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
-import { t } from '$themelocalization'
 import './Home.scss'
 import { Component } from 'react'
-import { getVariableValue } from '$ustoreinternal/services/cssVariables'
 import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
-import { getIsNGProduct } from '../services/utils'
 import { decodeStringForURL } from '$ustoreinternal/services/utils'
-import $ from 'jquery';
 
 class Home extends Component {
 
@@ -37,18 +30,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // if ($(window).width() < 561) {
-    //   $('.subtitle').html("חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה. התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.");
-    // }
     window.addEventListener('resize', this.onResize.bind(this));
     throttle(250, this.onResize);					// Call this function once in 250ms only
-
     this.onResize()
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize)
-
     this.clearCustomState()
   }
 
@@ -67,21 +55,6 @@ class Home extends Component {
     this.setState({ isMobile: document.body.clientWidth < parseInt(theme.md.replace('px', '')) })
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (!(props.state && props.customState)) {
-      return null
-    }
-
-    const { categories } = props.customState
-    //NOTE: this is not supported in SSR
-    if (categories && categories.length && !state.promotionItemButtonUrl.length) {
-      const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'category', id: FriendlyID, name: decodeStringForURL(Name) })
-      return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
-    }
-    return null
-  }
-
   getNextPage(name) {
     switch (name) {
       case "פוסטר 50X70":
@@ -93,27 +66,11 @@ class Home extends Component {
     }
   }
 
-
-
   render() {
     if (!this.props.state) {
       return null
     }
-
     const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
-
-    const amount_icon = require(`$assets/images/amount.png`)
-    const upload_icon = require(`$assets/images/upload.png`)
-    const delivery_icon = require(`$assets/images/delivery.png`)
-    const step_icon = require(`$assets/images/item_arr.png`)
-
-    const left_banner_img = require(`$assets/images/banner_img.png`)
-
-
-    const promotionItemImageUrl = getVariableValue('--homepage-carousel-slide-1-image', require(`$assets/images/banner_image.png`), true)
-    const promotionItemTitle = getVariableValue('--homepage-carousel-slide-1-main-text', t('PromotionItem.Title'))
-    const promotionItemSubtitle = getVariableValue('--homepage-carousel-slide-1-sub-text', t('PromotionItem.Subtitle'))
-    const promotionItemButtonText = getVariableValue('--homepage-carousel-slide-1-button-text', t('PromotionItem.Button_Text'))
 
     return (
       <Layout {...this.props} className="home">
@@ -124,7 +81,6 @@ class Home extends Component {
           </Slider>
         </div>
 
-        <div className="divider" />
 
         {homeFeaturedCategory && homeFeaturedProducts &&
           <div className="featured-products-wrapper">
@@ -143,13 +99,6 @@ class Home extends Component {
                       <ProductItem
                         key={model.ID}
                         model={model}
-                        productNameLines="2"
-                        descriptionLines="4"
-                        // url={getIsNGProduct(model.Type, currentStore) ?
-                        //   urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                        //   :
-                        //   urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
-                        // }
                         url={urlGenerator.get({ page: this.getNextPage(model.Name) })}
                       />
                   })
@@ -172,11 +121,9 @@ Home.getInitialProps = async function (ctx) {
 
   const page = Math.ceil(Count / maxInPage)
   const { Categories } = await UStoreProvider.api.categories.getTopCategories(page, maxInPage)
-
   if (Categories.length === 0) {
     return { homeFeaturedProducts: null, homeFeaturedCategory: null }
   }
-
   const homeFeaturedCategory = Categories[Count - 1]
   const { Products: homeFeaturedProducts } = await UStoreProvider.api.products.getProducts(homeFeaturedCategory.ID, 1)
   return { homeFeaturedProducts, homeFeaturedCategory }
