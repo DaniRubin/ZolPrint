@@ -1,39 +1,40 @@
-@import '_theme.scss';
+@import "_theme.scss";
 
 .how-works .wrapper {
-padding-top: 50px;
-text-align: center;
+  padding-top: 50px;
+  text-align: center;
 }
 .how-works-title {
-width: 100%;
-// color: #00133a;
-font-weight: 600;
-font-size: 50px;
-background-image: linear-gradient(to bottom, #00133a, #00133a), linear-gradient(to top, #000000, #ffffff), linear-gradient(to bottom, #ffffff, #ffffff);
-color: #ffffff;
--webkit-background-clip: text;
-background-clip: text;
--webkit-text-fill-color: transparent;
+  width: 100%;
+  // color: #00133a;
+  font-weight: 600;
+  font-size: 50px;
+  background-image: linear-gradient(to bottom, #00133a, #00133a), linear-gradient(to top, #000000, #ffffff),
+    linear-gradient(to bottom, #ffffff, #ffffff);
+  color: #ffffff;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .how-works-item span {
-color: #00133a;
-font-size: 26px;
-font-weight: 600;
+  color: #00133a;
+  font-size: 26px;
+  font-weight: 600;
 }
 .how-works-items {
-width: 100%;
-// margin-top: 20px;
+  width: 100%;
+  // margin-top: 20px;
 }
 
 .how-works-item {
-// float: right;
-display: inline-block;
-margin: 0px 50px;
-width: 220px;
+  // float: right;
+  display: inline-block;
+  margin: 0px 50px;
+  width: 220px;
 }
 
 .how-works-item-img {
-float: right;
+  float: right;
 }
 
 .how-works-item p {
@@ -44,7 +45,7 @@ float: right;
   line-height: 1.6;
 }
 .how-works-item-img {
-  background-image: url('../assets/images/circle-how-works.png');     
+  background-image: url("../assets/images/circle-how-works.png");
   width: 200px;
   height: 144px;
   background-repeat: no-repeat;
@@ -52,17 +53,13 @@ float: right;
   margin: 0px 10px;
 }
 .how-works-item-img img {
-    margin-top: 33px;
-}
-.next-step {
-    float: right;
-    margin-top: 45px;
+  margin-top: 33px;
 }
 .how-works {
-height: 411px;
-border-bottom: #c4edfd 27px solid;
+  height: 411px;
+  border-bottom: #c4edfd 27px solid;
 
-background-color: #fff;
+  background-color: #fff;
 }
 @media (max-width: $mlg) {
   .how-works {
@@ -71,19 +68,19 @@ background-color: #fff;
     overflow: hidden;
   }
 
-   .how-works-item  {
+  .how-works-item {
     width: 100%;
     align-self: center;
-   }
+  }
 
-   .how-works-items {
-     float: right;
-     margin-bottom: 20px;
-   }
+  .how-works-items {
+    float: right;
+    margin-bottom: 20px;
+  }
 
-   .how-works-item-img {
-     width: 100%;
-   }
+  .how-works-item-img {
+    width: 100%;
+  }
 }
 
 @media (max-width: $md) {
@@ -91,9 +88,9 @@ background-color: #fff;
     font-size: 45px;
   }
 }
-  
+
 @media (max-width: $mxs) {
- .how-works-title {
+  .how-works-title {
     font-size: 41px;
   }
 }

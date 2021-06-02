@@ -1,10 +1,3 @@
-/**
- * This is the Homepage
- * URL : http://<store-domain>/{language-code}/home/
- *
- * @param {object} state - the state of the store
- */
-import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
@@ -13,10 +6,6 @@ import HowTo from '../components/HowTo'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import './Poster.scss'
 import { Component } from 'react'
-import { getVariableValue } from '$ustoreinternal/services/cssVariables'
-import theme from '$styles/_theme.scss'
-import { throttle } from 'throttle-debounce'
-import { decodeStringForURL } from '$ustoreinternal/services/utils'
 import $ from 'jquery';
 
 class Poster extends Component {
@@ -25,7 +14,7 @@ class Poster extends Component {
 
     this.state = {
       isMobile: false,
-      promotionItemButtonUrl: ''
+      promotionItemButtonUrl: urlGenerator.get({ page: 'product', id: 1218 })
     }
 
   }
@@ -33,56 +22,12 @@ class Poster extends Component {
   componentDidMount() {
     $("#left-payments span").html("* בשעות הפעילות");
     $("#left-payments-mobile").html("* בשעות הפעילות");
-    window.addEventListener('resize', this.onResize.bind(this));
-    throttle(250, this.onResize);					// Call this function once in 250ms only
-
-    this.onResize()
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize)
-
-    this.clearCustomState()
-  }
-
-  clearCustomState() {
-    UStoreProvider.state.customState.delete('homeFeaturedProducts')
-    UStoreProvider.state.customState.delete('homeFeaturedCategory')
-    UStoreProvider.state.customState.delete('currentProduct')
-    UStoreProvider.state.customState.delete('currentOrderItem')
-    UStoreProvider.state.customState.delete('currentOrderItemId')
-    UStoreProvider.state.customState.delete('currentOrderItemPriceModel')
-    UStoreProvider.state.customState.delete('lastOrder')
-    UStoreProvider.state.customState.delete('currentProductThumbnails')
-  }
-
-  onResize() {
-    this.setState({ isMobile: document.body.clientWidth < parseInt(theme.md.replace('px', '')) })
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (!(props.state && props.customState)) {
-      return null
-    }
-
-    const { categories } = props.customState
-    //NOTE: this is not supported in SSR
-    if (categories && categories.length && !state.promotionItemButtonUrl.length) {
-      const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'product', id: 1218, name: decodeStringForURL(Name) })
-      return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
-    }
-    return null
-  }
-
-
 
   render() {
     if (!this.props.state) {
       return null
     }
-
-    const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
 
     return (
       <Layout {...this.props} className="Poster">
@@ -92,7 +37,7 @@ class Poster extends Component {
           product="לפוסטר"
         />
 
-        <div id="header_bottom"></div>
+        <div id="header_bottom_poster"></div>
         <div className="poster-wrapper">
           <div className="wrapper">
             <Slider>
@@ -120,6 +65,5 @@ class Poster extends Component {
     )
   }
 }
-
 
 export default Poster

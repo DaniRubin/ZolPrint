@@ -1,94 +1,32 @@
-@import '_theme.scss';
+@import "_theme.scss";
 
-.home{
-  .middle-section {
-    margin: 0 auto;
-
-    @media (min-width: $lg) {
-      width: 1160px;
-    }
-
-    @media (min-width: $md) and (max-width: $lg) {
-      width: 727px;
-    }
-
-    @media (min-width: $sm) and (max-width: $md) {
-      width: 536px;
-    }
-
-    @media (min-width: $xs) and (max-width: $sm) {
-      width: 300px;
-    }
-  }
-
-  .categories-wrapper {
-    width: 100%;
-    margin: 0 auto;
-
-    @media (min-width: $xl) {
-      padding: 55px 0px 12px 0px;
-    }
-  
-    @media (min-width: $lg) and (max-width: $xl) {
-      padding: 55px 0px 12px 0px;
-    }
-  
-    @media (min-width: $md) and (max-width: $lg) {
-      padding: 40px 0px 12px 0px;
-    }
-  
-    @media (min-width: $sm) and (max-width: $md) {
-      padding: 40px 0px 12px 0px;
-    }
-  
-    @media (min-width: $xs) and (max-width: $sm) {
-      padding: 40px 0px 12px 0px;
-    }
-  
-    @media (max-width: $xs) {
-      padding: 40px 0px 12px 0px;
-    }
-  }
-.next-step-img {
-  float: right;
-}
+.home {
   #header_bottom {
     height: 11px;
     width: 100%;
     background-repeat: repeat-x;
-    background-image: url(/ustoreThemeCustomizations/8b190a36-ce5a-46fe-8cef-0c3cac77f5e3/Published/Assets/header_bottom.png);     
+    background-image: url("../assets/images/header_bottom.png");
   }
 
   .promotion-wrapper {
     height: 367px;
     width: 100%;
     background-repeat: no-repeat;
-      background-repeat: no-repeat;
-    background-image: url('../assets/images/hero-background.png');     
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/hero-background.png");
     background-size: 100% 100%;
-
   }
+
   @media (max-width: $sm) {
     .promotion-wrapper {
       background-color: #0c2b49 !important;
       background-image: none;
+      height: 320px !important;
     }
   }
-  @media (max-width: $mlg) {
-    .next-step-img {
-      text-align: center;
-      width: 100%;
-    }
-    .next-step-img img {
-      margin: 0;
-      margin-bottom: 20px;
-    }
-    .next-step {
-      transform: rotate(-90deg);
-      text-align: center;
-      float: none;
-      height: 72px;
-      width: 100px;
+  @media (max-width: $mxs) {
+    .promotion-wrapper {
+      height: 320px !important;
     }
   }
 }

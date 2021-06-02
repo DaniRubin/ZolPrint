@@ -151,8 +151,6 @@ class Category extends Component {
                       <ProductItem
                         key={model.ID}
                         model={model} detailed
-                        productNameLines="2"
-                        descriptionLines="4"
                         url={getIsNGProduct(model.Type, currentStore) ?
                           urlGenerator.get({ page: 'products', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
                           :

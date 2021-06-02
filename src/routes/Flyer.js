@@ -1,10 +1,3 @@
-/**
- * This is the Homepage
- * URL : http://<store-domain>/{language-code}/home/
- *
- * @param {object} state - the state of the store
- */
-import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
 import Slider from '$core-components/Slider'
 import PromotionItem from '../components/PromotionItem'
@@ -13,10 +6,6 @@ import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import Bubble from '../components/Layout/Bubble'
 import './Flyer.scss'
 import { Component } from 'react'
-import { getVariableValue } from '$ustoreinternal/services/cssVariables'
-import theme from '$styles/_theme.scss'
-import { throttle } from 'throttle-debounce'
-import { decodeStringForURL } from '$ustoreinternal/services/utils'
 import $ from 'jquery';
 
 class Flyer extends Component {
@@ -25,71 +14,27 @@ class Flyer extends Component {
 
     this.state = {
       isMobile: false,
-      promotionItemButtonUrl: ''
     }
   }
 
   componentDidMount() {
     $("#left-payments span").html("* בשעות הפעילות");
     $("#left-payments-mobile").html("* בשעות הפעילות");
-    window.addEventListener('resize', this.onResize.bind(this));
-    throttle(250, this.onResize);					// Call this function once in 250ms only
-
-    this.onResize()
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize)
-    this.clearCustomState()
-  }
-
-  clearCustomState() {
-    UStoreProvider.state.customState.delete('homeFeaturedProducts')
-    UStoreProvider.state.customState.delete('homeFeaturedCategory')
-    UStoreProvider.state.customState.delete('currentProduct')
-    UStoreProvider.state.customState.delete('currentOrderItem')
-    UStoreProvider.state.customState.delete('currentOrderItemId')
-    UStoreProvider.state.customState.delete('currentOrderItemPriceModel')
-    UStoreProvider.state.customState.delete('lastOrder')
-    UStoreProvider.state.customState.delete('currentProductThumbnails')
-  }
-
-  onResize() {
-    this.setState({ isMobile: document.body.clientWidth < parseInt(theme.md.replace('px', '')) })
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (!(props.state && props.customState)) {
-      return null
-    }
-
-    const { categories } = props.customState
-    if (categories && categories.length && !state.promotionItemButtonUrl.length) {
-      const { FriendlyID, Name } = categories[0]
-      const defaultURL = urlGenerator.get({ page: 'product', id: 1223, name: decodeStringForURL(Name) })
-      return { promotionItemButtonUrl: getVariableValue('--homepage-carousel-slide-1-button-url', defaultURL, false, true) }
-    }
-    return null
-  }
-
-
 
   render() {
     if (!this.props.state) {
       return null
     }
 
-    const { customState: { categories, homeFeaturedProducts, homeFeaturedCategory }, state: { currentStore } } = this.props
-    const left_banner_img = require(`$assets/images/banner_img.png`)
-
     return (
       <Layout {...this.props} className="Flyer">
         <Bubble
           price='10'
           priceType="אג'"
-          product="לפלייר"
+          product={" לפלייר"}
         />
-        <div id="header_bottom"></div>
+        <div id="header_bottom_flyer"></div>
         <div className="flyer-wrapper">
           <div className="wrapper">
             <Slider>
@@ -105,7 +50,7 @@ class Flyer extends Component {
                 }
                 price="10"
                 priceType="אג'"
-                url={this.state.promotionItemButtonUrl}
+                url={urlGenerator.get({ page: 'product', id: 1223 })}
               />
             </Slider>
           </div>
@@ -117,6 +62,5 @@ class Flyer extends Component {
     )
   }
 }
-
 
 export default Flyer
