@@ -24,15 +24,13 @@
  */
 
 import React, { Component } from 'react'
-import CategoriesSidebar from './CategoriesSidebar'
 import Profile from './Profile'
-import Overlay from '$core-components/Overlay'
 import Cart from "./Cart"
 import './Header.scss'
 import { Router, Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import { setCookie, isServer } from "$ustoreinternal/services/utils";
-import Icon from '$core-components/Icon'
+import theme from '$styles/_theme.scss'
 
 class Header extends Component {
   constructor() {
@@ -41,8 +39,7 @@ class Header extends Component {
     this.state = {
       drawerOpen: false,						    // Left drawer - opened/closed
       pageURL: '',
-      mobile: false,
-      overlayActive: false,	  			    // The overlay - active or not
+      mobile: false
     }
   }
 
@@ -73,34 +70,10 @@ class Header extends Component {
     if (window.location.href.includes('Flyer')) return 'Flyer'
     if (window.location.href.endsWith('he-IL/')) return 'home'
   }
-  drawerStateChange(open) {
-    this.setState({ drawerOpen: open })
-    this.setState({ overlayActive: open })
-
-    if (open) {
-      document.body.style.overflow = 'hidden'
-    }
-    else {
-      document.body.style.overflow = 'auto'
-    }
-  }
-
-  burgerClicked() {
-    this.drawerStateChange(true)
-  }
-
-  overlayClicked() {
-    this.drawerStateChange(false)
-  }
 
   render() {
     if (!this.props.customState) {
       return null
-    }
-
-    const sidebarRedirect = (pageParams) => {
-      this.drawerStateChange(false)
-      Router.pushRoute(urlGenerator.get(pageParams))
     }
 
     const { customState: { categoriesTree, userOrdersSummary }, currencies, cultures, currentCulture, currentUser, currentCurrency } = this.props
@@ -121,9 +94,7 @@ class Header extends Component {
               </Link>
             </div>}
             {this.state.mobile && <div className="logo-wrapper-mobile">
-              <div className="menu-icon-container" onClick={this.burgerClicked.bind(this)}>
-                <Icon name="menu.svg" width="23px" height="20px" className="menu-icon" />
-              </div>
+
               <Link to={urlGenerator.get({ page: 'home' })}>
                 <a>
                   <div className="logo-container-mobile">
@@ -170,16 +141,6 @@ class Header extends Component {
 
             </div>
           </div>
-
-          <div className="drawer-wrapper">
-            {
-              categoriesTree && categoriesTree.length > 0 &&
-              <CategoriesSidebar onRedirect={sidebarRedirect} onClose={() => this.drawerStateChange(false)} />
-            }
-          </div>
-          <Overlay isActive={this.state.overlayActive} overlayClicked={this.overlayClicked.bind(this)} />
-
-
         </div>
       </div >
 
