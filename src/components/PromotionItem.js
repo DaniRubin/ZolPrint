@@ -35,8 +35,6 @@ class PromotionItem extends Component {
   }
 
   componentDidMount() {
-    console.log(theme.mobile)
-    console.log(theme.mobile)
     const mobileStatus = window.innerWidth < 420
     if (mobileStatus != this.state.mobile) {
       this.setState({ mobile: mobileStatus })

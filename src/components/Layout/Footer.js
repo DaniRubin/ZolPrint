@@ -1,11 +1,25 @@
 import './Footer.scss'
 import { Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
+import React from 'react'
 
 const payments = require(`$assets/images/payments.png`)
 const waze = require(`$assets/images/waze.png`)
 
+const getCurrentURL = (pageURL) => {
+  if (pageURL.includes('home')) return 'home'
+  if (pageURL.includes('Poster')) return 'Poster'
+  if (pageURL.includes('Flyer')) return 'Flyer'
+  if (pageURL.endsWith('he-IL/')) return 'home'
+}
 const Footer = () => {
+  const [page_location, setPageLocation] = React.useState('');
+
+  React.useEffect(() => {
+    const ans = getCurrentURL(window.location.href);
+    setPageLocation(ans);
+  })
+
   return (
     <div className="footer">
       <div className="wrapper">
@@ -27,7 +41,7 @@ const Footer = () => {
             </ul>
           </nav>
         </div>
-        <div className="mobile-work-hours">* בשעות הפעילות</div>
+        {page_location != 'home' && <div className="mobile-work-hours">* בשעות הפעילות</div>}
         <div className="nav-right">
           <span>מוזמנים לבקר</span>
           <p>
