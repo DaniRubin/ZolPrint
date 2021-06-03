@@ -24,43 +24,44 @@
  */
 
 import React, { Component } from 'react'
-import { throttle } from 'throttle-debounce'
-import { UStoreProvider } from '@ustore/core'
 import Profile from './Profile'
 import Cart from "./Cart"
 import './Header.scss'
 import { Router, Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
-import legacyIframeHandler from '$ustoreinternal/services/legacyIframeHandler'
 import { setCookie, isServer } from "$ustoreinternal/services/utils";
-import { getVariableValue } from "$ustoreinternal/services/cssVariables";
 import theme from '$styles/_theme.scss'
-import themeContext from '$ustoreinternal/services/themeContext'
 
 class Header extends Component {
   constructor() {
     super();
-    this.header = React.createRef();		// A reference to the main wrapper element
 
     this.state = {
       drawerOpen: false,						    // Left drawer - opened/closed
-      overlayActive: false,	  			    // The overlay - active or not
-      logoImageUrl: require(`$assets/images/logo.png`),
-      connectCartUrl: '',
-      pageURL: ''
+      pageURL: '',
+      mobile: false
     }
   }
 
   componentDidMount() {
     this.setState({ pageURL: this.getCurrentURL() })
-
-    window.addEventListener('resize', this.onResize);
-    throttle(250, this.onResize);					// Call this function once in 250ms only
     setCookie('_cookieRibbonNotShownYet', 0)
-    const { currentStore } = this.props
-    const { cartUrl } = themeContext.get()
-    const connectCartUrl = (currentStore && currentStore.StoreType === 3 && cartUrl) ? cartUrl : ''
-    if (this.state.connectCartUrl !== connectCartUrl) this.setState({ connectCartUrl })
+    const mobileStatus = window.innerWidth < 420
+    if (mobileStatus != this.state.mobile) {
+      this.setState({ mobile: mobileStatus })
+    }
+    window.addEventListener('resize', () => this.handleResize(this.state.mobile));
+  }
+  handleResize() {
+    if (window.innerWidth >= 420 && this.state.mobile == true)
+      this.setState({ mobile: false })
+    if (window.innerWidth < 420 && this.state.mobile == false) {
+      this.setState({ mobile: true })
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.pageURL != this.getCurrentURL()) this.setState({ pageURL: this.getCurrentURL() })
   }
 
   getCurrentURL() {
@@ -70,53 +71,6 @@ class Header extends Component {
     if (window.location.href.endsWith('he-IL/')) return 'home'
   }
 
-  componentDidUpdate() {
-    if (this.state.pageURL != this.getCurrentURL()) this.setState({ pageURL: this.getCurrentURL() })
-    const { currentStore } = this.props
-    const { cartUrl } = themeContext.get()
-    const connectCartUrl = (currentStore && currentStore.StoreType === 3 && cartUrl) ? cartUrl : ''
-
-    if (this.state.connectCartUrl !== connectCartUrl) this.setState({ connectCartUrl })
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize)
-  }
-
-  // NOTE: this is not supported in SSR
-  setLogoImage = () => {
-    const variableForLogoImg = window.matchMedia(`(min-width: ${theme.lg})`).matches ? '--logo-image' : '--logo-image-mobile'
-    this.setState({ logoImageUrl: getVariableValue(variableForLogoImg, require(`$assets/images/logo.png`), true) })
-  }
-
-  onResize = () => {
-    this.setLogoImage()
-  }
-
-  drawerStateChange(open) {
-    this.setState({ drawerOpen: open })
-    this.setState({ overlayActive: open })
-
-    if (open) {
-      document.body.style.overflow = 'hidden'
-    }
-    else {
-      document.body.style.overflow = 'auto'
-    }
-  }
-
-  burgerClicked() {
-    this.drawerStateChange(true)
-  }
-
-  overlayClicked() {
-    this.drawerStateChange(false)
-  }
-
-  getFlagFromCode(languageCode) {
-    return `${languageCode}.svg`
-  }
-
   render() {
     if (!this.props.customState) {
       return null
@@ -124,15 +78,13 @@ class Header extends Component {
 
     const { customState: { categoriesTree, userOrdersSummary }, currencies, cultures, currentCulture, currentUser, currentCurrency } = this.props
 
-    const variableForLogoImg = isServer() ? '--logo-image' : window.matchMedia(`(min-width: ${theme.lg})`).matches ? '--logo-image' : '--logo-image-mobile'
     const currentLogo = require(`$assets/images/logo.png`)
 
     return (
       <div className='header' >
-        <div className='header-stripe' ref={(ref) => this.header = ref} draweropen={`${this.state.drawerOpen}`}>
+        <div className='header-stripe' draweropen={`${this.state.drawerOpen}`}>
           <div className='wrapper'>
-
-            <div className="logo-wrapper">
+            {!this.state.mobile && <div className="logo-wrapper">
               <Link to={urlGenerator.get({ page: 'home' })}>
                 <a>
                   <div className="logo-container">
@@ -140,8 +92,16 @@ class Header extends Component {
                   </div>
                 </a>
               </Link>
-            </div>
-
+            </div>}
+            {this.state.mobile && <div className="logo-wrapper-mobile">
+              <Link to={urlGenerator.get({ page: 'home' })}>
+                <a>
+                  <div className="logo-container-mobile">
+                    {currentLogo && <img className="logo-mobile" src={currentLogo} alt="logo" />}
+                  </div>
+                </a>
+              </Link>
+            </div>}
             <div className="left-icons">
               <Link to={urlGenerator.get({ page: 'home' })}>
                 <a id="homeLink" className={this.state.pageURL == 'home' ? "link_top active_top" : 'link_top'}>
@@ -165,12 +125,12 @@ class Header extends Component {
 
 
             <div className="right-icons">
-              <Link to={urlGenerator.get({ page: 'Contact' })}>
+              {!this.state.mobile && <Link to={urlGenerator.get({ page: 'Contact' })}>
                 <a id="" className="link_top">
                   צרו קשר</a>
-              </Link>
+              </Link>}
 
-              <div className="separator" />
+              {!this.state.mobile && <div className="separator" />}
 
               {currentUser && <Profile currentUser={currentUser} userOrdersSummary={userOrdersSummary} />}
 

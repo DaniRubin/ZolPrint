@@ -13,7 +13,7 @@
 import { Router } from '$routes'
 import './PromotionItem.scss'
 import React, { Component } from "react"
-import { throttle } from 'throttle-debounce'
+import theme from '$styles/_theme.scss'
 
 const handleBuy = () => {
   console.log("Dani was here!")
@@ -35,17 +35,18 @@ class PromotionItem extends Component {
   }
 
   componentDidMount() {
-    const mobileStatus = window.innerWidth < 440
-    console.log(mobileStatus)
+    console.log(theme.mobile)
+    console.log(theme.mobile)
+    const mobileStatus = window.innerWidth < 420
     if (mobileStatus != this.state.mobile) {
       this.setState({ mobile: mobileStatus })
     }
     window.addEventListener('resize', () => this.handleResize(this.state.mobile));
   }
   handleResize() {
-    if (window.innerWidth >= 440 && this.state.mobile == true)
+    if (window.innerWidth >= 420 && this.state.mobile == true)
       this.setState({ mobile: false })
-    if (window.innerWidth < 440 && this.state.mobile == false) {
+    if (window.innerWidth < 420 && this.state.mobile == false) {
       this.setState({ mobile: true })
     }
   }
