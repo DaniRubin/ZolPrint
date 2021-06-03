@@ -27,6 +27,7 @@ const Footer = () => {
             </ul>
           </nav>
         </div>
+        <div className="mobile-work-hours">* בשעות הפעילות</div>
         <div className="nav-right">
           <span>מוזמנים לבקר</span>
           <p>
@@ -37,10 +38,14 @@ const Footer = () => {
             </p>
         </div>
         <div id="left-payments">
-          <span>* בשעות הפעילות</span><br></br>
-          {/* <span>* בשעות הפעילות</span><br></br> */}
+          <span>* בשעות הפעילות</span><br />
           {payments && <img src={payments} alt="payments" />}
         </div>
+        <center>
+          <div id="payments-mobile">
+            {payments && <img height='25px' src={payments} alt="payments" />}
+          </div>
+        </center>
       </div>
     </div >
   )

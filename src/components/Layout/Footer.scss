@@ -14,17 +14,6 @@
   flex-direction: row;
   justify-content: space-between;
 
-  #left-payments-mobile {
-    position: absolute;
-    left: 2%;
-    color: black;
-    top: -12%;
-    font-size: 13px;
-    line-height: 13px;
-    display: none;
-    font-family: arial;
-  }
-
   .footer-column {
     display: flex;
     flex-flow: column;
@@ -143,16 +132,39 @@
     font-size: 10px !important;
   }
 }
+.mobile-work-hours {
+  display: none;
+}
+#payments-mobile {
+  display: none;
+}
 
 @media (max-width: $mobile) {
   #left-payments {
-    margin-top: -50px !important;
+    margin-top: -70px !important;
     display: block !important;
   }
   .footer {
-    height: 250px !important;
+    height: 220px !important;
   }
   .nav-right {
     margin-bottom: 40px;
+  }
+  .mobile-work-hours {
+    display: block;
+    margin-top: -20px;
+    margin-bottom: -50px !important;
+  }
+  #left-payments {
+    display: none !important;
+  }
+  #payments-mobile {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 25px;
   }
 }
