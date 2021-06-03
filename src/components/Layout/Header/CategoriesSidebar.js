@@ -1,55 +1,52 @@
-/**
- * A menu with drill in showing all categories in the system in tablet/mobile view according to the given categories tree
- *
- * @param {object} categoriesTree - a list of CategoryTreeNodeModel, each element denotes a tree node in the categories tree structure.
- * @param {func} onRedirect - the function to be called when the user clicks on a category that doesn't drill in the menu
- */
-
-import { Component } from "react"
+import React from "react"
 import './CategoriesSidebar.scss'
-import Icon from '$core-components/Icon'
 
-class CategoriesSidebar extends Component {
+const getCurrentURL = (pageURL) => {
+  if (pageURL.includes('home')) return 'home'
+  if (pageURL.includes('Poster')) return 'Poster'
+  if (pageURL.includes('Flyer')) return 'Flyer'
+  if (pageURL.includes('Contact')) return 'Contact'
+  if (pageURL.endsWith('he-IL/')) return 'home'
+}
 
-  constructor(props) {
-    super(props)
+const CategoriesSidebar = (props) => {
+  const [page_location, setPageLocation] = React.useState('');
 
-    this.state = {
-    }
+  React.useEffect(() => {
+    const ans = getCurrentURL(window.location.href);
+    setPageLocation(ans);
+  })
+
+  const cancel = require(`$assets/images/back-drawer.png`)
+  const { onRedirect, onClose } = props
+  if (!onRedirect) {
+    return null
   }
 
-  render() {
-    const { onRedirect, onClose } = this.props
-
-    if (!onRedirect) {
-      return null
-    }
-    const cancel = require(`$assets/images/back-drawer.png`)
-    return (
-      <div className={`categories-sidebar`}>
-        <div className="back-block">
-          <div className="back-icon-container" onClick={onClose}>
-            {cancel && <img src={cancel} alt="cancel drawer" />}
-          </div>
-        </div>
-        <div className='categories-list'>
-          <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'home' })}>
-            <span key="featured-products" className="category-name truncate">דף הבית</span>
-          </div>
-          <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
-            <span key="featured-products" className="category-name truncate">פוסטר</span>
-          </div>
-          <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Flyer' })}>
-            <span key="featured-products" className="category-name truncate">פלייר</span>
-          </div>
-          <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
-            <span key="featured-products" className="category-name truncate">צור קשר</span>
-          </div>
+  return (
+    <div className={`categories-sidebar`}>
+      <div className="back-block">
+        <div className="back-icon-container" onClick={onClose}>
+          {cancel && <img src={cancel} alt="cancel drawer" />}
         </div>
       </div>
-    )
-  }
-
+      <div className='categories-list'>
+        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'home' })}>
+          <span key="featured-products" className={page_location == 'home' ? "category-name active-category" : 'category-name'}>דף הבית</span>
+        </div>
+        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
+          <span key="featured-products" className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
+        </div>
+        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Flyer' })}>
+          <span key="featured-products" className={page_location == 'Flyer' ? "category-name active-category" : 'category-name'}>פלייר</span>
+        </div>
+        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
+          <span key="featured-products" className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
+        </div>
+      </div>
+    </div>
+  )
 }
+
 
 export default CategoriesSidebar
