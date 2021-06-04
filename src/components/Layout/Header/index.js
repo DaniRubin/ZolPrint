@@ -33,6 +33,7 @@ import { Router, Link } from '$routes'
 import urlGenerator from '$ustoreinternal/services/urlGenerator'
 import { setCookie, isServer } from "$ustoreinternal/services/utils";
 import Icon from '$core-components/Icon'
+import { mobileSize } from '../../consts'
 
 class Header extends Component {
   constructor() {
@@ -49,16 +50,16 @@ class Header extends Component {
   componentDidMount() {
     this.setState({ pageURL: this.getCurrentURL() })
     setCookie('_cookieRibbonNotShownYet', 0)
-    const mobileStatus = window.innerWidth < 420
+    const mobileStatus = window.innerWidth < mobileSize
     if (mobileStatus != this.state.mobile) {
       this.setState({ mobile: mobileStatus })
     }
     window.addEventListener('resize', () => this.handleResize(this.state.mobile));
   }
   handleResize() {
-    if (window.innerWidth >= 420 && this.state.mobile == true)
+    if (window.innerWidth >= mobileSize && this.state.mobile == true)
       this.setState({ mobile: false })
-    if (window.innerWidth < 420 && this.state.mobile == false) {
+    if (window.innerWidth < mobileSize && this.state.mobile == false) {
       this.setState({ mobile: true })
     }
   }

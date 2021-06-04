@@ -7,24 +7,19 @@
 
 import './PromotionMain.scss'
 import React from 'react'
+import { mobileSize } from './consts'
 
 const PromotionMain = () => {
   const [mobile, setMobile] = React.useState(false);
 
   React.useEffect(() => {
     function handleResize() {
-      console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
-      if (window.innerWidth >= 420 && mobile == true)
-        setMobile(false)
-      if (window.innerWidth < 420 && mobile == false) {
-        setMobile(true)
-      }
+      if (window.innerWidth >= mobileSize && mobile == true) setMobile(false)
+      if (window.innerWidth < mobileSize && mobile == false) setMobile(true)
     }
     window.addEventListener('resize', handleResize)
-    const mobileStatus = window.innerWidth < 420
-    if (mobileStatus != mobile) {
-      setMobile(mobileStatus)
-    }
+    const mobileStatus = window.innerWidth < mobileSize
+    if (mobileStatus != mobile) setMobile(mobileStatus)
   })
 
   const coin_img = require(`$assets/images/coin.png`)
