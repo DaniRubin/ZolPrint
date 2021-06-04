@@ -21,7 +21,7 @@
   --carousel-height-desktop: 600px;
   --carousel-height-mobile: calc(var(--carousel-height-desktop)*0.75);
   --text-color-carousel:  #000000;
-  --footer-background-color: #000000;
+  --footer-background-color: #0c2b49;
   --footer-text-color:  #ffffff;
   --category-image-height: 180px;
   --image-box-height: 275px;
@@ -29,8 +29,6 @@
   --image-box-background-color: #f1f1f3;
   --image-box-border-width: 0px;
   --image-box-border-color: #d6d6d6;
-  --image-border-width: 1px;
-  --image-border-color: #d6d6d6;
   --button-primary-background-color: #20a8ce;
   --button-primary-border-color: var(--button-primary-background-color);
   --button-primary-text-color:  #ffffff;
