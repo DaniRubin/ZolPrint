@@ -143,3 +143,49 @@
     width: 150px;
   }
 }
+
+// MOBILE
+.main-mobile {
+  font-size: 18px;
+  line-height: 20px;
+}
+.title-area-mobile {
+  padding: 30px;
+  color: white !important;
+  background-image: url("../assets/images/background-mobile.png") !important;
+  height: 300px !important;
+  background-size: 100% 100%;
+}
+.main_page_image_mobile {
+  width: 300px;
+  margin-top: 15px;
+  margin-right: -20px;
+}
+.subtitle-main-mobile {
+  font-weight: 500;
+  font-size: 16px;
+  color: #00133a;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  ul li::before {
+    content: "\2022";
+    color: #edce4f;
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    margin-left: 0px;
+    vertical-align: text-bottom;
+    font-size: 40px;
+    line-height: 20px;
+  }
+  ul {
+    list-style: none;
+  }
+}
+
+@media (max-width: 324px) {
+  .main_page_image_mobile {
+    margin-top: 0px;
+  }
+}

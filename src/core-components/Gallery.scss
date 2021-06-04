@@ -3,7 +3,6 @@
 .gallery {
   margin: 0 auto;
   border-bottom: #c4edfd 27px solid;
-  
 
   .top {
     display: flex;
@@ -11,7 +10,8 @@
     justify-content: space-between;
 
     .main-title {
-      background-image: linear-gradient(to bottom, #00133a, #00133a), linear-gradient(to top, #000000, #ffffff), linear-gradient(to bottom, #ffffff, #ffffff);
+      background-image: linear-gradient(to bottom, #00133a, #00133a), linear-gradient(to top, #000000, #ffffff),
+        linear-gradient(to bottom, #ffffff, #ffffff);
       font-size: 36px;
       font-weight: 500;
       line-height: 0.67;
@@ -19,9 +19,9 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: auto;
-      margin-top:60px;
+      margin-top: 60px;
       &.scrollable-title {
-        font-size: calc(var(--text-size-h4)*1.2);
+        font-size: calc(var(--text-size-h4) * 1.2);
       }
     }
 
@@ -50,10 +50,13 @@
     flex-basis: var(--flex-basis);
     max-width: var(--flex-basis);
   }
-
-  .main {
-    // display: flex;
-    // flex-flow: row wrap;
+  @media (max-width: $mobile) {
+    // flex-basis: var(--flex-basis);
+    .main > * {
+      width: 80%;
+      margin: auto;
+      max-width: 80% !important;
+    }
   }
 
   .bottom > .button-secondary {

@@ -12,21 +12,13 @@
     height: 367px;
     width: 100%;
     background-repeat: no-repeat;
-    background-repeat: no-repeat;
     background-image: url("../assets/images/hero-background.png");
     background-size: 100% 100%;
   }
+}
 
-  @media (max-width: $sm) {
-    .promotion-wrapper {
-      background-color: #0c2b49 !important;
-      background-image: none;
-      height: 320px !important;
-    }
-  }
-  @media (max-width: $mxs) {
-    .promotion-wrapper {
-      height: 320px !important;
-    }
+@media (max-width: $mobile) {
+  .promotion-wrapper {
+    background-image: none !important;
   }
 }

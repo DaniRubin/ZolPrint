@@ -18,8 +18,8 @@ class Flyer extends Component {
   }
 
   componentDidMount() {
-    $("#left-payments span").html("* בשעות הפעילות");
-    $("#left-payments-mobile").html("* בשעות הפעילות");
+    // $("#left-payments span").html("* בשעות הפעילות");
+    // $("#left-payments-mobile").html("* בשעות הפעילות");
   }
 
   render() {
