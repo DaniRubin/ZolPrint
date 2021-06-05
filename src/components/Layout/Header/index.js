@@ -105,7 +105,6 @@ class Header extends Component {
     }
 
     const { customState: { categoriesTree, userOrdersSummary }, currencies, cultures, currentCulture, currentUser, currentCurrency } = this.props
-
     const currentLogo = require(`$assets/images/logo.png`)
 
     return (

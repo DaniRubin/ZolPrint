@@ -52,7 +52,8 @@ const Footer = () => {
             </p>
         </div>
         <div id="left-payments">
-          <span>* בשעות הפעילות</span><br />
+          {page_location != 'home' && <span>* בשעות הפעילות</span>}
+          <br />
           {payments && <img src={payments} alt="payments" />}
         </div>
         <center>
