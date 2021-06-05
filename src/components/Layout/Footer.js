@@ -18,6 +18,7 @@ const Footer = () => {
   React.useEffect(() => {
     const ans = getCurrentURL(window.location.href);
     setPageLocation(ans);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   })
 
   return (
