@@ -56,7 +56,8 @@ class Flyer extends Component {
           </div>
         </div>
         <HowTo
-          keyWord={'פליירים'}
+          amountWord={'פליירים'}
+          uploadWord={'בגודל A5'}
         />
       </Layout>
     )

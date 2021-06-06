@@ -20,8 +20,8 @@ const howTo = (props) => {
               </div>
               <span>מעלים קובץ</span>
               <p>
-                מעלים PDF/JPG בגודל 50X70
-                 </p>
+                מעלים PDF/JPG  {props.uploadWord}
+              </p>
             </div>
             {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}
             <div className="how-works-item">
@@ -30,7 +30,7 @@ const howTo = (props) => {
               </div>
               <span>בוחרים כמות</span>
               <p>
-                בוחרים כמה {props.keyWord} רוצים
+                בוחרים כמה {props.amountWord} רוצים
                  </p>
             </div>
             {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}

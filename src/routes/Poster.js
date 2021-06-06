@@ -59,7 +59,8 @@ class Poster extends Component {
           </div>
         </div>
         <HowTo
-          keyWord={'פוסטרים'}
+          amountWord={'פוסטרים'}
+          uploadWord={'בגודל 50X70'}
         />
       </Layout>
     )
