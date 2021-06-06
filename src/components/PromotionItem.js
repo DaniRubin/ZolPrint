@@ -28,6 +28,13 @@ const PromotionItem = (props) => {
       if (window.innerWidth >= mobileSize && mobile == true) setMobile(false)
       if (window.innerWidth < mobileSize && mobile == false) setMobile(true)
     }
+    console.log('initialization!')
+    import('react-facebook-pixel')
+      .then(module => module.default)
+      .then(ReactPixel => {
+        ReactPixel.init('497457848043067')
+        ReactPixel.pageView()
+      })
     window.addEventListener('resize', handleResize)
     const mobileStatus = window.innerWidth < mobileSize
     if (mobileStatus != mobile) setMobile(mobileStatus)
@@ -44,7 +51,7 @@ const PromotionItem = (props) => {
       <div className="main-promotion-item">
         <div className="title-area-item">
           <div className="banner_title_item">
-            {title}
+            <div className="banner_title_text">{title}</div>
             <span>{price}<b className="priceType">{priceType}</b><br /><strong>כולל מע"מ</strong></span>
           </div>
           <div className="subtitle text">

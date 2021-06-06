@@ -31,17 +31,17 @@ const CategoriesSidebar = (props) => {
         </div>
       </div>
       <div className='categories-list'>
-        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'home' })}>
-          <span key="featured-products" className={page_location == 'home' ? "category-name active-category" : 'category-name'}>דף הבית</span>
+        <div className='category-title' onClick={() => onRedirect({ page: 'home' })}>
+          <span className={page_location == 'home' ? "category-name active-category" : 'category-name'}>דף הבית</span>
         </div>
-        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
-          <span key="featured-products" className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
+        <div className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
+          <span className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
         </div>
-        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Flyer' })}>
-          <span key="featured-products" className={page_location == 'Flyer' ? "category-name active-category" : 'category-name'}>פלייר</span>
+        <div className='category-title' onClick={() => onRedirect({ page: 'Flyer' })}>
+          <span className={page_location == 'Flyer' ? "category-name active-category" : 'category-name'}>פלייר</span>
         </div>
-        <div key="featured-products" className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
-          <span key="featured-products" className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
+        <div className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
+          <span className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
         </div>
       </div>
     </div>

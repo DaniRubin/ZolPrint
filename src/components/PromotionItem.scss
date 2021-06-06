@@ -1,5 +1,9 @@
 @import "_theme.scss";
-
+.banner_title_text {
+  display: inline-block;
+  padding-right: 20px;
+  padding-left: 20px;
+}
 .priceType {
   font-size: 25px;
 }
@@ -60,7 +64,7 @@
   }
 
   .banner_title_item {
-    width: 529px;
+    // width: 529px;
     font-size: 55px;
     height: 75px;
     letter-spacing: -2.2px;
