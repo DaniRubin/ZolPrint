@@ -100,16 +100,16 @@
 // MOBILE
 @media (max-width: $mobile) {
   .how-works {
-    margin-top: 70px;
+    margin-top: 170px;
     border: none !important;
+    background-color: rgb(196, 237, 253);
   }
   .how-works-title {
     font-size: 27px;
-    margin: 15px auto;
+    padding-top: 30px;
   }
   .how-works-items {
-    background-color: rgba(196, 237, 253, 0.5);
-    // padding: 20px;
+    // background-color: rgba(196, 237, 253, 0.5);
     margin-bottom: 0px !important;
     padding-top: 30px;
   }
@@ -119,5 +119,8 @@
   .next-step {
     display: block !important;
     margin: 10px 20px 16px 0px;
+  }
+  .how-works .wrapper {
+    padding-top: 0px !important;
   }
 }

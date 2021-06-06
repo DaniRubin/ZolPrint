@@ -145,7 +145,7 @@
     display: block !important;
   }
   .footer {
-    height: 230px !important;
+    height: 240px !important;
   }
   .nav-right {
     margin-bottom: 40px;
@@ -166,5 +166,12 @@
     margin-left: auto;
     margin-right: auto;
     bottom: 15px;
+
+    span {
+      float: left;
+      margin-left: 39px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
   }
 }
