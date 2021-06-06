@@ -162,11 +162,11 @@
   margin-right: -20px;
 }
 .subtitle-main-mobile {
-  font-weight: 500;
-  font-size: 16px;
+  margin-top: 40px;
+  font-size: 18px !important;
+  font-weight: bold;
+  line-height: 40px;
   color: #00133a;
-  margin-top: 20px;
-  margin-bottom: 20px;
 
   ul li::before {
     content: "\2022";
@@ -186,6 +186,6 @@
 
 @media (max-width: 324px) {
   .main_page_image_mobile {
-    margin-top: 0px;
+    margin-top: -5px;
   }
 }

@@ -29,7 +29,7 @@ const PromotionMain = () => {
     <div className="main">
       <div className="title-area">
         <div className="main-text">
-          חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה
+          חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה.
             <br />
             התחשבנו רק במה שחשוב - במחיר ובאיכות. נסו אותנו.
           <div className='genral-explanation'>
@@ -57,7 +57,7 @@ const PromotionMain = () => {
       <div className="main-mobile">
         <div className="title-area-mobile">
           <div className="main-text-mobile">
-            חתכנו את השומן, הגדרנו מראש את המכונה ויצרנו אוטומציה אחת מלאה.
+            חתכנו את השומן, הגדרנו מראש את<br /> המכונה ויצרנו אוטומציה אחת מלאה.
             <br />
             <strong>התחשבנו רק במה שחשוב -<br /> במחיר ובאיכות. נסו אותנו.</strong>
           </div>

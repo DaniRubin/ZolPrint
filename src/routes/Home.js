@@ -86,7 +86,6 @@ class Home extends Component {
           <div className="featured-products-wrapper">
             <center>
               <Gallery title='המוצרים שלנו'
-                seeAllUrl={urlGenerator.get({ page: 'category', id: homeFeaturedCategory.FriendlyID, name: decodeStringForURL(homeFeaturedCategory.Name) })}
                 gridRows="2">
                 {
                   homeFeaturedProducts.map((model) => {
