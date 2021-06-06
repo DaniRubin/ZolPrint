@@ -29,7 +29,7 @@ const getPriceOfProduct = (name) => {
 
 const ProductItem = (props) => {
 
-  let { model, url } = props
+  let { model, url, totalPriceSpace } = props
 
   if (!model) {
     return null
@@ -38,17 +38,19 @@ const ProductItem = (props) => {
   const imageUrl = (model && model.ImageUrl) ? model.ImageUrl : require(`$assets/images/default.png`)
   const productNameAndCatalog = model.CatalogNumber && model.CatalogNumber.trim().length > 0 ? `${model.Name} / ${model.CatalogNumber}` : model.Name
   const priceAmount = getPriceOfProduct(model.Name)
-
+  console.log(totalPriceSpace, model.Name)
   return (
     <div className={`product-item`}>
       <div className="image-wrapper" onClick={() => onClick(url)}>
         <ImageLoader className="image" src={imageUrl} />
 
         <div className="price-circle">
-          <span className="totalPrice">{priceAmount[0]}</span>&nbsp;
+          <div class="price-circle-price">
+            <span className={totalPriceSpace ? "totalPrice totalPriceSpace" : "totalPrice"}>{priceAmount[0]}</span>&nbsp;
             <span className="priceType">{priceAmount[1]}</span>
-          <br />
-          <span className="maam">כולל מע"מ</span>
+          </div>
+          {/* <br /> */}
+          <div className="maam">כולל מע"מ</div>
         </div>
       </div>
 

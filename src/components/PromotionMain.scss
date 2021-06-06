@@ -32,9 +32,11 @@
   z-index: 1;
 }
 .main_page_image {
-  position: absolute;
-  top: 100px;
-  left: 50px;
+  // position: absolute;
+  // top: 100px;
+  // left: 50px;
+  margin-top: -270px;
+  margin-left: -750px;
 }
 
 @media (max-width: 1260px) {

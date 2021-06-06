@@ -99,6 +99,7 @@ class Home extends Component {
                         key={model.ID}
                         model={model}
                         url={urlGenerator.get({ page: this.getNextPage(model.Name) })}
+                        totalPriceSpace={model.Name == 'פלייר A5'}
                       />
                   })
                 }

@@ -156,7 +156,7 @@ class Category extends Component {
                           :
                           urlGenerator.get({ page: 'product', id: model.FriendlyID, name: decodeStringForURL(model.Name) })
                         }
-
+                        totalPriceSpace={model.Name == 'פלייר A5'}
                       />
                   })
                 }

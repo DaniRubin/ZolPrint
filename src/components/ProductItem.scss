@@ -1,5 +1,10 @@
 @import "_theme.scss";
 
+.price-circle-price {
+  display: block;
+  margin-top: 5px;
+}
+
 .product-item {
   font-size: var(--text-size-regular);
   color: var(--text-color-ultra-dark);
@@ -27,6 +32,8 @@
   }
 
   .price-circle {
+    height: 80px;
+    width: 80px;
     background-color: #00a8ee;
     padding: 13px;
     border-radius: 50%;
@@ -36,6 +43,9 @@
     margin-top: -250px;
     margin-right: 8px;
 
+    .totalPriceSpace {
+      margin-right: -3px;
+    }
     .totalPrice {
       line-height: 1;
       font-size: 28px;
@@ -47,7 +57,8 @@
     }
     .maam {
       font-weight: bold;
-      font-size: 13px;
+      font-size: 12px;
+      margin-top: -5px;
     }
   }
 
@@ -252,6 +263,8 @@
 
 @media (max-width: $lg) {
   .price-circle {
+    height: auto;
+    width: auto;
     margin-top: -220px !important;
   }
 }
@@ -259,52 +272,57 @@
 @media (max-width: $mlg) {
   .price-circle {
     margin-top: -220px !important;
-    padding: 11px !important;
+    height: 70px !important;
+    width: 75px !important;
+    // padding: 11px !important;
+  }
+  .price-circle-price {
+    margin-top: 0px !important;
   }
   .totalPrice {
-    font-size: 26px !important;
+    font-size: 28px !important;
     font-weight: bold;
   }
   .priceType {
-    font-size: 21px !important;
+    font-size: 22px !important;
     font-weight: bold;
   }
   .maam {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 10px !important;
   }
 }
-@media (max-width: $sm) {
-  .price-circle {
-    margin-top: -135px !important;
-    padding: 8px !important;
-  }
-  .totalPrice {
-    font-size: 20px !important;
-  }
-  .priceType {
-    font-size: 16px !important;
-  }
-  .maam {
-    font-size: 9px !important;
-  }
-}
+// @media (max-width: $sm) {
+//   .price-circle {
+//     margin-top: -135px !important;
+//     padding: 8px !important;
+//   }
+//   .totalPrice {
+//     font-size: 20px !important;
+//   }
+//   .priceType {
+//     font-size: 16px !important;
+//   }
+//   .maam {
+//     font-size: 9px !important;
+//   }
+// }
 
-@media (max-width: $xs) {
-  // .price-circle {
-  //   margin-top: -95px !important;
-  //   padding: 8px !important;
-  // }
-  .totalPrice {
-    font-size: 16px !important;
-  }
-  .priceType {
-    font-size: 12px !important;
-  }
-  .maam {
-    font-size: 8px !important;
-  }
-}
+// @media (max-width: $xs) {
+//   // .price-circle {
+//   //   margin-top: -95px !important;
+//   //   padding: 8px !important;
+//   // }
+//   .totalPrice {
+//     font-size: 16px !important;
+//   }
+//   .priceType {
+//     font-size: 12px !important;
+//   }
+//   .maam {
+//     font-size: 8px !important;
+//   }
+// }
 
 @media (max-width: $mobile) {
   .price-circle {
@@ -313,5 +331,8 @@
   }
   .image-wrapper .image {
     height: 225px !important;
+  }
+  .price-circle-price {
+    margin-top: 5px !important;
   }
 }
