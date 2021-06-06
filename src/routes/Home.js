@@ -15,7 +15,6 @@ import './Home.scss'
 import { Component } from 'react'
 import theme from '$styles/_theme.scss'
 import { throttle } from 'throttle-debounce'
-import { decodeStringForURL } from '$ustoreinternal/services/utils'
 
 class Home extends Component {
 
@@ -55,14 +54,26 @@ class Home extends Component {
     this.setState({ isMobile: document.body.clientWidth < parseInt(theme.md.replace('px', '')) })
   }
 
-  getNextPage(name) {
+  getTotalProductData(name) {
     switch (name) {
       case "פוסטר 50X70":
-        return 'Poster'
+        return {
+          routeName: 'Poster',
+          space: false,
+          image: require(`$assets/images/poster-main.png`)
+        }
       case "פלייר A5":
-        return 'Flyer'
+        return {
+          routeName: 'Flyer',
+          space: true,
+          image: require(`$assets/images/flyer-main.png`)
+        }
       default:
-        return 'home'
+        return {
+          routeName: 'home',
+          space: false,
+          image: require(`$assets/images/default.png`)
+        }
     }
   }
 
@@ -98,8 +109,9 @@ class Home extends Component {
                       <ProductItem
                         key={model.ID}
                         model={model}
-                        url={urlGenerator.get({ page: this.getNextPage(model.Name) })}
-                        totalPriceSpace={model.Name == 'פלייר A5'}
+                        url={urlGenerator.get({ page: this.getTotalProductData(model.Name).routeName })}
+                        totalPriceSpace={this.getTotalProductData(model.Name).space}
+                        imageToDisplay={this.getTotalProductData(model.Name).image}
                       />
                   })
                 }

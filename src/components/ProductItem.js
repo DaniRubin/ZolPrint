@@ -29,7 +29,7 @@ const getPriceOfProduct = (name) => {
 
 const ProductItem = (props) => {
 
-  let { model, url, totalPriceSpace } = props
+  let { model, url, totalPriceSpace, imageToDisplay } = props
 
   if (!model) {
     return null
@@ -42,7 +42,7 @@ const ProductItem = (props) => {
   return (
     <div className={`product-item`}>
       <div className="image-wrapper" onClick={() => onClick(url)}>
-        <ImageLoader className="image" src={imageUrl} />
+        <ImageLoader className="image" src={imageToDisplay} />
 
         <div className="price-circle">
           <div class="price-circle-price">
