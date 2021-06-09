@@ -3,6 +3,11 @@
 .gallery {
   margin: 0 auto;
   border-bottom: #c4edfd 27px solid;
+  @media (max-width: $mobile) {
+    .top {
+      margin-top: 100px !important;
+    }
+  }
 
   .top {
     display: flex;
@@ -19,7 +24,7 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: auto;
-      margin-top: 140px;
+      margin-top: 50px;
       &.scrollable-title {
         font-size: calc(var(--text-size-h4) * 1.2);
       }

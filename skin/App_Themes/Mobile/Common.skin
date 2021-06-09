@@ -13,7 +13,7 @@ There are two options for Telerik controls.
 2) Use Embedded Skins. Edit "EnableEmbeddedSkins" property to have value "true", edit "Skin" property to have one of the values below.
   Black, BlackMetroTouch, Default, Glow, Metro, MetroTouch, Office2007, Office2010Black, Office2010Blue, Office2010Silver,Outlook,Silk,Telerik,vista,Web20,WebBlue,Windows7
 --%>
-<rad:RadGrid SkinID="RadGrid_SkinID" EnableEmbeddedSkins="false" Skin="Default" runat="server" ImagesPath="/uStore/Images/AquaBlue/RadSkins/MetroTouch/Grid/" />
+<rad:RadGrid SkinID="RadGrid_SkinID" EnableEmbeddedSkins="false" Skin="Default" runat="server" ImagesPath="/uStore/Images/Zolprint/RadSkins/MetroTouch/Grid/" />
 <rad:RadTreeView SkinID="RadTreeView_SkinID" EnableEmbeddedSkins="false" Skin="MetroTouch" runat="server" />
 <rad:RadSpell SkinID="RadSpell_SkinID" EnableEmbeddedSkins="true" Skin="MetroTouch" runat="server" />
 <rad:RadCalendar SkinID="RadCalendar_SkinID" EnableEmbeddedSkins="false" Skin="MetroTouch" runat="server"   />

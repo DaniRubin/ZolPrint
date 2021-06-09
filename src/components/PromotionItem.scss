@@ -226,19 +226,24 @@
 
 .banner_title_item_mobile {
   align-self: center !important;
-  color: #00133a;
+  color: white;
   text-align: center;
   margin-left: 10px;
   font-weight: bolder;
   margin-top: 20px;
   font-size: 35px;
   line-height: 51px;
+  height: 51px;
+  padding-right: 5px;
+  background-color: #07c8f5;
+  border-radius: 5px;
 }
 .priceBubble {
-  background-color: #c5ecfb;
+  background-color: #2aa1d0;
   width: 70px;
   height: 50px;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   margin-right: 8px;
   font-weight: bold;
   display: inline-block;
