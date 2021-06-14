@@ -41,7 +41,8 @@ const PromotionItem = (props) => {
   })
 
 
-  const { image, title, subTitle, price, priceType, url } = props;
+  let { image, title, subTitle, price, priceType, url } = props;
+
   const banner_img_item = image
   const order_now_arrow = require(`$assets/images/order-now-arrow.png`)
 

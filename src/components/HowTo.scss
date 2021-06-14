@@ -100,9 +100,9 @@
 // MOBILE
 @media (max-width: $mobile) {
   .how-works {
-    margin-top: 170px;
+    margin-top: 240px;
     border: none !important;
-    background-color: rgb(196, 237, 253);
+    background-color: rgba(196, 237, 253, 0.5);
   }
   .how-works-title {
     font-size: 27px;
