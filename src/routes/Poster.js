@@ -60,7 +60,7 @@ class Poster extends Component {
         </div>
         <HowTo
           amountWord={'פוסטרים'}
-          uploadWord={'בגודל 50X70'}
+          uploadWord={'מעלים PDF/JPG בגודל 50X70'}
         />
       </Layout>
     )

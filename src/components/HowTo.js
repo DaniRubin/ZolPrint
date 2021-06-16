@@ -1,6 +1,7 @@
 import './HowTo.scss'
 
 const howTo = (props) => {
+  const { uploadWord, amountWord } = props;
   const upload_icon = require(`$assets/images/upload.png`)
   const amount_icon = require(`$assets/images/amount.png`)
   const delivery_icon = require(`$assets/images/delivery.png`)
@@ -20,7 +21,7 @@ const howTo = (props) => {
               </div>
               <span>מעלים קובץ</span>
               <p>
-                מעלים PDF/JPG  {props.uploadWord}
+                {uploadWord}
               </p>
             </div>
             {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}
@@ -30,7 +31,7 @@ const howTo = (props) => {
               </div>
               <span>בוחרים כמות</span>
               <p>
-                בוחרים כמה {props.amountWord} רוצים
+                בוחרים כמה {amountWord} רוצים
                  </p>
             </div>
             {vector_icon && <img src={vector_icon} className="next-step" alt="Next step" />}
