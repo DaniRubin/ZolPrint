@@ -11,7 +11,9 @@ const getCurrentURL = (pageURL) => {
   if (pageURL.includes('Poster')) return 'Poster'
   if (pageURL.includes('Flyer')) return 'Flyer'
   if (pageURL.endsWith('he-IL/')) return 'home'
+  return 'else'
 }
+
 const Footer = () => {
   const [page_location, setPageLocation] = React.useState('');
 
@@ -55,13 +57,13 @@ const Footer = () => {
             </p>
         </div>
         <div id="left-payments">
-          {page_location != 'home' && <span>* בשעות הפעילות</span>}
+          {(page_location == 'Poster' || page_location == 'Flyer') && <span>* בשעות הפעילות</span>}
           <br />
           {payments && <img src={payments} alt="payments" />}
         </div>
         <center>
           <div id="payments-mobile">
-            {page_location != 'home' && <span>* בשעות הפעילות</span>}
+            {(page_location == 'Poster' || page_location == 'Flyer') && <span>* בשעות הפעילות</span>}
             <br />
             <br />
             {payments && <img height='25px' src={payments} alt="payments" />}
