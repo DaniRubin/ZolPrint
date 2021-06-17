@@ -64,7 +64,7 @@ class Home extends Component {
         }
       case "פלייר A5":
         return {
-          routeName: 'Flyer',
+          routeName: 'FlyerA5',
           space: true,
           image: require(`$assets/images/flyer-main.png`)
         }

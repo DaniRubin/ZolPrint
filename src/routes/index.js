@@ -31,7 +31,7 @@ import Policy from './Policy'
 import Privacy from './Privacy'
 import Contact from './Contact'
 import Poster from './Poster'
-import Flyer from './Flyer'
+import FlyerA5 from './FlyerA5'
 
 export default {
   Home,
@@ -67,5 +67,5 @@ export default {
   Privacy,
   Contact,
   Poster,
-  Flyer
+  FlyerA5
 }

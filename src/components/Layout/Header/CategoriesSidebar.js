@@ -4,7 +4,7 @@ import './CategoriesSidebar.scss'
 const getCurrentURL = (pageURL) => {
   if (pageURL.includes('home')) return 'home'
   if (pageURL.includes('Poster')) return 'Poster'
-  if (pageURL.includes('Flyer')) return 'Flyer'
+  if (pageURL.includes('FlyerA5')) return 'FlyerA5'
   if (pageURL.includes('Contact')) return 'Contact'
   if (pageURL.endsWith('he-IL/')) return 'home'
 }
@@ -37,8 +37,8 @@ const CategoriesSidebar = (props) => {
         <div className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
           <span className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
         </div>
-        <div className='category-title' onClick={() => onRedirect({ page: 'Flyer' })}>
-          <span className={page_location == 'Flyer' ? "category-name active-category" : 'category-name'}>פלייר</span>
+        <div className='category-title' onClick={() => onRedirect({ page: 'FlyerA5' })}>
+          <span className={page_location == 'FlyerA5' ? "category-name active-category" : 'category-name'}>פלייר</span>
         </div>
         <div className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
           <span className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
