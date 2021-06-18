@@ -437,10 +437,10 @@ class Contact extends Component {
             <span id="titleForm">דברו איתנו</span>
 יש לכם שאלה? צריכים עזרה? אנחנו עונים מהר!
 <form id="contact" onSubmit={this.handleSubmit.bind(this)} method="POST">
-              <div class="mid-input"><label>שם פרטי <span class="must">*</span></label><input type="text" name="fname" className={this.state.errors[0] ? "form-input-fail" : "form-input"} value={this.state.form.fname} onChange={this.onFnameChange.bind(this)} onFocus={this.handleFnameFocus}></input></div>
-              <div class="mid-input left-mid-input"><label>שם משפחה <span class="must">*</span></label><input type="text" name="lname" className={this.state.errors[1] ? "form-input-fail" : "form-input"} value={this.state.form.lname} onChange={this.onLnameChange.bind(this)} onFocus={this.handleLnameFocus}></input></div>
-              <div class="mid-input"><label>דואר אלקטרוני <span class="must">*</span></label><input type="text" name="mail" id="email" value={this.state.form.mail} className={this.state.errors[2] ? "form-input-fail" : "form-input"} onChange={this.onEmailChange.bind(this)} onFocus={this.handleMailFocus}></input></div>
-              <div class="mid-input left-mid-input"><label>טלפון נייד <span class="must">*</span></label><input type="text" name="phone" id="mobphone" value={this.state.form.phone} className={this.state.errors[3] ? "form-input-fail" : "form-input"} onChange={this.onMobileChange.bind(this)} onFocus={this.handleMobileFocus}></input></div>
+              <div class="mid-input"><input placeholder={'שם פרטי'} type="text" name="fname" className={this.state.errors[0] ? "form-input-fail" : "form-input"} value={this.state.form.fname} onChange={this.onFnameChange.bind(this)} onFocus={this.handleFnameFocus}></input></div>
+              <div class="mid-input left-mid-input"><input placeholder={'שם משפחה'} type="text" name="lname" className={this.state.errors[1] ? "form-input-fail" : "form-input"} value={this.state.form.lname} onChange={this.onLnameChange.bind(this)} onFocus={this.handleLnameFocus}></input></div>
+              <div class="mid-input"><input placeholder={'דואר אלקטרוני'} type="text" name="mail" id="email" value={this.state.form.mail} className={this.state.errors[2] ? "form-input-fail" : "form-input"} onChange={this.onEmailChange.bind(this)} onFocus={this.handleMailFocus}></input></div>
+              <div class="mid-input left-mid-input"><input placeholder={'טלפון נייד'} type="text" name="phone" id="mobphone" value={this.state.form.phone} className={this.state.errors[3] ? "form-input-fail" : "form-input"} onChange={this.onMobileChange.bind(this)} onFocus={this.handleMobileFocus}></input></div>
 
               <div class="full-width-input"><label>נושא</label><select name="subject" value={this.state.form.subject} onChange={this.onSubjectChange.bind(this)}>
                 <option>פנייה כללית</option>
