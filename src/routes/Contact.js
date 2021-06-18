@@ -30,8 +30,9 @@ class Contact extends Component {
       errors: [false, false, false, false],
       isMobile: false,
       promotionItemButtonUrl: '',
+      MutexLocked: false,
       form: {
-        message: 'תוכן הפנייה',
+        message: '',
         fname: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.FirstName != null ? UStoreProvider.state.get().currentUser.FirstName : "",
         lname: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.LastName != null ? UStoreProvider.state.get().currentUser.LastName : "",
         phone: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.MobileNumber != null ? UStoreProvider.state.get().currentUser.MobileNumber : "",
@@ -94,9 +95,7 @@ class Contact extends Component {
       }
     });
 
-    //  this.setState({...this.state.form, fname:  '', lname: '', phone: '', mail: '', message: 'תוכן הפנייה', subject: 'פנייה כללית'})
   }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -127,7 +126,12 @@ class Contact extends Component {
       }
 
     }
+    if (this.state.MutexLocked) {
+      console.log("Cannot send same form twice?")
+      return
+    }
 
+    this.setState({ MutexLocked: true });
     var flag = true;
     if (this.state.form.fname != "") {
       if (this.state.form.fname.length < 3) {
@@ -179,13 +183,11 @@ class Contact extends Component {
 
 
     if (this.state.form.phone != "") {
-      //if(this.state.form.phone.length > 0) {
       if (!validatePhone(this.state.form.phone)) {
         this.state.errors[3] = true;
         this.forceUpdate()
         flag = false;
       }
-      //}
     }
     else {
       this.state.errors[3] = true;
@@ -208,21 +210,24 @@ class Contact extends Component {
       }).then(
         (response) => (response.json())
       ).then((response) => {
-
         if (response.status == "new") {
           this.setState({ validateMsg: "הפנייה נשלחה בהצלחה" });
           this.resetForm()
+          this.setState({ MutexLocked: false });
         } else {
           this.setState({ validateMsg: "שגיאה בשליחת טופס לשרת" });
+          this.setState({ MutexLocked: false });
         }
       })
     }
     else {
       console.log("nosend");
+      this.setState({ MutexLocked: false });
+
     }
   }
+
   onFnameChange(event) {
-    // this.setState({...this.state.form, fname: event.target.value})
     this.setState({
       form: {
         ...this.state.form,
@@ -232,7 +237,6 @@ class Contact extends Component {
   }
 
   onLnameChange(event) {
-    // this.setState({...this.state.form, lname: event.target.value})
     this.setState({
       form: {
         ...this.state.form,
@@ -287,76 +291,6 @@ class Contact extends Component {
   }
 
   componentDidMount() {
-    //hotjar.initialize(2123088, 6);
-
-    /*
-    <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
-</script>
-
-    
-    const fname = UStoreProvider.state.get().currentUser.FirstName;
-    const lname = UStoreProvider.state.get().currentUser.LastName;  
-    const email = UStoreProvider.state.get().currentUser.Email;     
-    const phone = UStoreProvider.state.get().currentUser.MobileNumber;      
-    //const getAllParams = UStoreProvider.state.get().currentUser;
-   // console.log("this is::"+Object.keys(getAllParams));
-    $('#cname').val(fname+" "+lname);
-    $('#mail').val(email);
-     emailjs.init("user_ZFrjiufExQY7p1G8fzuik");
-
-     var templateParams = {
-        name: $('#cname').val(),
-        mail: $('#mail').val(),
-        subject: $('#subject').val(),
-        message: $('#message').val()
-    };
-    $('#send').on("click", function (){
-        emailjs.send('service_ra1pbrm', 'template_2zp5xzi', templateParams)
-        .then(function(response) {
-           console.log('SUCCESS!', response.status, response.text);
-        }, function(error) {
-           console.log('FAILED...', error);
-        });
-    });
-    */
-    /*
-    const fname = UStoreProvider.state.get().currentUser.FirstName;
-    const lname = UStoreProvider.state.get().currentUser.LastName;  
-    const email = UStoreProvider.state.get().currentUser.Email;     
-    const phone = UStoreProvider.state.get().currentUser.MobileNumber;      
-    //const getAllParams = UStoreProvider.state.get().currentUser;
-    */
-    // console.log("this is::"+Object.keys(getAllParams));
-
-    /*
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-
-    var form = $(this);
-    var url = form.attr('action');
-    
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: form.serialize(), // serializes the form's elements.
-           success: function(data)
-           {
-               alert(data); // show response from the php script.
-           }
-         });
-
-});
-*/
-    /*
-    if(this.state.fname=="Anonymous") {
-        this.setState({...this.state.form, fname: ""});
-        this.setState({...this.state.form, lname: ""});
-    }
-    
-    if(this.state.mail.includes("uStore")) {
-      this.setState({...this.state.form, mail: ""});
-    }
-    */
     if (this.state.form.fname == "Anonymous" && this.state.form.mail.includes("uStore")) {
       this.setState({
         form: {
@@ -369,9 +303,6 @@ class Contact extends Component {
     }
 
     this.forceUpdate()
-
-
-
   }
 
   componentWillUnmount() {
@@ -423,11 +354,11 @@ class Contact extends Component {
               <li id="last-info"><span>{time && <img src={time} alt="שעות פעילות" />} </span><p>א' - ה' 18:00 - 09:00<br></br>ו' וערבי חג 14:00 - 09:00</p></li>
               <li>{geo && <img src={geo} alt="מיקום" />}הסיבים 43 פתח תקווה</li>
             </ul>
-            <div class="mapouter">
-              <div class="gmap_canvas">
+            <div className="mapouter">
+              <div className="gmap_canvas">
                 <iframe width="100%" height="215" id="gmap_canvas"
                   src="https://maps.google.com/maps?q=%D7%94%D7%A1%D7%99%D7%91%D7%99%D7%9D%2043%20%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                  frameborder="0" scrolling="no" marginHeight="0" marginWidth="0">
                 </iframe>
               </div>
             </div>
@@ -437,20 +368,20 @@ class Contact extends Component {
             <span id="titleForm">דברו איתנו</span>
 יש לכם שאלה? צריכים עזרה? אנחנו עונים מהר!
 <form id="contact" onSubmit={this.handleSubmit.bind(this)} method="POST">
-              <div class="mid-input"><input placeholder={'שם פרטי'} type="text" name="fname" className={this.state.errors[0] ? "form-input-fail" : "form-input"} value={this.state.form.fname} onChange={this.onFnameChange.bind(this)} onFocus={this.handleFnameFocus}></input></div>
-              <div class="mid-input left-mid-input"><input placeholder={'שם משפחה'} type="text" name="lname" className={this.state.errors[1] ? "form-input-fail" : "form-input"} value={this.state.form.lname} onChange={this.onLnameChange.bind(this)} onFocus={this.handleLnameFocus}></input></div>
-              <div class="mid-input"><input placeholder={'דואר אלקטרוני'} type="text" name="mail" id="email" value={this.state.form.mail} className={this.state.errors[2] ? "form-input-fail" : "form-input"} onChange={this.onEmailChange.bind(this)} onFocus={this.handleMailFocus}></input></div>
-              <div class="mid-input left-mid-input"><input placeholder={'טלפון נייד'} type="text" name="phone" id="mobphone" value={this.state.form.phone} className={this.state.errors[3] ? "form-input-fail" : "form-input"} onChange={this.onMobileChange.bind(this)} onFocus={this.handleMobileFocus}></input></div>
+              <div className="mid-input"><input placeholder={'שם פרטי'} type="text" name="fname" className={this.state.errors[0] ? "form-input-fail" : "form-input"} value={this.state.form.fname} onChange={this.onFnameChange.bind(this)} onFocus={this.handleFnameFocus}></input></div>
+              <div className="mid-input left-mid-input"><input placeholder={'שם משפחה'} type="text" name="lname" className={this.state.errors[1] ? "form-input-fail" : "form-input"} value={this.state.form.lname} onChange={this.onLnameChange.bind(this)} onFocus={this.handleLnameFocus}></input></div>
+              <div className="mid-input"><input placeholder={'דואר אלקטרוני'} type="text" name="mail" id="email" value={this.state.form.mail} className={this.state.errors[2] ? "form-input-fail" : "form-input"} onChange={this.onEmailChange.bind(this)} onFocus={this.handleMailFocus}></input></div>
+              <div className="mid-input left-mid-input"><input placeholder={'טלפון נייד'} type="text" name="phone" id="mobphone" value={this.state.form.phone} className={this.state.errors[3] ? "form-input-fail" : "form-input"} onChange={this.onMobileChange.bind(this)} onFocus={this.handleMobileFocus}></input></div>
 
-              <div class="full-width-input"><label>נושא</label><select name="subject" value={this.state.form.subject} onChange={this.onSubjectChange.bind(this)}>
+              <div className="full-width-input"><label>נושא</label><select name="subject" value={this.state.form.subject} onChange={this.onSubjectChange.bind(this)}>
                 <option>פנייה כללית</option>
                 <option>דיווח על בעיה בהזמנה</option>
                 <option>תמיכה טכנית</option>
                 <option>הצעת ייעול</option>
               </select></div>
-              <textarea name="message" id="message" value={this.state.form.message} onChange={this.onMessageChange.bind(this)} onFocus={this.handleMsgFocus} onBlur={this.handleMsgBlur}>
-                תוכן הפנייה
-    </textarea>
+              <textarea placeholder="תוכן הפנייה" name="message" id="message" value={this.state.form.message} onChange={this.onMessageChange.bind(this)} onFocus={this.handleMsgFocus} onBlur={this.handleMsgBlur}>
+
+              </textarea>
               <span id="validateMsg">{this.state.validateMsg}</span>
               <input type="submit" name="form" value="שליחה" id="send"></input>
             </form>
