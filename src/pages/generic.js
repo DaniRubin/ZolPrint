@@ -196,7 +196,8 @@ export class Generic extends Component {
       return null
     }
 
-    const pageComponentName = this.getPageComponentName(ctx.page)
+    const pageComponentName = this.getPageComponentName(ctx.page === 'pages' ? ctx.id : ctx.page)
+
 
     // modify state that is sent to the page with out modifying the state in the uStoreProvider
     const state = this.applyStateChanges(pages, pageComponentName)
