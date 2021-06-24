@@ -112,7 +112,7 @@ class Header extends Component {
         <div className='header-stripe' draweropen={`${this.state.drawerOpen}`}>
           <div className='wrapper'>
             {!this.state.mobile && <div className="logo-wrapper">
-              <Link to={urlGenerator.get({ page: 'home' })}>
+              <Link to={urlGenerator.get({ page: 'pages', id: 'home' })}>
                 <a>
                   <div className="logo-container">
                     {currentLogo && <img className="logo" src={currentLogo} alt="logo" />}
@@ -124,7 +124,7 @@ class Header extends Component {
               <div className="menu-icon-container" onClick={this.burgerClicked.bind(this)}>
                 <Icon name="menu.svg" width="23px" height="20px" className="menu-icon" />
               </div>
-              <Link to={urlGenerator.get({ page: 'home' })}>
+              <Link to={urlGenerator.get({ page: 'pages', id: 'home' })}>
                 <a>
                   <div className="logo-container-mobile">
                     {currentLogo && <img className="logo-mobile" src={currentLogo} alt="logo" />}
@@ -133,20 +133,20 @@ class Header extends Component {
               </Link>
             </div>}
             <div className="left-icons">
-              <Link to={urlGenerator.get({ page: 'home' })}>
+              <Link to={urlGenerator.get({ page: 'pages', id: 'home' })}>
                 <a id="homeLink" className={this.state.pageURL == 'home' ? "link_top active_top" : 'link_top'}>
                   דף הבית</a>
               </Link>
 
               <div className="separator" />
 
-              <Link to={urlGenerator.get({ page: 'Poster' })}>
+              <Link to={urlGenerator.get({ page: 'pages', id: 'Poster' })}>
                 <a id="posterLink" className={this.state.pageURL == 'Poster' ? "link_top active_top" : 'link_top'}>
                   פוסטר</a>
               </Link>
               <div className="separator" />
 
-              <Link to={urlGenerator.get({ page: 'FlyerA5' })}>
+              <Link to={urlGenerator.get({ page: 'pages', id: 'FlyerA5' })}>
                 <a id="flyerLink" className={this.state.pageURL == 'FlyerA5' ? "link_top active_top" : 'link_top'}>
                   פלייר</a>
               </Link>
@@ -155,7 +155,7 @@ class Header extends Component {
 
 
             <div className="right-icons">
-              {!this.state.mobile && <Link to={urlGenerator.get({ page: 'Contact' })}>
+              {!this.state.mobile && <Link to={urlGenerator.get({ page: 'pages', id: 'Contact' })}>
                 <a id="" className="link_top">
                   צרו קשר</a>
               </Link>}

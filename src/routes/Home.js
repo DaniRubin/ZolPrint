@@ -109,7 +109,7 @@ class Home extends Component {
                       <ProductItem
                         key={model.ID}
                         model={model}
-                        url={urlGenerator.get({ page: this.getTotalProductData(model.Name).routeName })}
+                        url={urlGenerator.get({ page: 'pages', id: this.getTotalProductData(model.Name).routeName })}
                         totalPriceSpace={this.getTotalProductData(model.Name).space}
                         imageToDisplay={this.getTotalProductData(model.Name).image}
                       />

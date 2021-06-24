@@ -6,18 +6,9 @@
  */
 import { UStoreProvider } from '@ustore/core'
 import Layout from '../components/Layout'
-import { Router } from '$routes'
-import urlGenerator from '$ustoreinternal/services/urlGenerator'
-import { t } from '$themelocalization'
 import './Contact.scss'
 import { Component } from 'react'
-import { getVariableValue } from '$ustoreinternal/services/cssVariables'
 import theme from '$styles/_theme.scss'
-import { throttle } from 'throttle-debounce'
-import { getIsNGProduct } from '../services/utils'
-import { decodeStringForURL } from '$ustoreinternal/services/utils'
-import $ from 'jquery';
-//import { hotjar } from 'react-hotjar';
 
 class Contact extends Component {
 
@@ -37,11 +28,6 @@ class Contact extends Component {
         lname: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.LastName != null ? UStoreProvider.state.get().currentUser.LastName : "",
         phone: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.MobileNumber != null ? UStoreProvider.state.get().currentUser.MobileNumber : "",
         mail: UStoreProvider.state.get().currentUser && UStoreProvider.state.get().currentUser.Email != null ? UStoreProvider.state.get().currentUser.Email : "",
-        /*
-                fname: 'test',
-                lname: 'test',
-                phone: 'test',
-                mail: 'maileofmailofmailtest@mtailtest.com',*/
         subject: 'פנייה כללית',
       }
     }
@@ -349,7 +335,7 @@ class Contact extends Component {
         <div className="container-fluid">
 
           <div id="contactMap">
-            <span id="contactTitle">זול דפוס לואו קוסט</span>
+            <span id="contactTitle">זול פרינט - דפוס לואו קוסט</span>
             <ul id="bottom-contact">
               <li id="last-info"><span>{time && <img src={time} alt="שעות פעילות" />} </span><p>א' - ה' 18:00 - 09:00<br></br>ו' וערבי חג 14:00 - 09:00</p></li>
               <li>{geo && <img src={geo} alt="מיקום" />}הסיבים 43 פתח תקווה</li>

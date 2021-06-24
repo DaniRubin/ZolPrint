@@ -31,16 +31,16 @@ const CategoriesSidebar = (props) => {
         </div>
       </div>
       <div className='categories-list'>
-        <div className='category-title' onClick={() => onRedirect({ page: 'home' })}>
+        <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'home' })}>
           <span className={page_location == 'home' ? "category-name active-category" : 'category-name'}>דף הבית</span>
         </div>
-        <div className='category-title' onClick={() => onRedirect({ page: 'Poster' })}>
+        <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'Poster' })}>
           <span className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
         </div>
-        <div className='category-title' onClick={() => onRedirect({ page: 'FlyerA5' })}>
+        <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'FlyerA5' })}>
           <span className={page_location == 'FlyerA5' ? "category-name active-category" : 'category-name'}>פלייר</span>
         </div>
-        <div className='category-title' onClick={() => onRedirect({ page: 'Contact' })}>
+        <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'Contact' })}>
           <span className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
         </div>
       </div>
