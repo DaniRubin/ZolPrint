@@ -38,7 +38,7 @@ const PromotionMain = () => {
             <div className='ellipse' />
             אפשרות למשלוח
             <div className='ellipse' />
-            מינימום ₪20 להזמנה
+            מינימום ₪10 להזמנה
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ const PromotionMain = () => {
           <ul>
             <li>איסוף עצמי תוך 24 שעות</li>
             <li>אפשרות למשלוח</li>
-            <li>מינימום ₪20 להזמנה</li>
+            <li>מינימום ₪10 להזמנה</li>
           </ul>
         </div>
       </div>

@@ -17,6 +17,7 @@ import { t } from '$themelocalization'
 import Icon from '$core-components/Icon'
 import { redirectToLegacy } from '$ustoreinternal/services/initialLoad'
 import { UStoreProvider } from "@ustore/core";
+import { deleteCookie } from '$ustoreinternal/services/utils'
 
 const createLink = (anonymous, loginURL, pageTitle, additional) => {
   const { languageCode } = themeContext.get()
@@ -53,16 +54,24 @@ class Profile extends Component {
     }))
   }
 
+  goToUrl = () => {
+    console.log("HER")
+    const { storeID, classicUrl, securityToken, storeFriendlyID, languageCode, userID, showThemeAsDraft } = themeContext.get()
+    const userIDfromStore = UStoreProvider.state.get().currentUser.ID
+    const tempUserId = (!userID || (userIDfromStore && userIDfromStore !== userID)) ? userIDfromStore : userID
+    const isDraft = showThemeAsDraft && showThemeAsDraft.toLowerCase() === 'true'
+    const pageURL = window.location.href
+    deleteCookie('_token')
+    window.location.href = `${classicUrl}/logout.aspx?SecurityToken=${securityToken}&StoreGuid=${storeID}&storeid=${storeFriendlyID}&NgLanguageCode=${languageCode}&forceLogin=true&SignIn=true&ShowRibbon=false${isDraft ? '&showThemeAsDraft=true' : ''}&tempUserId=${tempUserId}&returnNGURL=/${encodeURIComponent(pageURL.slice(pageURL.indexOf(languageCode)))}`
+  }
+
+
   render() {
     const { currentUser, userOrdersSummary } = this.props
     const { userID, storeID, securityToken, storeFriendlyID, languageCode } = themeContext.get()
 
     const userIDFromStore = UStoreProvider.state.get().currentUser.ID
     const tempUserId = (!userID || (userIDFromStore && userIDFromStore !== userID)) ? userIDFromStore : userID
-
-    if (!currentUser) {
-      return null
-    }
 
     const rejectedOrderCount = (userOrdersSummary) ? userOrdersSummary.RejectedOrderCount : null
     const pendingApprovalOrderCount = (userOrdersSummary) ? userOrdersSummary.PendingApprovalOrderCount : null
@@ -81,7 +90,12 @@ class Profile extends Component {
           tag='div'
           data-toggle='dropdown'
         >
-          <div className="profile-icon-container">
+          <div className="profile-icon-container" onClick={(event) => {
+            if (IsAnonymous) {
+              this.goToUrl()
+              event.stopPropagation();
+            }
+          }}>
             {userIcon && <img className="user-icon" src={userIcon} alt="user-icon" />}
           </div>
         </DropdownToggle>
