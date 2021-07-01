@@ -14,7 +14,7 @@ class Poster extends Component {
 
     this.state = {
       isMobile: false,
-      promotionItemButtonUrl: urlGenerator.get({ page: 'product', id: 1218 })
+      promotionItemButtonUrl: urlGenerator.get({ page: 'product', id: 949 })
     }
 
   }
