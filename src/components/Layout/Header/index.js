@@ -72,6 +72,7 @@ class Header extends Component {
     if (window.location.href.includes('home')) return 'home'
     if (window.location.href.includes('Poster')) return 'Poster'
     if (window.location.href.includes('FlyerA5')) return 'FlyerA5'
+    if (window.location.href.includes('FlyerA4')) return 'FlyerA4'
     if (window.location.href.endsWith('he-IL/')) return 'home'
   }
   drawerStateChange(open) {
@@ -148,7 +149,13 @@ class Header extends Component {
 
               <Link to={urlGenerator.get({ page: 'pages', id: 'FlyerA5' })}>
                 <a id="flyerLink" className={this.state.pageURL == 'FlyerA5' ? "link_top active_top" : 'link_top'}>
-                  פלייר</a>
+                  פלייר A5</a>
+              </Link>
+              <div className="separator" />
+
+              <Link to={urlGenerator.get({ page: 'pages', id: 'FlyerA4' })}>
+                <a id="flyerLink" className={this.state.pageURL == 'FlyerA4' ? "link_top active_top" : 'link_top'}>
+                  פלייר A4</a>
               </Link>
 
             </div>

@@ -68,6 +68,12 @@ class Home extends Component {
           space: true,
           image: require(`$assets/images/flyer-main.png`)
         }
+      case "פלייר A4":
+        return {
+          routeName: 'FlyerA4',
+          space: true,
+          image: require(`$assets/images/flyer-main-A4.png`)
+        }
       default:
         return {
           routeName: 'home',
