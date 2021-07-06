@@ -1,8 +1,8 @@
 {
   "engineVersion": "1",
   "uStoreVersion": "13.2.7885",
-  "name": "ZolPrint",
-  "displayName": "ZolPrint V13",
+  "name": "ZolPrint-dev",
+  "displayName": "ZolPrint V13-dev",
   "customConfigurations": {
     "nonSecuredPages": [
       {
