@@ -22,6 +22,8 @@ const getPriceOfProduct = (name) => {
       return ['1', '₪']
     case "פלייר A5":
       return ["10", "אג'"]
+    case "פלייר A4":
+      return ["20", "אג'"]
     default:
       return ["0", '₪']
   }

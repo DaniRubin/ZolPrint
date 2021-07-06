@@ -4,21 +4,21 @@ import React, { Component } from 'react'
 
 class ImageLoader extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.imageOnLoad = this.imageOnLoad.bind(this)
     this.imageOnError = this.imageOnError.bind(this)
     this.image = React.createRef()
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const img = this.image.current
     if (img && img.complete) {
       this.imageOnLoad()
     }
   }
 
-  imageOnLoad () {
+  imageOnLoad() {
     const imageElem = this.image.current
     if (imageElem) {
       imageElem.classList.remove('hide')
@@ -39,16 +39,16 @@ class ImageLoader extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div className={`image-loader ${this.props.className ? this.props.className : ''}`}>
-        <div className="animated loading"/>
+        <div className="animated loading" />
         <img
           ref={this.image}
           src={this.props.src}
           onError={this.imageOnError}
           onLoad={this.imageOnLoad}
-          className="hide"
+          className={this.props.src.includes('A4') ? "hide hide-pad" : "hide"}
         />
       </div>
     )

@@ -32,6 +32,7 @@ import Privacy from './Privacy'
 import Contact from './Contact'
 import Poster from './Poster'
 import FlyerA5 from './FlyerA5'
+import FlyerA4 from './FlyerA4'
 
 export default {
   Home,
@@ -67,5 +68,6 @@ export default {
   Privacy,
   Contact,
   Poster,
-  FlyerA5
+  FlyerA5,
+  FlyerA4
 }

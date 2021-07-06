@@ -5,6 +5,7 @@ const getCurrentURL = (pageURL) => {
   if (pageURL.includes('home')) return 'home'
   if (pageURL.includes('Poster')) return 'Poster'
   if (pageURL.includes('FlyerA5')) return 'FlyerA5'
+  if (pageURL.includes('FlyerA4')) return 'FlyerA4'
   if (pageURL.includes('Contact')) return 'Contact'
   if (pageURL.endsWith('he-IL/')) return 'home'
 }
@@ -38,7 +39,10 @@ const CategoriesSidebar = (props) => {
           <span className={page_location == 'Poster' ? "category-name active-category" : 'category-name'}>פוסטר</span>
         </div>
         <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'FlyerA5' })}>
-          <span className={page_location == 'FlyerA5' ? "category-name active-category" : 'category-name'}>פלייר</span>
+          <span className={page_location == 'FlyerA5' ? "category-name active-category" : 'category-name'}>פלייר A5</span>
+        </div>
+        <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'FlyerA4' })}>
+          <span className={page_location == 'FlyerA4' ? "category-name active-category" : 'category-name'}>פלייר A4</span>
         </div>
         <div className='category-title' onClick={() => onRedirect({ page: 'pages', id: 'Contact' })}>
           <span className={page_location == 'Contact' ? "category-name active-category" : 'category-name'}>צור קשר</span>
