@@ -67,7 +67,7 @@ const PromotionItem = (props) => {
           </div>
         </div>
         <div className="left_banner_img_item">
-          {banner_img_item && <img src={banner_img_item} alt="Left Banner Image" />}
+          {banner_img_item && <img src={banner_img_item} className={banner_img_item.includes('A4') ? 'A4-banner' : ''} alt="Left Banner Image" />}
         </div>
       </div>
     </div>
