@@ -44,7 +44,7 @@ class FlyerA5 extends Component {
                 }
                 price="20"
                 priceType="אג'"
-                url={urlGenerator.get({ page: 'product', id: 1271 })}
+                url={urlGenerator.get({ page: 'product', id: 1274 })}
               />
             </Slider>
           </div>

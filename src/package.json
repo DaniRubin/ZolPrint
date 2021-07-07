@@ -110,5 +110,5 @@
     "webpack-cli": "file:./npm_packages/webpack-cli-3.1.2.tgz",
     "sass-loader": "file:./npm_packages/sass-loader-8.0.0.tgz"
   },
-  "name": "ZolPrintDev"
+  "name": "ZolPrint"
 }
