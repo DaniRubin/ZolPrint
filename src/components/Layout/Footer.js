@@ -51,10 +51,10 @@ const Footer = () => {
           <span>מוזמנים לבקר</span>
           <p>
             הסיבים 43, פתח תקווה <a href="https://www.waze.com/he/livemap/directions?latlng=32.0859061%2C34.8573809&navigate=yes">{waze && <img src={waze} alt="waze" />}</a><br></br>
-              שעות הפעילות:<br></br>
-              א' - ה' 18:00 - 09:00,<br></br>
-              ו' וערבי חג 14:00 - 09:00
-            </p>
+            שעות הפעילות:<br></br>
+            א' - ה' 18:00 - 09:00<br></br>
+            {/* ו' וערבי חג 14:00 - 09:00 */}
+          </p>
         </div>
         <div id="left-payments">
           {(page_location == 'Poster' || page_location == 'FlyerA5') && <span>* בשעות הפעילות</span>}

@@ -1,6 +1,9 @@
 .contactUs .main-content {
     margin: 0 auto;
 }
+.workOursContact {
+    margin-top: 10px !important;
+}
 @media (min-width: 1199px) {
     .contactUs .main-content {
         width: 100%;
@@ -127,7 +130,6 @@
 #cotnactForm select option {
     color: #000 !important;
 }
-
 #contactForm input[type="submit"] {
     width: 25%;
     height: 40px;

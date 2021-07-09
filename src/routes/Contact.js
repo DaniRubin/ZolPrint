@@ -331,13 +331,17 @@ class Contact extends Component {
       <Layout {...this.props} className="contactUs">
         <div id="title_contact">
           צרו קשר
-          </div>
+        </div>
         <div className="container-fluid">
 
           <div id="contactMap">
             <span id="contactTitle">זול פרינט - דפוס לואו קוסט</span>
             <ul id="bottom-contact">
-              <li id="last-info"><span>{time && <img src={time} alt="שעות פעילות" />} </span><p>א' - ה' 18:00 - 09:00<br></br>ו' וערבי חג 14:00 - 09:00</p></li>
+              <li id="last-info"><span>{time && <img src={time} alt="שעות פעילות" />} </span><p className="workOursContact">א' - ה' 18:00 - 09:00<br>
+              </br>
+                {/* ו' וערבי חג 14:00 - 09:00 */}
+
+              </p></li>
               <li>{geo && <img src={geo} alt="מיקום" />}הסיבים 43 פתח תקווה</li>
             </ul>
             <div className="mapouter">
@@ -352,8 +356,8 @@ class Contact extends Component {
 
           <div id="contactForm" style={{ marginBottom: "120px" }}>
             <span id="titleForm">דברו איתנו</span>
-יש לכם שאלה? צריכים עזרה? אנחנו עונים מהר!
-<form id="contact" onSubmit={this.handleSubmit.bind(this)} method="POST">
+            יש לכם שאלה? צריכים עזרה? אנחנו עונים מהר!
+            <form id="contact" onSubmit={this.handleSubmit.bind(this)} method="POST">
               <div className="mid-input"><input placeholder={'שם פרטי'} type="text" name="fname" className={this.state.errors[0] ? "form-input-fail" : "form-input"} value={this.state.form.fname} onChange={this.onFnameChange.bind(this)} onFocus={this.handleFnameFocus}></input></div>
               <div className="mid-input left-mid-input"><input placeholder={'שם משפחה'} type="text" name="lname" className={this.state.errors[1] ? "form-input-fail" : "form-input"} value={this.state.form.lname} onChange={this.onLnameChange.bind(this)} onFocus={this.handleLnameFocus}></input></div>
               <div className="mid-input"><input placeholder={'דואר אלקטרוני'} type="text" name="mail" id="email" value={this.state.form.mail} className={this.state.errors[2] ? "form-input-fail" : "form-input"} onChange={this.onEmailChange.bind(this)} onFocus={this.handleMailFocus}></input></div>
